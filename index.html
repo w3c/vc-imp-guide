@@ -1391,8 +1391,31 @@ only provide the minimum amount of data to <a>verifiers</a>.
 
         <p>
 Selective disclosure is the ability of a <a>holder</a> to select which elements
-from a <a>verifiable credential</a> to share with a <a>verifier</a>.
+from a <a>verifiable credential</a> to share with a <a>verifier</a>. There are
+a couple of different methods which support selective disclosure:
+        </p>
+        <ul>
+          <li>
+<b>Atomic Credentials</b> - These are <a>verifiable credentials</a> which
+consist of a single claim. An <a>issuer</a> may provide a set of atomic
+credentials that duplicates the claims of a standard credential.
+          </li>
+          <li>
+<b>Selective Disclosure Signatures</b> - Certain signature schemes natively
+support selective disclosure of <a>verifiable credential</a> elements. One
+example of these is Camenisch-Lysyanskaya signatures.
+          </li>
+        </ul>
+        <p>
 
+        </p>
+
+      </section>
+      <section>
+        <h3>Predicates</h3>
+        <p>
+Predicates allow a <a>holder</a> to provide True/False values to a
+<a>verifier</a> rather than revealing claim values.
         </p>
       </section>
     </section>
