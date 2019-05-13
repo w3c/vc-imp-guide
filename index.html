@@ -773,30 +773,33 @@ verifiable presentations, such as selective disclosure and predicate proofs.
     <p>
 Selective disclosure is the ability of a holder to reveal a subset of
 the attributes of a verifiable credential in a verifiable presentation.
-A presentation based on ZKPs only contains those attributes and
-associated values that are required to satisfy the presentation requirements. 
+A presentation based on zero-knowledge proof mechanisms only contains
+those attributes and associated values that are required to satisfy
+the presentation requirements. 
     </p>
     <p>
-ZKP predicate proofs are a type of proof associated with an attribute.
-Predicate proofs include comparisons, such as
+Zero-knowledge predicate proofs are a type of proof associated with
+an attribute. Predicate proofs include comparisons, such as
 "greater than", "less than", "not equal", "range", 
 "set membership", and "set non-membership".
-Predicate proofs can be
-constructed without requiring the issuer to create special fields, such as
-"age-under-18", "age-over-21", "age-over-60", in the verifiable credential
+Predicate proofs can be constructed without requiring the issuer
+to create special fields, such as
+"age-under-18", "age-over-21", or "age-over-60", in the verifiable credential
 at the time the credential was issued.
-The holder can create a predicate proof based on "birth-date" in the
-verifiable presentation derived from the verifiable credential to
-cryptographically prove to the verifier that the holder's age is greater than
-(or less than) a specified number without revealing the holders "birth-date".
+For example, if a holder has a credential with a "birth-date" claim,
+the holder can create a predicate proof based on "birth-date" in the
+verifiable presentation. A predicate value derived from "birth-date" in
+the verifiable credential can cryptographically prove to the verifier that
+the holder's age is greater (or less) than a specified number, without
+revealing the holder's "birth-date".
     </p>
     <p>
-Verifiable credentials based on ZKPs are also quantum-resistant after
-presentation.
+Verifiable credentials based on zero-knowledge proof mechanisms are
+also quantum-resistant after presentation.
     </p>
     <p>
-A drawback of ZKPs is that they are more complex and larger than some
-older signature schemes.
+A drawback of zero-knowledge proof mechanisms is that they are
+more complex and larger than some older signature schemes.
     </p>
   </section>
 
