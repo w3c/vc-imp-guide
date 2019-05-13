@@ -665,8 +665,9 @@ the cost of implementation complexity.
     <p>
 The Verifiable Credentials Data Model is designed to be compatible with a
 variety of existing and emerging digital proof formats. Each
-proof format has benefits and drawbacks. Many proof formats can only reveal all
-attribute values in a verifiable credential.
+proof format has benefits and drawbacks. For instance, many proof formats
+cannot reveal selected attribute values in a verifiable credential;
+they can only reveal all (or none).
     </p>
     <p>
 Zero-Knowledge Proofs (ZKPs) are a proof format that enables
@@ -686,7 +687,7 @@ Predicate proofs include comparisons, such as
 "set membership", and "set non-membership".
 Predicate proofs can be
 constructed without requiring the issuer to create special fields, such as
-"age-under-18", age-over-21", "age-over-60", in the verifiable credential
+"age-under-18", "age-over-21", "age-over-60", in the verifiable credential
 at the time the credential was issued.
 The holder can create a predicate proof based on "birth-date" in the
 verifiable presentation derived from the verifiable credential to
