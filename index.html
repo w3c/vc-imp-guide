@@ -272,7 +272,6 @@ TBD
         <h3>Creating New Credential Types</h3>
 
         <ul>
-        </section>
           <li>
 Design the Data Model.
           </li>
@@ -288,6 +287,41 @@ Use the new JSON-LD Context.
         </ul>
       </section>
 
+      <section>
+        <h3>Human Readability</h3>
+        <p>
+The JSON-LD Context declaration mechanism is used by implementations to
+signal the context in which the data transmission is happening to consuming
+applications:
+        </p>
+
+        <pre class="example nohighlight" title="Use of @context mechanism">
+          {
+            <span class="highlight">
+            "@context": [
+              "https://www.w3.org/2018/credentials/v1",
+              "https://www.w3.org/2018/credentials/examples/v1"
+            ]</span>,
+            "id": "http://example.edu/credentials/1872",
+            ...
+        </pre>
+
+        <p>
+Extension authors are urged to publish two types of information at the
+context URLs. The first type of information is for machines, and is the
+machine-readable JSON-LD Context. The second type of information is for
+humans, and should be an HTML document. It is suggested that the default
+mode of operation is to serve the machine-readable JSON-LD Context as that is
+the primary intended use of the URL. If content-negotiation is supported,
+requests for <code>text/html</code> should result in a human readable document.
+The human readable document should at least contain usage information for the
+extension, such as the expected order of URLs associated with the
+<code>@context</code> property, specifications that elaborate on the extension,
+and examples of typical usage of the extension.
+        </p>
+      </section>
+
+    </section>
 
     <section>
       <h2>Cryptography</h2>
