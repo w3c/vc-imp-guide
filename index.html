@@ -327,8 +327,8 @@ or send them to
 
           <tr>
             <td>
-  <a href="#pf15">PF15.</a> Changing property-value ordering, or introducing
-  whitespace does not invalidate signature.
+  <a href="#pf15">PF15.</a> Signature is not invalidated by changes in whitespace 
+  or in the ordering of property-values.
             </td>
             <td class="missing">✖</td>
             <td class="missing">✖</td>
@@ -365,11 +365,11 @@ or send them to
 
           <tr>
             <td>
-  <a href="#pf19">PF19.</a> Canonicalization requires more than base-64 encoding.
+  <a href="#pf19">PF19.</a> Canonicalization does not require more than base-64 encoding.
             </td>
-            <td class="supported">✓</td>
-            <td class="supported">✓</td>
             <td class="missing">✖</td>
+            <td class="missing">✖</td>
+            <td class="supported">✓</td>
           </tr>
         </tbody>
       </table>
@@ -411,17 +411,18 @@ or send them to
           mapping them to IRIs via a context.
                 </dt>
                 <dd>
-          All object properties in a JSON-LD document, such as the property "homepage",
-          are either keywords or they are mapped to an IRI. This feature enables open
-          world systems to identify the semantic meaning of the property in an unambiguous
-          way, which enables seamless merging of data between disparate systems.
           JSON object properties are not mapped to IRIs, which result in ambiguities with
           respect to the semantic meaning of the property. For example, one JSON document
           can use "title" (meaning "book title") in a way that is semantically
           incompatible with another JSON document using "title" (meaning "job title").
+          In contrast, all object properties in a JSON-LD document, such as the property "homepage",
+          are either keywords or mapped to an IRI. This feature enables open
+          world systems to identify the semantic meaning of the property in an unambiguous
+          way, which enables seamless merging of data between disparate systems.
+          
                 </dd>
                 <dt id="pf4">
-          PF4: A mechanism to refer to data in an external document, where the data may
+          PF4: A mechanism to refer to data in an external document, whereby the external data may
           be merged with the local document without a merge conflict in semantics or
           structure.
                 </dt>
@@ -473,7 +474,7 @@ or send them to
           cases, such as cryptographic signatures applied to a legal contract,
           typically require more than one signature to be associated with the contract
           in order to legally bind two or more parties under the terms of the contract.
-          Linked Data Proofs, including Linked Data Signatures, natively support sets of
+          LD-Proofs, including LD-Signatures, natively support sets of
           signatures. JWTs only enable a single signature over a single payload.
                 </dd>
                 <dt id="pf9">
@@ -494,10 +495,10 @@ or send them to
           able to see the data that they are operating on using common debugging tools.
           Similarly, it is useful to be able to serialize data from the network to a
           database and then from the database back out to the network using a minimal
-          number of pre and post processing steps. LD-Proofs enable developers to use
+          number of pre- and post-processing steps. LD-Proofs enable developers to use
           common JSON tooling without having to convert the format into a different
-          format or structure. JWTs base-64 encode payload information, resulting in
-          complicated pre and post processing steps to convert the data into JSON data
+          format or structure. Payload information in JWTs is base-64 encoded, and requires
+          complicated pre- and post-processing steps to convert the data into JSON data
           while not destroying the digital signature. Similarly, schema-less databases,
           which are typically used to index JSON data, cannot index information
           that is expressed in an opaque base-64 encoded wrapper.
@@ -512,36 +513,34 @@ or send them to
           JWT. This is often necessary when a cryptographic signature is required on a
           document that contains a cryptographic signature, such as when a Notary
           signs a document that has been signed by someone else seeking the Notary's
-          services. LD-Proofs do not require base-64 encoding the signed portion of a
-          document and instead rely on a canonicalization process that is just as
-          secure, and that only requires the cryptographic signature to be encoded
-          instead of the entire payload.
+          services. LD-Proofs use an equally secure canonicalization process that requires 
+          only the cryptographic signature to be base-64 encoded; i.e., LD-Proofs do 
+          not require that the signed portion of a document also be base-64 encoded.
                 </dd>
                 <dt id="pf12">
           PF12: Proof format supports Zero-Knowledge Proofs.
                 </dt>
                 <dd>
-          The LD-Proof format is capable of modifying the algorithm that generates
-          the hash or hashes that are cryptographically signed. This cryptographic
-          agility enables digital signature systems, such as Zero-Knowledge Proofs,
-          to be layered on top of LD-Proofs instead of an entirely new digital signature
-          container format to be created. JWTs are designed such that an entirely new
-          digital signature container format will be required to support Zero-Knowledge
-          Proofs.
+          The LD-Proof format is capable of specifying the algorithm (including 
+          as-yet-undefined algorithms) used to generate the hash or hashes that are 
+          cryptographically signed. This cryptographic agility enables digital signature
+          systems, such as Zero-Knowledge Proofs, to be layered on top of LD-Proofs 
+          without requiring creation of an entirely new digital signature container format.
+          Because of the way that JWTs are designed, an entirely new digital signature 
+          container format will be required for JWTs to support Zero-Knowledge Proofs.
                 </dd>
                 <dt id="pf13">
           PF13: Proof format supports arbitrary proofs such as Proof of Work, Timestamp
           Proofs, and Proof of Stake.
                 </dt>
                 <dd>
-          The LD-Proof format was designed with a broader range of proof types in mind
+          The LD-Proof format was designed with a broad range of proof types in mind
           and supports cryptographic proofs beyond simple cryptographic signatures.
-          These proof types are in common usage in systems such as decentralized ledgers
-          and provide additional guarantees to
-          <a>verifiable credentials</a>, such as the ability to prove that a particular
-          claim was made at a particular time or that a certain amount of energy was
-          expended to generate a particular credential. The JWT format does not support
-          arbitrary proof formats.
+          These proof types are in common use in systems such as decentralized ledgers
+          and provide additional guarantees to <a>verifiable credentials</a>, such as 
+          the ability to prove that a particular claim was made at a particular time or 
+          that a certain amount of energy was expended to generate a particular credential.
+          The JWT format does not support arbitrary proof formats.
                 </dd>
                 <dt id="pf14">
           PF14: Proofs can be expressed unmodified in other data syntaxes such as XML,
@@ -552,39 +551,37 @@ or send them to
           cryptographic hash that is used as an input to the cryptographic proof
           algorithm. This enables the bytes generated as the cryptographic proof to be
           compact and expressible in a variety of other syntaxes such as XML,
-          YAML, N-Quads, and CBOR. Since JWTs require the use of JSON to be generated,
-          they are inextricably tied to the JSON syntax.
+          YAML, N-Quads, and CBOR. JWTs are inextricably tied to the JSON syntax, 
+          because JWT generation requires the use of JSON.
                 </dd>
                 <dt id="pf15">
-          PF15: Changing property-value ordering, or introducing whitespace does not
-          invalidate signature.
+          PF15: Signature is not invalidated by changes in whitespace or in the ordering 
+          of property-values.          
                 </dt>
                 <dd>
-          Since LD-Proofs utilize a canonicalization algorithm, the introduction of
+          Since LD-Proofs utilize a canonicalization algorithm, changes in
           whitespace that does not change the meaning of the information being expressed
           has no effect on the final cryptographic hash over the information. This means
           that simple changes in whitespace formatting, such as those changes made when
           writing data to a schema-less database and then retrieving the same information
-          from the same database do not cause the digital signature to fail. JWTs
-          encode the payload using the base-64 format which is not resistant to
-          whitespace formatting that has no effect on the information expressed. This
-          shortcoming of JWTs make it challenging to, for example, express signed data in
-          web pages that search crawlers index.
+          from the same database do not cause the digital signature to fail. JWT payloads
+          use base-64 encoding, which is changed by whitespace formatting though it has 
+          no effect on the information expressed. This makes it challenging to use JWTs to, 
+          for example, express signed data in web pages meant to be indexed by search 
+          engine crawlers.
                 </dd>
                 <dt id="pf16">
           PF16: Designed to easily support experimental signature systems.
                 </dt>
                 <dd>
-          The LD-Proof format is naturally extensible, not requiring the format to be
-          extended in a formal international standards working group in order to
-          prevent namespace collisions. The JWT format requires entries in a centralized
-          registry in order to avoid naming collisions and does not support 
-          experimentation as easily as the LD-Proof format does. LD-Proof format 
-          extension is done through the decentralized publication of cryptographic 
-          suites that are guaranteed to not conflict with other LD-Proof
-          extensions. This approach enables developers to easily experiment with new
-          cryptographic signature mechanisms that support selective disclosure,
-          zero-knowledge proofs, and post-quantum algorithms.
+          The JWT format requires entries in a centralized registry through a formal 
+          international standards working group in order to avoid naming collisions, so 
+          it does not easily support experimental extensions. The LD-Proof format is 
+          naturally extensible, through the decentralized publication of cryptographic 
+          suites that are guaranteed to not conflict with other LD-Proof extensions. 
+          This approach enables LD-Proof developers to easily experiment with new
+          cryptographic signature mechanisms that support selective disclosure, 
+          zero-knowledge proofs, post-quantum algorithms, and other innovations.
                 </dd>
                 <dt id="pf17">
           PF17: Supports signature chaining.
@@ -594,9 +591,8 @@ or send them to
           cases, such as cryptographic signatures applied to a notarized document,
           typically require a signature by the signing party and then an additional one
           by a notary to be made after the original signing party has made their
-          signature. Linked Data Proofs, including Linked Data Signatures, natively
-          support chains of signatures. JWTs only enable a single signature over a
-          single payload.
+          signature. LD-Proofs, including LD-Signatures, natively support chains of 
+          signatures. JWTs only enable a single signature over a single payload.
                 </dd>
                 <dt id="pf18">
           PF18: Does not require pre-processing or post-processing.
@@ -604,20 +600,19 @@ or send them to
                 <dd>
           In order to encode a <a>verifiable credential</a> or a
           <a>verifiable presentation</a> in a JWT, an extra set of steps
-          are required to convert the data to and from the JWT format. No such extra
-          converstion step are required for <a>verifiable credentials</a> and
+          is required to convert the data to and from the JWT format. Such extra
+          conversion steps are not required for <a>verifiable credentials</a> and
           <a>verifiable presentations</a> protected by LD-Proofs.
                 </dd>
                 <dt id="pf19">
-          PF19: Canonicalization requires more than base-64 encoding.
+          PF19: Canonicalization does not require more than base-64 encoding.
                 </dt>
                 <dd>
-          The JWT format utilizes a simple base-64 encoding format to generate the
-          cryptographic hash of the data. The encoding format for LD-Proofs require
-          a more complex canonicalization algorithm to generate the cryptographic
-          hash. The benefits of the JWT approach are simplicity at the cost of
-          encoding flexibility. The benefits of the LD-Proof approach are flexibility at
-          the cost of implementation complexity.
+          JWTs use a simple base-64 encoding to generate the cryptographic hash of 
+          the data. LD-Proofs require a more complex canonicalization algorithm to 
+          generate the cryptographic hash. The JWT approach simplifies implementation 
+          but reduces encoding flexibility. The LD-Proof approach increases encoding 
+          flexibility but complicates implementation.
         </dd>
       </dl>
     </section>
@@ -1340,16 +1335,16 @@ more complex and larger than some older signature schemes.
 
         <ul>
           <li>
-Design the Cryptographic Suite.
+            Design the Cryptographic Suite.
           </li>
           <li>
-Create the JSON-LD Context.
+            Create the JSON-LD Context.
           </li>
           <li>
-Select a publishing location.
+            Select a publishing location.
           </li>
           <li>
-Implement the Cryptographic Suite and use it.
+            Implement the Cryptographic Suite and use it.
           </li>
         </ul>
       </section>
@@ -1358,7 +1353,7 @@ Implement the Cryptographic Suite and use it.
         <h3>COSE Signature Expression</h3>
 
         <p>
-Use COSE to express signature values.
+          Use COSE to express signature values.
         </p>
       </section>
 
@@ -1366,7 +1361,7 @@ Use COSE to express signature values.
         <h3>COSE Key Expression</h3>
 
         <p>
-Use COSE Web Keys to express key material.
+          Use COSE Web Keys to express key material.
         </p>
       </section>
 
@@ -1374,7 +1369,8 @@ Use COSE Web Keys to express key material.
         <h3>Hashlinks</h3>
 
         <p>
-Use Hashlink URLs to provide content integrity for links to external resources.
+          Hashlink URLs can be used to provide content integrity for links to 
+          external resources.
         </p>
       </section>
 
