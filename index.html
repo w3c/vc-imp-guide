@@ -415,10 +415,11 @@ or send them to
           respect to the semantic meaning of the property. For example, one JSON document
           can use "title" (meaning "book title") in a way that is semantically
           incompatible with another JSON document using "title" (meaning "job title").
-          In contrast, all object properties in a JSON-LD document, such as the property "homepage",
-          are either keywords or mapped to an IRI. This feature enables open
-          world systems to identify the semantic meaning of the property in an unambiguous
-          way, which enables seamless merging of data between disparate systems.
+          In contrast, each object property in a JSON-LD document, such as the property 
+          "homepage", is either a keyword, an IRI, or a literal mapped to an IRI via a context. 
+          This feature enables open world systems to identify the semantic meaning of the 
+          property in an unambiguous way, which enables seamless merging of data between 
+          disparate systems.
           
                 </dd>
                 <dt id="pf4">
