@@ -160,6 +160,103 @@ that should work for most use cases.
         </p>
       </section>
 
+      <section>
+        <h3>Disputes</h3>
+
+        <p>
+  There are at least two different cases to consider where an <a>entity</a>
+  wants to dispute a <a>credential</a> issued by an <a>issuer</a>:
+        </p>
+
+        <ul>
+          <li>
+  A <a>subject</a> disputes a claim made by the <a>issuer</a>. For example, the
+  <code>address</code> <a>property</a> is incorrect or out of date.
+          </li>
+          <li>
+  An <a>entity</a> disputes a potentially false claim made by the <a>issuer</a>
+  about a different <a>subject</a>. For example, an imposter claims the social
+  security number for an <a>entity</a>.
+          </li>
+        </ul>
+
+        <p>
+  The mechanism for issuing a <code>DisputeCredential</code> is the same as
+  for a regular <a>credential</a>, except that the <code>credentialSubject</code>
+  identifier in the <code>DisputeCredential</code> property is the identifier of
+  the disputed <a>credential</a>.
+        </p>
+
+        <p>
+  For example, if a <a>credential</a> with an identifier of
+  <code>https://example.org/credentials/245</code> is disputed, an <a>entity</a>
+  can issue one of the <a>credentials</a> shown below. In the first example, the
+  <a>subject</a> might present this to the <a>verifier</a> along with the disputed
+  <a>credential</a>. In the second example, the <a>entity</a> might publish the
+  <code>DisputeCredential</code> in a public venue to make it known that the
+  <a>credential</a> is disputed.
+        </p>
+
+        <pre class="example nohighlight" title="A subject disputes a credential">
+  {
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://www.w3.org/2018/credentials/examples/v1"
+  ],
+  "id": "http://example.com/credentials/123",
+  "type": ["VerifiableCredential", "DisputeCredential"],
+  <span class="highlight">"credentialSubject": {
+    "id": "http://example.com/credentials/245",
+    "currentStatus": "Disputed",
+    "statusReason": {
+      "@value": "Address is out of date",
+      "@language": "en"
+    },
+  }</span>,
+  "issuer": "https://example.com/people#me",
+  "issuanceDate": "2017-12-05T14:27:42Z",
+  "proof": { ... }
+  }
+        </pre>
+
+
+        <pre class="example nohighlight" title="Another entity disputes a credential">
+  {
+  "@context": "https://w3id.org/credentials/v1",
+  "id": "http://example.com/credentials/321",
+  "type": ["VerifiableCredential", "DisputeCredential"],
+  <span class="highlight">"credentialSubject": {
+    "id": "http://example.com/credentials/245",
+    "currentStatus": "Disputed",
+    "statusReason": {
+      "@value": "Credential contains disputed statements",
+      "@language": "en"
+    },
+    "disputedClaim": {
+      "id": "did:example:ebfeb1f712ebc6f1c276e12ec21",
+      "address": "Is Wrong"
+    }
+  }</span>,
+  "issuer": "https://example.com/people#me",
+  "issuanceDate": "2017-12-05T14:27:42Z",
+  "proof": { ... }
+  }
+        </pre>
+
+  <p> In the above <a>verifiable credential</a>, the <a>issuer</a> is claiming that
+  the address in the disputed <a>verifiable credential</a> is wrong. For example,
+  the <a>subject</a> might wrongly be claiming to have the same address as that of
+  the <a>issuer</a>.
+  </p>
+        <p class="note">
+  If a <a>credential</a> does not have an identifier, a content-addressed
+  identifier can be used to identify the disputed <a>credential</a>. Similarly,
+  content-addressed identifiers can be used to uniquely identify individual
+  claims.
+        </p>
+
+      </section>
+
     </section>
 
     <section>
@@ -190,8 +287,41 @@ Use the new JSON-LD Context.
         </ul>
       </section>
 
-    </section>
+      <section>
+        <h3>Human Readability</h3>
+        <p>
+The JSON-LD Context declaration mechanism is used by implementations to
+signal the context in which the data transmission is happening to consuming
+applications:
+        </p>
 
+        <pre class="example nohighlight" title="Use of @context mechanism">
+          {
+            <span class="highlight">
+            "@context": [
+              "https://www.w3.org/2018/credentials/v1",
+              "https://www.w3.org/2018/credentials/examples/v1"
+            ]</span>,
+            "id": "http://example.edu/credentials/1872",
+            ...
+        </pre>
+
+        <p>
+Extension authors are urged to publish two types of information at the
+context URLs. The first type of information is for machines, and is the
+machine-readable JSON-LD Context. The second type of information is for
+humans, and should be an HTML document. It is suggested that the default
+mode of operation is to serve the machine-readable JSON-LD Context as that is
+the primary intended use of the URL. If content-negotiation is supported,
+requests for <code>text/html</code> should result in a human readable document.
+The human readable document should at least contain usage information for the
+extension, such as the expected order of URLs associated with the
+<code>@context</code> property, specifications that elaborate on the extension,
+and examples of typical usage of the extension.
+        </p>
+      </section>
+
+    </section>
 
     <section>
       <h2>Cryptography</h2>
@@ -408,7 +538,7 @@ systems.
         </table>
 
         <p class="note">
-Some of the features listed in the table above are debateable since a feature
+Some of the features listed in the table above are debateable, since a feature
 can always be added to a particular syntax or digital proof format. The table
 is intended to identify native features of each combination such that no
 additional language design or extension is required to achieve the identified
@@ -450,7 +580,7 @@ world systems to identify the semantic meaning of the property in an unambiguous
 way, which enables seamless merging of data between disparate systems.
 JSON object properties are not mapped to IRIs, which result in ambiguities with
 respect to the semantic meaning of the property. For example, one JSON document
-can use "title" (meaning "book title") in a way that is semantically
+might use "title" (meaning "book title") in a way that is semantically
 incompatible with another JSON document using "title" (meaning "job title").
           </dd>
           <dt id="pf4">
@@ -653,7 +783,49 @@ encoding flexibility. The benefits of the LD-Proof approach are flexibility at
 the cost of implementation complexity.
           </dd>
         </dl>
-
+        <p>
+The Verifiable Credentials Data Model is designed to be compatible with a
+variety of existing and emerging digital proof formats. Each
+proof format has benefits and drawbacks. For instance, many proof formats
+cannot reveal selected attribute values in a verifiable credential;
+they can only reveal all (or none).
+        </p>
+        <p>
+Zero-Knowledge Proofs (ZKPs) are a proof format that enables
+privacy-preserving and data-minimization features in
+verifiable presentations, such as selective disclosure and predicate proofs.
+        </p>
+        <p>
+Selective disclosure is the ability of a holder to reveal a subset of
+the attributes of a verifiable credential in a verifiable presentation.
+A presentation based on zero-knowledge proof mechanisms only contains
+those attributes and associated values that are required to satisfy
+the presentation requirements. 
+        </p>
+        <p>
+Zero-knowledge predicate proofs are a type of proof associated with
+an attribute. Predicate proofs include comparisons, such as
+"greater than", "less than", "not equal", "range", 
+"set membership", and "set non-membership".
+Predicate proofs can be constructed without requiring the issuer
+to create special fields, such as
+"age-under-18", "age-over-21", or "age-over-60", in the verifiable credential
+at the time the credential was issued.
+For example, if a holder has a credential with a "birth-date" claim,
+the holder can create a predicate proof based on "birth-date" in the
+verifiable presentation. A predicate value derived from "birth-date" in
+the verifiable credential can cryptographically prove to the verifier that
+the holder's age is greater (or less) than a specified number, without
+revealing the holder's "birth-date".
+        </p>
+        <p>
+Verifiable credentials based on zero-knowledge proof mechanisms are
+also quantum-resistant after presentation.
+        </p>
+        <p>
+A drawback of zero-knowledge proof mechanisms is that they are
+more complex and larger than some older signature schemes.
+        </p>
       </section>
 
       <section>
@@ -703,4 +875,3 @@ Use Hashlink URLs to provide content integrity for links to external resources.
 
   </body>
 </html>
-
