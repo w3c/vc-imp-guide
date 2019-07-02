@@ -1,0 +1,102 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#", 
+    "id" : "ipld:bafyreigfpo66rc2lfnymmk5lg3wueil42x2hcjxh3q24izwihuxzt2v7ma", 
+    "title": "Verifiable Credential",
+    "type": "object",
+    "definitions": {
+        "issuer_string" : {
+            "type" :  "string", 
+            "format" : "uri" 
+        }, 
+        "issuer_object" : {
+            "type" :  "object" , 
+            "properties": {
+                "id" :  {
+                    "type" : "string", 
+                    "format" : "uri"
+                }
+            }, 
+            "required": ["id"]    
+        }, 
+        "subject_object" : {
+            "type" :  "object" , 
+            "properties": {
+                "id" :  {
+                    "type" : "string", 
+                    "format" : "uri"
+                }
+            }, 
+            "required": ["id"]    
+        }
+      }, 
+    "properties": {
+        "@context": { 
+            "description": "used for JSON-LD processing",
+            "type": "array", 
+            "items" : [
+                { "type" : "string" , "enum": ["https://www.w3.org/2018/credentials/v1"] },
+                { "type" : "string" ,  "format": "uri" } 
+            ]
+        }, 
+        "id" : {
+            "description": "The id property is intended to unambiguously refer to an object such as a person, product, or organization.",
+            "format" : "uri-reference" , 
+            "type": "string"
+        }, 
+        "type": {
+            "description": "a type property for the expression of type information",
+            "type": "array", 
+            "items" : [
+                { "type" : "string" } 
+            ]
+        },
+        "credentialSubject": {
+            "description": "The value of the credentialSubject property is defined as a set of objects that contain one or more properties that are each related to a subject of the verifiable credential.",
+            "type" : "object", 
+            "properties": {
+                "id" :  {
+                    "type" : "string", 
+                    "format" : "uri"
+                }  
+            }
+        }, 
+        "issuanceDate" : {
+            "description": "This specification defines the following property for expressing the date and time when the credential becomes valid.",
+            "type" : "string", 
+            "format" : "date-time"
+        },
+        "issuer": {
+            "description": "This specification defines a property for expressing the issuer of a verifiable credential.\n Must be a uri as String or an Object with an id field.",
+            "anyOf": [
+            { "$ref": "#/definitions/issuer_string" }, 
+            { "$ref": "#/definitions/issuer_object" }
+            ]
+        }, 
+        "proof" : { 
+            "description": "One or more cryptographic proofs that can be used to detect tampering and verify the authorship of a credential or presentation. The specific method used for an embedded proof MUST be included using the type property.",
+            "type" : "object", 
+            "properties": {
+                
+            }
+        }, 
+        "expirationDate" : {
+            "type" : "string", 
+            "format" : "date-time"
+        }, 
+        "evidence" : { 
+            "type" : "object"
+        }, 
+        "credentialStatus" : {
+            "type" : "object", 
+            "items" : [
+                { "type" : "string" , "format": "uri" } 
+            ]
+        }, 
+        "credentialSchema" : {
+            "type" : "object"
+        }
+
+    },
+    "additionalProperties": true,
+    "required": [ "@context", "id", "type" , "issuer",  "credentialSubject", "issuanceDate", "proof"]
+}
