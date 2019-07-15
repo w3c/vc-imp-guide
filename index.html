@@ -1397,16 +1397,17 @@ amount of data" depends on the situation and may change over the course of a
 <a>holder</a>'s interaction with a <a>verifier</a>.
         </p>
         <p>
-For example, if a <a>holder</a> is applying for a loan, with the bank acting as
-the <a>verifier</a>. There are several points at which the bank may be able to
-determine whether the <a>holder</a> is qualified to continue in the process of
-applying for the loan. A bank may have a policy of only establishing loans with
+For example, a <a>holder</a> may apply for a loan, with a bank acting as the
+<a>verifier</a>. There are several points at which the bank may want to determine
+whether the <a>holder</a> is qualified to continue in the process of applying for
+the loan; for instance, the bank may have a policy of only providing loans to
 existing account holders. A protocol that follows the principle of data
-minimization will allow the <a>holder</a> to only reveal that they are an
-existing account holder, before requiring any more information from the
-applicant. In this way, trust is built between the applicant and the bank
-progressively, as the minimum amount of data needed by the bank to make its
-determinations is requested a piece at a time.
+minimization would allow the <a>holder</a> to reveal to the <a>verifier</a> only
+that they are an existing account holder, before the bank requests any additional
+information, such as account balances or employment status. In this way, the
+applicant may progressively entrust the bank with more information, as the data
+needed by the bank to make its determinations is requested a piece at a time, as
+needed, rather than as a complete set, up front.
         </p>
       </section>
 
@@ -1414,8 +1415,8 @@ determinations is requested a piece at a time.
         <h3>Selective Disclosure</h3>
 
         <p>
-Selective disclosure is the ability of a <a>holder</a> to select which elements
-from a <a>verifiable credential</a> to share with a <a>verifier</a>, without
+Selective disclosure is the ability of a <a>holder</a> to select some elements
+of a <a>verifiable credential</a> to share with a <a>verifier</a>, without
 revealing the rest. There are several different methods which support selective
 disclosure, we provide two examples:
         </p>
@@ -1454,15 +1455,15 @@ values.
         </p>
         <p>
 Predicate proofs may be enabled by <a>verifiable credential</a> <a>issuers</a>
-as claims, e.g., the <a>credentialSubject</a> may include a
+as claims, e.g., the <a>credentialSubject</a> may include an
 <code>ageOver18</code> <a>property</a> rather than a <code>birthdate</code>
 <a>property</a>. This would allow <a>holders</a> to provide proofs that they are
 over 18 without revealing their birthdates.
         </p>
         <p>
 Certain signature types enable predicate proofs by allowing claims from a
-standard <a>verifiable credential</a> to be presented as predicates. E.g., a
-<a href="https://groups.csail.mit.edu/cis/pubs/lysyanskaya/cl02b.pdf">
+standard <a>verifiable credential</a> to be presented as predicates. For
+example, a <a href="https://groups.csail.mit.edu/cis/pubs/lysyanskaya/cl02b.pdf">
 Camenisch-Lysyanskaya signed</a> <a>verifiable credential</a> that contains a
 <code>credentialSubject</code> with a <code>birthdate</code> <a>property</a> may
 be included in a <a>verifiable presentation</a> as a derived credential that
@@ -1481,7 +1482,8 @@ in this area continues with the use of cutting-edge proof techniques such as
 different signature protocols.
         </p>
         <p>
-A draft report by the <a href="https://w3c-ccg.github.io/">CCG</a> on
+A draft report by the <a href="https://www.w3.org/community/credentials/">
+Credentials Community Group</a> on
 <a href="https://w3c-ccg.github.io/data-minimization/">data minimization</a> may
 also be useful reading for implementers looking to enable progressive trust.
         </p>
