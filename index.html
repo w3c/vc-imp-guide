@@ -759,10 +759,10 @@ that should work for most use cases.
 
       <p>
 The Verifiable Credentials Data Model is designed around an <em>open world
-assumption</em>, meaning that an entity can say anything about another entity.
+assumption</em>, meaning that any entity can say anything about another entity.
 This approach enables permissionless innovation; there is no centralized
 registry or authority through which an extension author must register
-themselves or the specific data models and vocabularies they create.
+themselves nor the specific data models and vocabularies they create.
       </p>
 
       <p>
@@ -771,7 +771,7 @@ vocabularies through the use of [LINKED-DATA]. This implementation guide
 provides examples for how to express data models using a data format that
 is popular with software developers and web page authors called [JSON-LD]. This
 data format provides features that enable authors to express their data models
-in idiomatic JSON whilst also ensuring that their vocabulary terms are
+in idiomatic JSON while also ensuring that their vocabulary terms are
 unambigiously understood, even by software that does not implement
 JSON-LD processing.
       </p>
@@ -779,13 +779,13 @@ JSON-LD processing.
       <p>
 The Verifiable Credentials data model also uses a graph-based data model,
 which allows authors to model both simple relationships that describe
-one or more attributes for a single entity or complex multi-entity
+one or more attributes for a single entity and complex multi-entity
 relationships.
       </p>
 
       <p>
 The rest of this section describes how to author extensions that build on
-top of the Verifiable Credentials Data Model.
+the Verifiable Credentials Data Model.
       </p>
 
       <section>
@@ -885,8 +885,8 @@ unique identifier: a URL.
         <p>
 This ensures that when software sees the <code>@context</code>
 <em>http://schema.org</em>, that it will interpret the the keys and types in the
-JSON in a globally unique way, without requiring developers to use full URLs in
-the JSON or in the code that may traverse it. As long as the software is
+JSON in a globally consistent way, without requiring developers to use full URLs
+in the JSON or in the code that may traverse it. As long as the software is
 aware of the specific <code>@context</code> used (or if it uses JSON-LD
 processing to transform it to some other known <code>@context</code>), then it
 will understand the <em>context</em> in which the JSON was written and meant to
@@ -919,7 +919,7 @@ that:
 While this form is an acceptable way to express the information such that it is
 unambiguous, many software developers would prefer to use more idiomatic JSON.
 The use of <code>@context</code> enables idiomatic JSON without losing global
-uniqueness and without the need for a centralized registry or authority for
+consistency and without the need for a centralized registry or authority for
 creating extensions. Note that <code>@context</code> can also have more than
 one value. In this case, a JSON array is used to express multiple values, where
 each value references another context that defines terms. Using this mechanism
@@ -984,11 +984,11 @@ terms that it does not understand.
         <p>
 Given the above, there is at least one reason why we don't want to use
 the schema.org <em>context</em>: it is designed to be very flexible and thus
-does not use the <code>@protected</code> feature. There are a few of other
+does not use the <code>@protected</code> feature. There are a few additional
 reasons we want to create our own [JSON-LD] context though. First, the
 schema.org context does not define our new credential type:
 <em>ExampleAddressCredential</em>. Second, it is not served via a secure
-protocol (e.g., <em>https</em>), rather it uses <em>http</em>. Note that this
+protocol (e.g., <em>https</em>); rather, it uses <em>http</em>. Note that this
 is less of a concern than it may seem, as it is recommended that all Verifiable
 Credential consumer software hard code the <code>@context</code> values it
 understands and not reach out to the Web to fetch them. Lastly, it is a very
@@ -1063,9 +1063,9 @@ able to read and discover it on the Web, we should give it a URL like
         </p>
 
         <p>
-When software dereferences this URL, it should return
+When this URL is dereferenced, it should return
 <em>application/ld+json</em> by default, to allow JSON-LD processors to process
-the context. However, if a user agent requests <em>HTML</em> it should return
+the context. However, if a user agent requests <em>HTML</em>, it should return
 human readable text that explains, to humans, what the term definitions are and
 what they map to. Since we're reusing an existing vocabulary, schema.org, we
 can also simply link to the definitions of the meaning of our types and terms
