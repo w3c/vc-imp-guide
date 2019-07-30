@@ -759,10 +759,10 @@ that should work for most use cases.
 
       <p>
 The Verifiable Credentials Data Model is designed around an <em>open world
-assumption</em>, meaning that entity can say anything about any entity. This
-approach enables permissionless innovation; there is no centralized registry
-or authority through which an extension author must register themselves or
-the specific data models and vocabularies they create.
+assumption</em>, meaning that an entity can say anything about another entity.
+This approach enables permissionless innovation; there is no centralized
+registry or authority through which an extension author must register
+themselves or the specific data models and vocabularies they create.
       </p>
 
       <p>
@@ -792,8 +792,8 @@ top of the Verifiable Credentials Data Model.
         <h3>Creating New Credential Types</h3>
 
         <p>
-The most common extensions to the Verifiable Credentials Data Model are
-new credential types. Whenever someone has something to say about one or
+We expect the most common extensions to the Verifiable Credentials Data Model
+to be new credential types. Whenever someone has something to say about one or
 more entities and they want their authorship to be verifiable, they should use
 a Verifiable Credential. Sometimes there may be an existing credential type,
 that someone else has created, that can be reused to make the statements they
@@ -844,7 +844,7 @@ else has created that we can leverage.
 If we are going to use someone else's vocabulary, we will want to make sure it
 is stable and unlikely to change in any significant way. There may even be
 technologies that we can make use of that store immutable vocabularies that
-we can reference, but those will not be focus in this example. Here we will
+we can reference, but those are not the focus of this example. Here we will
 rely on the inertia that comes from a very popularly used vocabulary on the
 Web, schema.org. It turns out that this vocabulary has just what we need; it
 has already modeled a postal address and even has examples for how to express
@@ -886,7 +886,7 @@ unique identifier: a URL.
 This ensures that when software sees the <code>@context</code>
 <em>http://schema.org</em>, that it will interpret the the keys and types in the
 JSON in a globally unique way, without requiring developers to use full URLs in
-the JSON or in their code that may traverse it. As long as the software is
+the JSON or in the code that may traverse it. As long as the software is
 aware of the specific <code>@context</code> used (or if it uses JSON-LD
 processing to transform it to some other known <code>@context</code>), then it
 will understand the <em>context</em> in which the JSON was written and meant to
@@ -968,7 +968,7 @@ meaning of the terms.
         <p>
 In order to prevent term redefinition, the [JSON-LD] <code>@protected</code>
 feature must be applied to term definitions in the <code>@context</code>. All
-all terms in the core Verifiable Credentials <code>@context</code> are
+terms in the core Verifiable Credentials <code>@context</code> are
 already protected in this way. The only time that an existing term is allowed
 to be redefined is if the new definition is scoped underneath another new term
 that is defined in a <em>context</em>. This matches developer expectations and
@@ -1077,8 +1077,8 @@ as well.
         <h4>Use the new JSON-LD context when issuing new credentials</h4>
 
         <p>
-Now we're ready for our context to be used by either us or someone else
-that wishes to issue an <em>ExampleAddressCredential</em>!
+Now we're ready for our context to be used by anyone who
+wishes to issue an <em>ExampleAddressCredential</em>!
         </p>
 
         <pre class="example nohighlight" title="Example address credential with schema.org context">
