@@ -121,22 +121,22 @@ or send them to
       <em>This section is non-normative.</em>
 
       <p>
-        Welcome dear implementer of Verifiable Credentials! We understand that reading 
-        and nagivating technical specifications can be confusing at times. For this reason, 
+        Welcome dear implementer of Verifiable Credentials! We understand that reading
+        and nagivating technical specifications can be confusing at times. For this reason,
         we would like to offer you a few resources to get you started.
       </p>
       <p>
-        First, you should probably become familiarized with the official 
-        <a href="https://www.w3.org/TR/verifiable-claims-use-cases/">Use Cases document</a>, 
+        First, you should probably become familiarized with the official
+        <a href="https://www.w3.org/TR/verifiable-claims-use-cases/">Use Cases document</a>,
         which offers a concise but limited collection of use cases readers should review before
         undestanding how Verifiable Claims can best help them.
       </p>
       <p>
-        The <a href="https://w3c.github.io/vc-data-model/">data model specification</a> is the 
+        The <a href="https://w3c.github.io/vc-data-model/">data model specification</a> is the
         most important result of two years of hard work done by the Verifiable Claims Working Group.
         However, the data model itself is not sufficient if you plan to use Verifiable Claims today.
         Additional works needs to be done on identifiers as well as on proofs, as you will be able to
-        find out in the sections below. 
+        find out in the sections below.
       </p>
     </section>
 
@@ -144,26 +144,26 @@ or send them to
       <h2>Identifiers</h2>
       <em>This section is non-normative.</em>
       <p>
-          When expressing statements about a specific entity, such as a person, product, or organization, 
-          it is often useful to use some kind of identifier so that others can express statements about 
-          the same thing. You may have noticed that the VC Data Model specification contains numerous 
-          examples where the choice of identifier for the subject of the credential (the thing the claims 
-          are about) has been a <a href="https://w3c-ccg.github.io/did-primer/">decentralized identifier</a>, 
+          When expressing statements about a specific entity, such as a person, product, or organization,
+          it is often useful to use some kind of identifier so that others can express statements about
+          the same thing. You may have noticed that the VC Data Model specification contains numerous
+          examples where the choice of identifier for the subject of the credential (the thing the claims
+          are about) has been a <a href="https://w3c-ccg.github.io/did-primer/">decentralized identifier</a>,
           also known as a DID. An example of a DID is <code>did:example:123456abcdef</code>.
       </p>
       <p class="note">
-          As of the publication of the VC Data Model specification, DIDs are a new type of identifier that 
-          are not necessary for verifiable credentials to be useful. Specifically, verifiable credentials 
-          do not depend on DIDs and DIDs do not depend on verifiable credentials. However, it is expected 
-          that many verifiable credentials will use DIDs and that software libraries implementing the Data Model 
-          specification will probably need to resolve DIDs. DID-based URLs are used for expressing identifiers 
-          associated with subjects, issuers, holders, credential status lists, cryptographic keys, and other 
-          machine-readable information that is associated with a verifiable credential. 
+          As of the publication of the VC Data Model specification, DIDs are a new type of identifier that
+          are not necessary for verifiable credentials to be useful. Specifically, verifiable credentials
+          do not depend on DIDs and DIDs do not depend on verifiable credentials. However, it is expected
+          that many verifiable credentials will use DIDs and that software libraries implementing the Data Model
+          specification will probably need to resolve DIDs. DID-based URLs are used for expressing identifiers
+          associated with subjects, issuers, holders, credential status lists, cryptographic keys, and other
+          machine-readable information that is associated with a verifiable credential.
       </p>
-      
+
       <p>
         There is currently a proposed charter for a new <a href="https://w3c-ccg.github.io/did-wg-charter/">
-        Decentralized Identifier Working Group</a> that has been submitted to the W3C, aiming to officially 
+        Decentralized Identifier Working Group</a> that has been submitted to the W3C, aiming to officially
         put DIDs on the standards track.
       </p>
     </section>
@@ -173,10 +173,10 @@ or send them to
       <em>This section is non-normative.</em>
 
       <p>
-          The VC Data Model is designed to be proof format agnostic. At the time of publication, 
+          The VC Data Model is designed to be proof format agnostic. At the time of publication,
           at least two proof formats are being actively utilized by implementers -- JSON Web Token (JWT)
           and Linked Data Proofs.
-          The Working Group felt that <a href="https://w3c.github.io/vc-data-model/#proof-formats">documenting</a> 
+          The Working Group felt that <a href="https://w3c.github.io/vc-data-model/#proof-formats">documenting</a>
           in the spec what these proof formats are and how they are being used would be beneficial to implementers.
           
       </p>
@@ -328,26 +328,361 @@ that should work for most use cases.
       <em>This section is non-normative.</em>
 
       <p>
-TBD
+The Verifiable Credentials Data Model is designed around an <em>open world
+assumption</em>, meaning that any entity can say anything about another entity.
+This approach enables permissionless innovation; there is no centralized
+registry or authority through which an extension author must register
+themselves nor the specific data models and vocabularies they create.
+      </p>
+
+      <p>
+Instead, credential data model authors are expected to use machine-readable
+vocabularies through the use of [LINKED-DATA]. This implementation guide
+provides examples for how to express data models using a data format that
+is popular with software developers and web page authors called [JSON-LD]. This
+data format provides features that enable authors to express their data models
+in idiomatic JSON while also ensuring that their vocabulary terms are
+unambigiously understood, even by software that does not implement
+JSON-LD processing.
+      </p>
+
+      <p>
+The Verifiable Credentials data model also uses a graph-based data model,
+which allows authors to model both simple relationships that describe
+one or more attributes for a single entity and complex multi-entity
+relationships.
+      </p>
+
+      <p>
+The rest of this section describes how to author extensions that build on
+the Verifiable Credentials Data Model.
       </p>
 
       <section>
         <h3>Creating New Credential Types</h3>
 
-        <ul>
+        <p>
+We expect the most common extensions to the Verifiable Credentials Data Model
+to be new credential types. Whenever someone has something to say about one or
+more entities and they want their authorship to be verifiable, they should use
+a Verifiable Credential. Sometimes there may be an existing credential type,
+that someone else has created, that can be reused to make the statements they
+want to make. However, there are often cases where new credential types are
+needed.
+        </p>
+
+        <p>
+New credential types can be created by following a few steps. This guide will
+also walk you through creating an example new credential type. At a high level,
+the steps to follow are:
+        </p>
+
+        <ol>
           <li>
-Design the Data Model.
+Design the data model.
           </li>
           <li>
-Create the JSON-LD Context.
+Create a new JSON-LD context.
           </li>
           <li>
 Select a publishing location.
           </li>
           <li>
-Use the new JSON-LD Context.
+Use the new JSON-LD context when issuing new credentials.
           </li>
-        </ul>
+        </ol>
+
+        <p>
+So, let's walk through creating a new credential type which we will
+call <code>ExampleAddressCredential</code>. The purpose of this credential
+will be to express a person's postal address.
+        </p>
+
+        <h4>Design the data model</h4>
+
+        <p>
+First, we must design a data model for our new credential type. We know that
+we will need to be able to express the basics of a postal address, things
+like a person's city, state, and zipcode. Of course, those items are quite
+US centric, so we should consider internationalizing those terms. But before
+we go further, since we're using [LINKED-DATA] vocabularies, there is a good
+chance that commonly known concepts may already have a vocabulary that someone
+else has created that we can leverage.
+        </p>
+
+        <p>
+If we are going to use someone else's vocabulary, we will want to make sure it
+is stable and unlikely to change in any significant way. There may even be
+technologies that we can make use of that store immutable vocabularies that
+we can reference, but those are not the focus of this example. Here we will
+rely on the inertia that comes from a very popularly used vocabulary on the
+Web, schema.org. It turns out that this vocabulary has just what we need; it
+has already modeled a postal address and even has examples for how to express
+it using JSON-LD.
+        </p>
+
+        <p>
+Using the schema.org vocabulary and JSON-LD we can express a person's address
+like so:
+        </p>
+
+        <pre class="example nohighlight" title="Example schema.org address">
+          {
+            <span class="highlight">
+            "@context": [
+              "http://schema.org"
+            ]</span>,
+            "type": "Person",
+            "address": {
+              "type": "PostalAddress",
+              "streetAddress": "123 Main St."
+              "addressLocality": "Blacksburg",
+              "addressRegion": "VA",
+              "postalCode": "24060",
+              "addressCountry": "US"
+            }
+          }
+        </pre>
+
+        <p>
+Note the above <code>@context</code> key in the JSON. This <code>@context</code>
+refers to a machine-readable file (also expressed in JSON) that provides
+term definitions [JSON-LD]. A term definition maps a key or type used in the
+JSON, such as <code>address</code> or <code>PostalAddress</code>, to a globally
+unique identifier: a URL.
+        </p>
+
+        <p>
+This ensures that when software sees the <code>@context</code>
+<em>http://schema.org</em>, that it will interpret the the keys and types in the
+JSON in a globally consistent way, without requiring developers to use full URLs
+in the JSON or in the code that may traverse it. As long as the software is
+aware of the specific <code>@context</code> used (or if it uses JSON-LD
+processing to transform it to some other known <code>@context</code>), then it
+will understand the <em>context</em> in which the JSON was written and meant to
+be understood. The use of <code>@context</code> also allows [JSON-LD] keywords
+such as <code>@type</code> to be aliased to the simpler <code>type</code> as
+is done in the above example.
+        </p>
+
+        <p>
+Note that we could also express the JSON using full URLs, if we want to avoid
+using <em>@context</em>. Here is what the example would look like if we did
+that:
+        </p>
+
+        <pre class="example nohighlight" title="Example schema.org address with full URLs">
+          {
+            "@type": "http://schema.org/Person",
+            "http://schema.org/address": {
+              "@type": "http://schema.org/PostalAddress",
+              "http://schema.org/streetAddress": "123 Main St."
+              "http://schema.org/addressLocality": "Blacksburg",
+              "http://schema.org/addressRegion": "VA",
+              "http://schema.org/postalCode": "24060",
+              "http://schema.org/addressCountry": "US"
+            }
+          }
+        </pre>
+
+        <p>
+While this form is an acceptable way to express the information such that it is
+unambiguous, many software developers would prefer to use more idiomatic JSON.
+The use of <code>@context</code> enables idiomatic JSON without losing global
+consistency and without the need for a centralized registry or authority for
+creating extensions. Note that <code>@context</code> can also have more than
+one value. In this case, a JSON array is used to express multiple values, where
+each value references another context that defines terms. Using this mechanism
+we can first bring in the terms defined in the Verifiable Credentials Data Model
+specification and then bring in the terms defined by schema.org:
+        </p>
+
+        <pre class="example nohighlight" title="Example address credential with schema.org context">
+          {
+            <span class="highlight">
+            "@context": [
+              "https://www.w3.org/credentials/v1",
+              "http://schema.org"
+            ]</span>,
+            ...
+            "credentialSubject": {
+              "type": "Person",
+              "address": {
+                "type": "PostalAddress",
+                "streetAddress": "123 Main St."
+                "addressLocality": "Blacksburg",
+                "addressRegion": "VA",
+                "postalCode": "24060",
+                "addressCountry": "US"
+              }
+            },
+            ...
+          }
+        </pre>
+
+        <p>
+Note, however, that each <em>context</em> might have a different definition for
+the same term, e.g., the JSON key <code>address</code> might map to a different
+URL in each <em>context</em>. By default, [JSON-LD] allows terms in a
+<code>@context</code> to be redefined using a <em>last term wins</em>
+order. While these changes can be safely dealt with by using JSON-LD
+processing, we want to lower the burden on consumers of Verifiable Credentials.
+We want consumer software to be able to make assumptions about the meaning of
+terms by only having to read and understand the string value associated with
+the <code>@context</code> key. We don't want them to have to worry about terms
+being redefined in unexpected ways. That way their software can inspect only
+the <code>@context</code> values and then be hard coded to understand the
+meaning of the terms.
+        </p>
+
+        <p>
+In order to prevent term redefinition, the [JSON-LD] <code>@protected</code>
+feature must be applied to term definitions in the <code>@context</code>. All
+terms in the core Verifiable Credentials <code>@context</code> are
+already protected in this way. The only time that an existing term is allowed
+to be redefined is if the new definition is scoped underneath another new term
+that is defined in a <em>context</em>. This matches developer expectations and
+ensures that consumer software has strong guarantees about the semantics of the
+data it is processing; it can be written such that it is never confused about
+the definition of a term. Note that consumers must determine their own risk
+profile for how to handle any credentials their software processes that include
+terms that it does not understand.
+        </p>
+
+        <h4>Create a new JSON-LD context</h4>
+
+        <p>
+Given the above, there is at least one reason why we don't want to use
+the schema.org <em>context</em>: it is designed to be very flexible and thus
+does not use the <code>@protected</code> feature. There are a few additional
+reasons we want to create our own [JSON-LD] context though. First, the
+schema.org context does not define our new credential type:
+<em>ExampleAddressCredential</em>. Second, it is not served via a secure
+protocol (e.g., <em>https</em>); rather, it uses <em>http</em>. Note that this
+is less of a concern than it may seem, as it is recommended that all Verifiable
+Credential consumer software hard code the <code>@context</code> values it
+understands and not reach out to the Web to fetch them. Lastly, it is a very
+large context, containing many more term definitions than are necessary for our
+purposes.
+        </p>
+
+        <p>
+So, we will create our own [JSON-LD] context that expresses just those term
+definitions that we need for our new credential type. Note that this does not
+mean that we must mint new URLs; we can still reuse the schema.org vocabulary
+terms. All we are doing is creating a more concise and targeted context. Here's
+what we'll need in our context:
+        </p>
+
+        <pre class="example nohighlight" title="Example address credential context">
+          {
+            "@version": 1.1,
+            "@protected": true,
+
+            "ExampleAddressCredential":
+              "https://example.org/ExampleAddressCredential",
+
+            "Person": {
+              "@id": "http://schema.org/Person",
+              "@context": {
+                "@version": 1.1,
+                "@protected": true,
+
+                "address": "http://schema.org/address"
+              }
+            },
+            "PostalAddress": {
+              "@id": "http://schema.org/PostalAddress",
+              "@context": {
+                "@version": 1.1,
+                "@protected": true,
+
+                "streetAddress": "http://schema.org/streetAddress",
+                "addressLocality": "http://schema.org/addressLocality",
+                "addressRegion": "http://schema.org/addressRegion",
+                "postalCode": "http://schema.org/postalCode",
+                "addressCountry": "http://schema.org/addressCountry"
+              }
+            }
+          }
+        </pre>
+
+        <p>
+The above context defines a term for our new credential type
+<em>ExampleAddressCredential</em>, mapping it to the URL
+<em>https://example.org/ExampleAddressCredential</em>. We could have also
+chosen a URI like <em>urn:private-example:ExampleAddressCredential</em>, but
+this approach would not allow us to serve up a Web page to describe it, if we
+so desire. The context also defines the terms for types <em>Person</em> and
+<em>PostalAddress</em>, mapping them to their schema.org vocabulary URLs.
+Furthermore, when those types are used, it also defines protected terms for
+each of them via a <em>scoped context</em>, mapping terms like <em>address</em>
+and <em>streetAddress</em> to their schema.org vocabulary URLs. For more
+information on how to write a JSON-LD context or <em>scoped contexts</em>, see
+the [JSON-LD] specification.
+        </p>
+
+        <h4>Select a publishing location</h4>
+
+        <p>
+Now that we have a [JSON-LD] context, we must give it a URL. Technically
+speaking, we could just use a URI, for example, a private URN such as
+<em>urn:private-example:my-extension</em>. However, if we want people to be
+able to read and discover it on the Web, we should give it a URL like
+<em>https://example.org/example-address-credential-context/v1</em>.
+        </p>
+
+        <p>
+When this URL is dereferenced, it should return
+<em>application/ld+json</em> by default, to allow JSON-LD processors to process
+the context. However, if a user agent requests <em>HTML</em>, it should return
+human readable text that explains, to humans, what the term definitions are and
+what they map to. Since we're reusing an existing vocabulary, schema.org, we
+can also simply link to the definitions of the meaning of our types and terms
+via their website. If we had created our own new vocabulary terms, we would
+describe them on our own site, ideally including machine readable Information
+as well.
+        </p>
+
+        <h4>Use the new JSON-LD context when issuing new credentials</h4>
+
+        <p>
+Now we're ready for our context to be used by anyone who
+wishes to issue an <em>ExampleAddressCredential</em>!
+        </p>
+
+        <pre class="example nohighlight" title="Example address credential with schema.org context">
+          {
+            <span class="highlight">
+            "@context": [
+              "https://www.w3.org/credentials/v1",
+              "https://example.org/example-address-credential-context/v1"
+            ]</span>,
+            "id": "https://example.org/credentials/1234",
+            "type": "ExampleAddressCredential",
+            "issuer": "https://example.org/people#me",
+            "issuanceDate": "2017-12-05T14:27:42Z",
+            "credentialSubject": {
+              "id": "did:example:1234",
+              "type": "Person",
+              "address": {
+                "type": "PostalAddress",
+                "streetAddress": "123 Main St."
+                "addressLocality": "Blacksburg",
+                "addressRegion": "VA",
+                "postalCode": "24060",
+                "addressCountry": "US"
+              }
+            },
+            "proof": { ... }
+          }
+        </pre>
+
+        <p>
+Note that writing this new credential type requires permission from no one,
+you must only adhere to the above referenced standards.
+        </p>
+
       </section>
 
       <section>
@@ -1112,12 +1447,12 @@ Selective disclosure is the ability of a holder to reveal a subset of
 the attributes of a verifiable credential in a verifiable presentation.
 A presentation based on zero-knowledge proof mechanisms only contains
 those attributes and associated values that are required to satisfy
-the presentation requirements. 
+the presentation requirements.
         </p>
         <p>
 Zero-knowledge predicate proofs are a type of proof associated with
 an attribute. Predicate proofs include comparisons, such as
-"greater than", "less than", "not equal", "range", 
+"greater than", "less than", "not equal", "range",
 "set membership", and "set non-membership".
 Predicate proofs can be constructed without requiring the issuer
 to create special fields, such as
@@ -1179,7 +1514,7 @@ more complex and larger than some older signature schemes.
         <h3>Hashlinks</h3>
 
         <p>
-          Hashlink URLs can be used to provide content integrity for links to 
+          Hashlink URLs can be used to provide content integrity for links to
           external resources.
         </p>
       </section>
