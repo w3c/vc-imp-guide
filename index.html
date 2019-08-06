@@ -173,12 +173,20 @@ or send them to
       <em>This section is non-normative.</em>
 
       <p>
-The Verifiable Credentials Data Model is designed to be agnostic to any
-particular proof format. At the time of publication, at least two proof formats
-are being actively utilized by implementers -- JSON Web Token (JWT) and Linked
-Data Proofs. The Working Group felt that it would be beneficial to implementers
-to <a href="https://w3c.github.io/vc-data-model/#proof-formats">document</a> in
-the spec what these proof formats are and how they are being used.
+The <a>verifiable credentials</a>
+<a href="https://w3c.github.io/vc-data-model/">data model </a> is designed to be
+proof format agnostic. <a href="https://w3c.github.io/vc-data-model/">The
+specification</a> does not normatively require any particular digital proof or
+signature format. While the data model is the canonical representation of a
+<a>verifiable credential</a> or <a>verifiable presentation</a>, the proving
+mechanisms for these are often tied to the syntax used in the transmission of
+the document between parties. As such, each proofing mechanism has to specify
+whether the validation of the proof is calculated against the state of the
+document as transmitted, against the transformed data model, or against another
+form. At the time of publication, at least two proof formats are being actively
+utilized by implementers and the Working Group felt that documenting what these
+proof formats are and how they are being used would be beneficial to
+implementers.
       </p>
       <p>
 This guide provides tables in section <a href="#pf1b">Benefits of JWTs</a> and
