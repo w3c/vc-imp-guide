@@ -168,40 +168,6 @@ or send them to
       </p>
     </section>
 
-    <section>
-      <h2>Proof Formats</h2>
-      <em>This section is non-normative.</em>
-
-      <p>
-The <a>verifiable credentials</a>
-<a href="https://w3c.github.io/vc-data-model/">data model </a> is designed to be
-proof format agnostic. <a href="https://w3c.github.io/vc-data-model/">The
-specification</a> does not normatively require any particular digital proof or
-signature format. While the data model is the canonical representation of a
-<a>verifiable credential</a> or <a>verifiable presentation</a>, the proving
-mechanisms for these are often tied to the syntax used in the transmission of
-the document between parties. As such, each proofing mechanism has to specify
-whether the validation of the proof is calculated against the state of the
-document as transmitted, against the transformed data model, or against another
-form. At the time of publication, at least two proof formats are being actively
-utilized by implementers and the Working Group felt that documenting what these
-proof formats are and how they are being used would be beneficial to
-implementers.
-      </p>
-      <p>
-This guide provides tables in section <a href="#pf1b">Benefits of JWTs</a> and
-section <a href="#pf1b">Benefits of JSON-LD and LD-Proofs</a> that compare three
-syntax and proof format ecosystems; JSON+JWTs, JSON-LD+JWTs, and
-JSON-LD+LD-Proofs.
-      </p>
-      <p>
-Because the Verifiable Credentials Data Model is extensible, and agnostic to any
-particular proof format, the specification and use of additional proof formats
-is supported.
-      </p>
-
-    </section>
-
     <section class="informative">
       <h2>Terminology</h2>
 
@@ -736,13 +702,36 @@ and examples of typical usage of the extension.
     </section>
 
     <section>
-      <h2>Cryptography</h2>
-
+      <h2>Proof Formats</h2>
       <em>This section is non-normative.</em>
 
       <p>
+The <a>verifiable credentials</a>
+<a href="https://w3c.github.io/vc-data-model/">data model </a> is designed to be
+proof format agnostic. <a href="https://w3c.github.io/vc-data-model/">The
+specification</a> does not normatively require any particular digital proof or
+signature format. While the data model is the canonical representation of a
+<a>verifiable credential</a> or <a>verifiable presentation</a>, the proving
+mechanisms for these are often tied to the syntax used in the transmission of
+the document between parties. As such, each proofing mechanism has to specify
+whether the validation of the proof is calculated against the state of the
+document as transmitted, against the transformed data model, or against another
+form. At the time of publication, at least two proof formats are being actively
+utilized by implementers and the Working Group felt that documenting what these
+proof formats are and how they are being used would be beneficial to
+implementers.
       </p>
-
+      <p>
+This guide provides tables in section <a href="#pf1b">Benefits of JWTs</a> and
+section <a href="#pf1b">Benefits of JSON-LD and LD-Proofs</a> that compare three
+syntax and proof format ecosystems; JSON+JWTs, JSON-LD+JWTs, and
+JSON-LD+LD-Proofs.
+      </p>
+      <p>
+Because the Verifiable Credentials Data Model is extensible, and agnostic to any
+particular proof format, the specification and use of additional proof formats
+is supported.
+      </p>
         <section>
             <h2>Benefits of JWTs</h2>
 
