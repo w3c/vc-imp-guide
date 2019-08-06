@@ -733,18 +733,18 @@ particular proof format, the specification and use of additional proof formats
 is supported.
       </p>
         <section>
-            <h2>Benefits of JWTs</h2>
+            <h3>Benefits of JWTs</h3>
 
             <p>
-                The Verifiable Credentials Data Model is designed to be compatible with a
-                variety of existing and emerging syntaxes and digital proof formats. Each
-                approach has benefits and drawbacks. The following table is intended to
-                summarize a number of these native trade-offs.
+The Verifiable Credentials Data Model is designed to be compatible with a
+variety of existing and emerging syntaxes and digital proof formats. Each
+approach has benefits and drawbacks. The following table is intended to
+summarize a number of these native trade-offs.
             </p>
 
             <p>
-                The table below compares three syntax and proof format ecosystems; JSON+JWTs,
-                JSON-LD+JWTs, and JSON-LD+LD-Proofs.
+The table below compares three syntax and proof format ecosystems; JSON+JWTs,
+JSON-LD+JWTs, and JSON-LD+LD-Proofs.
             </p>
 
             <table class="simple" id="#pfatable">
@@ -760,7 +760,7 @@ is supported.
                 <tbody>
                 <tr>
                     <td>
-                        <a href="#pf1a">PF1a.</a> Proof format supports Zero-Knowledge Proofs.
+<a href="#pf1a">PF1a.</a> Proof format supports Zero-Knowledge Proofs.
                     </td>
                     <td class="supported">✓</td>
                     <td class="supported">✓</td>
@@ -768,8 +768,8 @@ is supported.
                 </tr>
                 <tr>
                     <td>
-                        <a href="#pf2a">PF2a.</a> Proof format supports arbitrary proofs such as Proof
-                        of Work, Timestamp Proofs, and Proof of Stake.
+<a href="#pf2a">PF2a.</a> Proof format supports arbitrary proofs such as Proof
+of Work, Timestamp Proofs, and Proof of Stake.
                     </td>
                     <td class="supported">✓</td>
                     <td class="supported">✓</td>
@@ -777,7 +777,7 @@ is supported.
                 </tr>
                 <tr>
                     <td>
-                        <a href="#pf3a">PF3a.</a> Based on existing official standards.
+<a href="#pf3a">PF3a.</a> Based on existing official standards.
                     </td>
                     <td class="supported">✓</td>
                     <td class="missing">✖</td>
@@ -785,7 +785,7 @@ is supported.
                 </tr>
                 <tr>
                     <td>
-                        <a href="#pf4a">PF4a.</a> Designed to be small in size.
+<a href="#pf4a">PF4a.</a> Designed to be small in size.
                     </td>
                     <td class="supported">✓</td>
                     <td class="missing">✖</td>
@@ -793,7 +793,7 @@ is supported.
                 </tr>
                 <tr>
                     <td>
-                        <a href="#pf5a">PF5a.</a> Offline support without further processing.
+<a href="#pf5a">PF5a.</a> Offline support without further processing.
                     </td>
                     <td class="supported">✓</td>
                     <td class="missing">✖</td>
@@ -801,7 +801,7 @@ is supported.
                 </tr>
                 <tr>
                     <td>
-                        <a href="#pf6a">PF6a.</a> Wide adoption in other existing standards.
+<a href="#pf6a">PF6a.</a> Wide adoption in other existing standards.
                     </td>
                     <td class="supported">✓</td>
                     <td class="supported">✓</td>
@@ -809,7 +809,7 @@ is supported.
                 </tr>
                 <tr>
                     <td>
-                        <a href="#pf7a">PF7a.</a> No type ambiguity.
+<a href="#pf7a">PF7a.</a> No type ambiguity.
                     </td>
                     <td class="supported">✓</td>
                     <td class="missing">✖</td>
@@ -817,7 +817,7 @@ is supported.
                 </tr>
                 <tr>
                     <td>
-                        <a href="#pf8a">PF8a.</a> Broad library support.
+<a href="#pf8a">PF8a.</a> Broad library support.
                     </td>
                     <td class="supported">✓</td>
                     <td class="missing">✖</td>
@@ -825,7 +825,7 @@ is supported.
                 </tr>
                 <tr>
                     <td>
-                        <a href="#pf9a">PF9a.</a> Easy to understand what is signed.
+<a href="#pf9a">PF9a.</a> Easy to understand what is signed.
                     </td>
                     <td class="supported">✓</td>
                     <td class="supported">✓</td>
@@ -833,7 +833,7 @@ is supported.
                 </tr>
                 <tr>
                     <td>
-                        <a href="#pf10a">PF10a.</a> Ability to be used as authn/authz token with existing systems.
+<a href="#pf10a">PF10a.</a> Ability to be used as authn/authz token with existing systems.
                     </td>
                     <td class="supported">✓</td>
                     <td class="supported">✓</td>
@@ -841,7 +841,7 @@ is supported.
                 </tr>
                 <tr>
                     <td>
-                        <a href="#pf11a">PF11a.</a> No additional canonicalization required.
+<a href="#pf11a">PF11a.</a> No additional canonicalization required.
                     </td>
                     <td class="supported">✓</td>
                     <td class="missing">✖</td>
@@ -849,7 +849,7 @@ is supported.
                 </tr>
                 <tr>
                     <td>
-                        <a href="#pf12a">PF12a.</a> No Internet PKI required.
+<a href="#pf12a">PF12a.</a> No Internet PKI required.
                     </td>
                     <td class="supported">✓</td>
                     <td class="missing">✖</td>
@@ -857,140 +857,139 @@ is supported.
                 </tr>
                 <tr>
                     <td>
-                        <a href="#pf13a">PF13a.</a> No resolution of external documents needed.
+<a href="#pf13a">PF13a.</a> No resolution of external documents needed.
                     </td>
                     <td class="supported">✓</td>
                     <td class="missing">✖</td>
                     <td class="missing">✖</td>
                 </tr>
 
-                </tbody>
+              </tbody>
             </table>
 
             <p class="note">
-                Some of the features listed in the table above are debateable, since a feature
-                can always be added to a particular syntax or digital proof format. The table
-                is intended to identify native features of each combination such that no
-                additional language design or extension is required to achieve the identified
-                feature. Features that all languages provide, such as the ability to express
-                numbers, have not been included for the purposes of brevity. Find more information
-                about different proof formats in the next section.
+Some of the features listed in the table above are debateable, since a feature
+can always be added to a particular syntax or digital proof format. The table
+is intended to identify native features of each combination such that no
+additional language design or extension is required to achieve the identified
+feature. Features that all languages provide, such as the ability to express
+numbers, have not been included for the purposes of brevity. Find more information
+about different proof formats in the next section.
             </p>
 
             <dl>
-                <dt id="pf1a">
-                    PF1a: Proof format supports Zero-Knowledge Proofs.
-                </dt>
+              <dt id="pf1a">
+PF1a: Proof format supports Zero-Knowledge Proofs.
+              </dt>
                 <dd>
-                    JWTs can embed `proof` attributes for repudiable proofs such as Zero-Knowledge Proofs.
-                    In that case, the JWS will not have an signature element.
+JWTs can embed `proof` attributes for repudiable proofs such as Zero-Knowledge Proofs.
+In that case, the JWS will not have an signature element.
                 </dd>
                 <dt id="pf2a">
-                    PF2a: Proof format supports arbitrary proofs such as Proof of Work, Timestamp
-                    Proofs, and Proof of Stake.
+PF2a: Proof format supports arbitrary proofs such as Proof of Work, Timestamp
+Proofs, and Proof of Stake.
                 </dt>
                 <dd>
-                    JWTs can embed `proof` attributes for any type of proofs such as Proof of Work, Timestamp,
-                    Proofs, and Proof Stake.
+JWTs can embed `proof` attributes for any type of proofs such as Proof of Work, Timestamp,
+Proofs, and Proof Stake.
                 </dd>
                 <dt id="pf3a">
-                    PF3a: Based on existing official standards.
+PF3a: Based on existing official standards.
                 </dt>
                 <dd>
-                    JSON and JWT are proposed and mature IETF standards. While JSON-LD 1.0 is in
-                    REC state in W3C, JSON-LD 1.1 is still in WD state. LD-Proofs are not standardized at all.
+JSON and JWT are proposed and mature IETF standards. While JSON-LD 1.0 is in
+REC state in W3C, JSON-LD 1.1 is still in WD state. LD-Proofs are not standardized at all.
                 </dd>
                 <dt id="pf4a">
-                    PF4a: Designed to be small in size.
+PF4a: Designed to be small in size.
                 </dt>
                 <dd>
-                    JSON was invented as a simple data format to be transmitted on the wire. A verifiable credential
-                    can be expressed by its attributes only, without the necessity to introduce additional meta-information
-                    such as @context. This makes the resulting JSON+JWT credential typically also smaller in size.
+JSON was invented as a simple data format to be transmitted on the wire. A verifiable credential
+can be expressed by its attributes only, without the necessity to introduce additional meta-information
+such as @context. This makes the resulting JSON+JWT credential typically also smaller in size.
                 </dd>
                 <dt id="pf5a">
-                    PF5a: Offline support without further processing.
+PF5a: Offline support without further processing.
                 </dt>
                 <dd>
-                    A JWT can fully describe itself without the need to retrieve or verify any external documents.
-                    JSON-LD requires the context to be queryable and requires further documents to be accessible
-                    to check the prevalent document, e.g., LD-Proof. Additional caching needs to be implemented
-                    to support offline use cases.
+A JWT can fully describe itself without the need to retrieve or verify any external documents.
+JSON-LD requires the context to be queryable and requires further documents to be accessible
+to check the prevalent document, e.g., LD-Proof. Additional caching needs to be implemented
+to support offline use cases.
                 </dd>
                 <dt id="pf6a">
-                    PF6a: Wide adoption in other existing standards.
+PF6a: Wide adoption in other existing standards.
                 </dt>
                 <dd>
-                    JWT founds its application in many other existing standards, e.g., OAuth2, OpenID Connect.
-                    This allows for backward compatibility with existing authentication and authorization
-                    frameworks without or with only minor modifications to these legacy systems.
+JWT founds its application in many other existing standards, e.g., OAuth2, OpenID Connect.
+This allows for backward compatibility with existing authentication and authorization
+frameworks without or with only minor modifications to these legacy systems.
                 </dd>
                 <dt id="pf7a">
-                    PF7a: No type ambiguity.
+PF7a: No type ambiguity.
                 </dt>
                 <dd>
-                    It is best practice that JSON data structures typically do not expect changing types of
-                    their internal attributes. JSON-LD has implicit support for compact form serialization
-                    which transforms arrays with a single element only to switch its data type. Developers
-                    writing parsers have to implement special handling of these data types, which results in
-                    more code, is more error-prone and sometimes does not allow parsers based on code
-                    generation, which rely on static types.
+It is best practice that JSON data structures typically do not expect changing types of
+their internal attributes. JSON-LD has implicit support for compact form serialization
+which transforms arrays with a single element only to switch its data type. Developers
+writing parsers have to implement special handling of these data types, which results in
+more code, is more error-prone and sometimes does not allow parsers based on code
+generation, which rely on static types.
                 </dd>
                 <dt id="pf8a">
-                    PF8a: Broad library support.
+PF8a: Broad library support.
                 </dt>
                 <dd>
-                    JWT and JSON due to its maturity and standardization, have a lot of open-source library
-                    support. While JSON-LD 1.0 is a standard and has support for different programming
-                    languages, it is still behind JSON which is often part of the native platform
-                    toolchain, e.g., JavaScript. For LD-Proofs, on the other hand, only a few scattered
-                    libraries exist.
+JWT and JSON due to its maturity and standardization, have a lot of open-source library
+support. While JSON-LD 1.0 is a standard and has support for different programming
+languages, it is still behind JSON which is often part of the native platform
+toolchain, e.g., JavaScript. For LD-Proofs, on the other hand, only a few scattered
+libraries exist.
                 </dd>
                 <dt id="pf9a">
-                    PF9a: Easy to understand what is signed.
+PF9a: Easy to understand what is signed.
                 </dt>
                 <dd>
-                    JWT makes it visible what is signed in contrast to LD-Proofs, e.g., LD Signatures, that
-                    are detached from the actual payload and contain links to external documents which makes
-                    it not obvious for a developer to figure out what is part of the signature.
+JWT makes it visible what is signed in contrast to LD-Proofs, e.g., LD Signatures, that
+are detached from the actual payload and contain links to external documents which makes
+it not obvious for a developer to figure out what is part of the signature.
                 </dd>
                 <dt id="pf10a">
-                    PF10a: Ability to be used as authn/authz token with existing systems.
+PF10a: Ability to be used as authn/authz token with existing systems.
                 </dt>
                 <dd>
-                    Many existing applications rely on JWT for authentication and authorization purposes.
-                    In theory, developers maintaining these applications could leverage JWT-based verifiable
-                    presentations in their current systems with minor or no modifications. LD-Proofs represents
-                    a new approach which would require more work to achieve the same result.
+Many existing applications rely on JWT for authentication and authorization purposes.
+In theory, developers maintaining these applications could leverage JWT-based verifiable
+presentations in their current systems with minor or no modifications. LD-Proofs represents
+a new approach which would require more work to achieve the same result.
                 </dd>
                 <dt id="pf11a">
-                    PF11a: No additional canonicalization required.
+PF11a: No additional canonicalization required.
                 </dt>
                 <dd>
-                    Beyond base64 URL encoding JSON and JWT don't require any canonicalization to be transmitted
-                    on the wire. The JWS can be calculated on any data inside of the payload. This results in less
-                    computation, less complexity, and light-weight libraries compared to JSON-LD and LD-Proofs where
-                    canonicalization is required.
+Beyond base64 URL encoding JSON and JWT don't require any canonicalization to be transmitted
+on the wire. The JWS can be calculated on any data inside of the payload. This results in less
+computation, less complexity, and light-weight libraries compared to JSON-LD and LD-Proofs where
+canonicalization is required.
                 </dd>
                 <dt id="pf12a">
-                    PF12a: No Internet PKI required.
+PF12a: No Internet PKI required.
                 </dt>
                 <dd>
-                    JSON-LD and LD-Proofs rely on resolving external documents, e.g., <code>@context</code>. This means that
-                    a verifiable credential system would rely on existing Internet PKI to a certain extend and
-                    cannot be fully decentralized. A JWT-based system does not need to introduce this dependency.
+JSON-LD and LD-Proofs rely on resolving external documents, e.g., <code>@context</code>. This means that
+a verifiable credential system would rely on existing Internet PKI to a certain extend and
+cannot be fully decentralized. A JWT-based system does not need to introduce this dependency.
                 </dd>
                 <dt id="pf13a">
-                    PF13a: No resolution of external documents needed.
+PF13a: No resolution of external documents needed.
                 </dt>
                 <dd>
-                    JSON-LD and LD-Proofs require the resolution of external documents, which leads to an
-                    increased network load for the verifier of a verifiable presentation. This needs to be
-                    mitigated through caching strategies.
+JSON-LD and LD-Proofs require the resolution of external documents, which leads to an
+increased network load for the verifier of a verifiable presentation. This needs to be
+mitigated through caching strategies.
                 </dd>
             </dl>
         </section>
-
       <section>
         <h2>Benefits of JSON-LD and LD-Proofs</h2>
 
