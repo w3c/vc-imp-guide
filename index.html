@@ -1736,5 +1736,145 @@ more complex and larger than some older signature schemes.
 
     </section>
 
+    <section>
+      <h2>Progressive Trust</h2>
+      <em>This section is non-normative.</em>
+
+      <p>
+Entities that use <a>verifiable credentials</a> and
+<a>verifiable presentations</a> should follow protocols that enable progressive
+trust. Progressive trust refers to enabling individuals to share information
+about themselves only on an as needed basis, slowing building up more trust as
+more information is shared with another party.
+      </p>
+      <p>
+Progressive trust is strongly related to the principle of data minimization, and
+enabled by technologies such as selective disclosure and predicate proofs. We
+encourage the use of progressive trust as a guiding principle for implementers
+as they develop protocols for <a>issuers</a>, <a>holders</a>, and
+<a>verifiers</a>.
+
+      </p>
+
+      <section>
+        <h3>Data Minimization</h3>
+        <p>
+Data minimization is a principle that encourages <a>verifiers</a> to request the
+minimum amount of data necessary from <a>holders</a>, and for <a>holders</a> to
+only provide the minimum amount of data to <a>verifiers</a>. This "minimum
+amount of data" depends on the situation and may change over the course of a
+<a>holder</a>'s interaction with a <a>verifier</a>.
+        </p>
+        <p>
+For example, a <a>holder</a> may apply for a loan, with a bank acting as the
+<a>verifier</a>. There are several points at which the bank may want to determine
+whether the <a>holder</a> is qualified to continue in the process of applying for
+the loan; for instance, the bank may have a policy of only providing loans to
+existing account holders. A protocol that follows the principle of data
+minimization would allow the <a>holder</a> to reveal to the <a>verifier</a> only
+that they are an existing account holder, before the bank requests any additional
+information, such as account balances or employment status. In this way, the
+applicant may progressively entrust the bank with more information, as the data
+needed by the bank to make its determinations is requested a piece at a time, as
+needed, rather than as a complete set, up front.
+        </p>
+      </section>
+
+      <section>
+        <h3>Selective Disclosure</h3>
+
+        <p>
+Selective disclosure is the ability of a <a>holder</a> to select some elements
+of a <a>verifiable credential</a> to share with a <a>verifier</a>, without
+revealing the rest. There are several different methods which support selective
+disclosure, we provide two examples:
+        </p>
+        <ul>
+          <li>
+<b>Atomic Credentials</b> - These are <a>verifiable credentials</a> which
+consist of a single claim. An <a>issuer</a> may provide a set of atomic
+credentials that duplicates the claims of a standard credential. This atomicity
+allows a <a>holder</a> to disclose only those claims which need to be revealed
+to a <a>verifier</a>, rather than requiring all of the claims of a standard
+credential to be revealed.
+          </li>
+          <li>
+<b>Selective Disclosure Signatures</b> - Certain signature schemes natively
+support selective disclosure of <a>verifiable credential</a> claims. One
+example of these is
+<a href="https://groups.csail.mit.edu/cis/pubs/lysyanskaya/cl02b.pdf">Camenisch-Lysyanskaya
+signatures</a>. Such Signatures allow a <a>holder</a> to disclose only those
+claims which need to be revealed to a <a>verifier</a>, rather than requiring
+all of the credential's claims to be revealed.
+
+          </li>
+        </ul>
+        <p>
+
+        </p>
+
+      </section>
+      <section>
+        <h3>Predicates</h3>
+        <p>
+Another technique which may be used to support progressive trust is to use
+predicates as the values of revealed claims. Predicates allow a <a>holder</a> to
+provide True/False values to a <a>verifier</a> rather than revealing claim
+values.
+        </p>
+        <p>
+Predicate proofs may be enabled by <a>verifiable credential</a> <a>issuers</a>
+as claims, e.g., the <a>credentialSubject</a> may include an
+<code>ageOver18</code> <a>property</a> rather than a <code>birthdate</code>
+<a>property</a>. This would allow <a>holders</a> to provide proof that they are
+over 18 without revealing their birthdates.
+        </p>
+        <p>
+Certain signature types enable predicate proofs by allowing claims from a
+standard <a>verifiable credential</a> to be presented as predicates. For
+example, a <a href="https://groups.csail.mit.edu/cis/pubs/lysyanskaya/cl02b.pdf">
+Camenisch-Lysyanskaya signed</a> <a>verifiable credential</a> that contains a
+<code>credentialSubject</code> with a <code>birthdate</code> <a>property</a> may
+be included in a <a>verifiable presentation</a> as a derived credential that
+contains an <code>ageOver18</code> <a>property</a>.
+        </p>
+      </section>
+      <section>
+        <h3>Further Techniques</h3>
+        <p>
+The examples provided in this section are intended to illustrate some possible
+mechanisms for supporting progressive trust, not provide an exhaustive or
+comprehensive list of all the ways progressive trust may be supported. Research
+in this area continues with the use of cutting-edge proof techniques such as
+<a href="https://z.cash/technology/zksnarks/">zk-SNARKS</a> and
+<a href="https://crypto.stanford.edu/bulletproofs/">Bulletproofs</a>, as well as
+different signature protocols.
+        </p>
+        <p>
+A draft report by the <a href="https://www.w3.org/community/credentials/">
+Credentials Community Group</a> on
+<a href="https://w3c-ccg.github.io/data-minimization/">data minimization</a> may
+also be useful reading for implementers looking to enable progressive trust.
+        </p>
+      </section>
+    </section>
+
+    <section>
+      <h2>Test suite</h2>
+
+      <em>This section is non-normative.</em>
+
+      <p>
+        The W3C Verifiable Claims Working Group has produced a 
+        <a href="https://github.com/w3c/vc-test-suite/">test suite</a> in order 
+        for implementers to confirm their conformance with the current specifications.
+      </p>
+      <p>
+        You can review the <a href="https://w3c.github.io/vc-test-suite/implementations/">current 
+        draft implementation report</a>, which contains conformance testing results for submitted
+        implementations supporting the Verifiable Credentials Data Model specification.
+      </p>
+    </section>
+  
   </body>
 </html>
