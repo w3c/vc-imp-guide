@@ -1486,13 +1486,13 @@ the cost of implementation complexity.
 The Verifiable Credentials Data Model is designed to be compatible with a
 variety of existing and emerging digital proof formats. Each
 proof format has benefits and drawbacks. Many proof formats cannot reveal
-selected attribute values in a verifiable credential; they can only reveal all
-(or none).
+only selected attribute values from a verifiable credential; they can only
+reveal all (or none).
         </p>
         <p>
 Zero-Knowledge Proofs (ZKPs) are a proof format that enables
-privacy-preserving and data-minimization features in
-verifiable presentations, such as selective disclosure and predicate proofs.
+privacy-preserving data-minimization features in <a>verifiable presentations</a>,
+such as selective disclosure and predicate proofs.
         </p>
         <p>
 Selective disclosure is the ability of a holder to reveal a subset of
@@ -1509,7 +1509,7 @@ an attribute. Predicate proofs include comparisons, such as
 Predicate proofs can be constructed without requiring the issuer
 to create special fields, such as
 "age-under-18", "age-over-21", or "age-over-60", in the verifiable credential
-at the time the credential was issued.
+at the time the credential is issued.
 For example, if a holder has a credential with a "birth-date" claim,
 the holder can create a predicate proof based on "birth-date" in the
 verifiable presentation. A predicate value derived from "birth-date" in
@@ -1522,8 +1522,8 @@ Verifiable credentials based on zero-knowledge proof mechanisms are
 also quantum-resistant after presentation.
         </p>
         <p>
-A drawback of zero-knowledge proof mechanisms is that they are
-more complex and larger than some older signature schemes.
+Drawbacks of zero-knowledge proof mechanisms include that they are more complex
+and may require larger proofs than some other proof mechanisms.
         </p>
 
     </section>
