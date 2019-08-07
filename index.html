@@ -717,8 +717,8 @@ the document between parties. As such, each proofing mechanism has to specify
 whether the validation of the proof is calculated against the state of the
 document as transmitted, against the transformed data model, or against another
 form. At the time of publication, at least two proof formats are being actively
-utilized by implementers and the Working Group felt that documenting what these
-proof formats are and how they are being used would be beneficial to
+utilized by implementers, and the Working Group felt that documenting what these
+proof formats are and how they are being used would be beneficial to other
 implementers.
       </p>
       <p>
@@ -1177,11 +1177,11 @@ systems.
               </tr>
               <tr>
                 <td>
-<a href="#pf19b">PF19b.</a> Canonicalization requires more than base-64 encoding.
+<a href="#pf19b">PF19b.</a> Canonicalization does not require more than base-64 encoding.
                 </td>
-                <td class="supported">✓</td>
-                <td class="supported">✓</td>
-                <td class="missing">✖</td>
+                <td class="supported">✖</td>
+                <td class="supported">✖</td>
+                <td class="missing">✓</td>
               </tr>
             </tbody>
           </table>
@@ -1421,11 +1421,11 @@ converstion step are required for <a>verifiable credentials</a> and
 <a>verifiable presentations</a> protected by LD-Proofs.
             </dd>
             <dt id="pf19b">
-PF19b: Canonicalization requires more than base-64 encoding.
+PF19b: Canonicalization does not require more than base-64 encoding.
             </dt>
             <dd>
 The JWT format utilizes a simple base-64 encoding format to generate the
-cryptographic hash of the data. The encoding format for LD-Proofs require
+cryptographic hash of the data. The encoding format for LD-Proofs requires
 a more complex canonicalization algorithm to generate the cryptographic
 hash. The benefits of the JWT approach are simplicity at the cost of
 encoding flexibility. The benefits of the LD-Proof approach are flexibility at
