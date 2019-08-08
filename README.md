@@ -5,4 +5,4 @@
 ### Other Verifiable Claims github repos
 * [Data Model](https://github.com/w3c/vc-data-model)
 * [Test Suite](https://github.com/w3c/vc-test-suite)
-* [Use Cases](https://github.com/w3c/vc-use-cases)
+* [Use Cases](https://github.com/w3c/vc-use-cases) 
