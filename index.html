@@ -144,28 +144,34 @@ or send them to
       <h2>Identifiers</h2>
       <em>This section is non-normative.</em>
       <p>
-          When expressing statements about a specific entity, such as a person, product, or organization,
-          it is often useful to use some kind of identifier so that others can express statements about
-          the same thing. You may have noticed that the VC Data Model specification contains numerous
-          examples where the choice of identifier for the subject of the credential (the thing the claims
-          are about) has been a <a href="https://w3c-ccg.github.io/did-primer/">decentralized identifier</a>,
-          also known as a DID. An example of a DID is <code>did:example:123456abcdef</code>.
+When expressing statements about a specific entity, such as a person, product,
+or organization, it is often useful to have an identifier for it so that others
+can express statements about the same thing. The <a>verifiable credentials</a>
+<a href="https://www.w3.org/TR/vc-data-model//">data model specification</a>
+contains numerous examples where the identifier is a
+<a href="https://w3c-ccg.github.io/did-primer/">decentralized identifier</a>,
+also known as a DID. An example of a DID is <code>did:example:123456abcdef</code>.
+      </p>
+      <p>
+There is currently a proposed charter for a W3C <a href="https://w3c-ccg.github.io/did-wg-charter/">
+Decentralized Identifier Working Group</a>, which will put DIDs on track to
+become a W3C standard.
       </p>
       <p class="note">
-          As of the publication of the VC Data Model specification, DIDs are a new type of identifier that
-          are not necessary for verifiable credentials to be useful. Specifically, verifiable credentials
-          do not depend on DIDs and DIDs do not depend on verifiable credentials. However, it is expected
-          that many verifiable credentials will use DIDs and that software libraries implementing the Data Model
-          specification will probably need to resolve DIDs. DID-based URLs are used for expressing identifiers
-          associated with subjects, issuers, holders, credential status lists, cryptographic keys, and other
-          machine-readable information that is associated with a verifiable credential.
+As of the publication of the <a>verifiable credentials</a>
+<a href="https://www.w3.org/TR/vc-data-model/">data model specification</a>,
+DIDs are not necessary for <a>verifiable credentials</a> to be useful.
+Specifically, <a>verifiable credentials</a> do not depend on <a>DIDs</a> and
+<a>DIDs</a> do not depend on <a>verifiable credentials</a>. However, it is
+expected that many <a>verifiable credentials</a> will use <a>DIDs</a> and that
+software libraries implementing the
+<a href="https://www.w3.org/TR/vc-data-model/">data model specification</a>
+will benefit from knowing how to resolve <a>DIDs</a>. <a>DID</a>-based URLs may
+be used to express identifiers associated with <a>subjects</a>, <a>issuers</a>,
+<a>holders</a>, credential status lists, cryptographic keys, and other
+machine-readable information associated with a <a>verifiable credential</a>.
       </p>
 
-      <p>
-        There is currently a proposed charter for a new <a href="https://w3c-ccg.github.io/did-wg-charter/">
-        Decentralized Identifier Working Group</a> that has been submitted to the W3C, aiming to officially
-        put DIDs on the standards track.
-      </p>
     </section>
 
     <section>
