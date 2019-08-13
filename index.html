@@ -187,7 +187,12 @@ machine-readable information associated with a <a>verifiable credential</a>.
       <em>This section is non-normative.</em>
 
       <p>
-TBD
+<a>Verification</a> is the process a <a>verifier</a> or <a>holder</a> undergoes
+when presented with a <a>verifiable presentation</a> or
+<a>verifiable credential</a>. <a>Verification</a> includes checking the
+presented item against the <a href="https://www.w3.org/TR/vc-data-model/">core
+data model</a>, and may also include validating the provided proof section and
+checking the item's status.
       </p>
 
       <section>
@@ -206,6 +211,35 @@ the core data model is verified when processing credentials.
 There are many data verification languages, the following approach is one
 that should work for most use cases.
         </p>
+      </section>
+      <section>
+        <h3>Content Integrity</h3>
+        <p>
+Protecting the integrity of content is an important component of verification.
+<a>Verifiers</a> need to have confidence that the content they rely on to
+verify <a>credentials</a> doesn't change without their knowledge. This content
+may include data schemas, identifiers, public keys, etc.
+        </p>
+        <p>
+There are a number of ways to provide content integrity protection. A few of
+them are provided in greater detail below.
+        </p>
+        <section>
+          <h4>Hashlinks</h4>
+
+          <p>
+Hashlink URLs can be used to provide content integrity for links to external
+resources.
+          </p>
+        </section>
+        <section>
+          <h4>Verifiable Data Registries</h4>
+          <p>
+A <a>verifiable data registry</a> can also provide content integrity protection.
+One example of a <a>verifiable data registry</a> which provides content
+integrity protection is a distributed ledger.
+          </p>
+        </section>
       </section>
     </section>
     <section>
@@ -1435,34 +1469,6 @@ the cost of implementation complexity.
           </dd>
         </dl>
 
-      </section>
-
-      <section>
-        <h3>Cryptographic Suites</h3>
-
-        <ul>
-          <li>
-            Design the Cryptographic Suite.
-          </li>
-          <li>
-            Create the JSON-LD Context.
-          </li>
-          <li>
-            Select a publishing location.
-          </li>
-          <li>
-            Implement the Cryptographic Suite and use it.
-          </li>
-        </ul>
-      </section>
-
-      <section>
-        <h3>Hashlinks</h3>
-
-        <p>
-          Hashlink URLs can be used to provide content integrity for links to
-          external resources.
-        </p>
       </section>
 
     </section>
