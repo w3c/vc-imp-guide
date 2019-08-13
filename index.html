@@ -326,20 +326,21 @@ value can be any string or URI.
 
       <pre class="example nohighlight" title="A targeted verifiable presentation">
 {
-"@context": [
-  "https://www.w3.org/2018/credentials/v1"
-],
-"type": "VerifiablePresentation,
-"verifiableCredential": { ... },
-"proof": {
-  "type": "Ed25519Signature2018",
-  "created": "2019-08-13T15:09:00Z",
-  <span class="highlight">"challenge": "d1b23d3...3d23d32d2",
-  "domain": "https://example.com",</span>
-  "jws": "eyJhbGciOiJFZERTQSIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il19..uyW7Hv
-    VOZ8QCpLJ63wHode0OdgWjsHfJ0O8d8Kfs55dMVEg3C1Z0bYUGV49s8IlTbi3eXsNvM63n
-    vah79E-lAg",
-  "proofPurpose": "authentication"
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1"
+  ],
+  "type": "VerifiablePresentation,
+  "verifiableCredential": { ... },
+  "proof": {
+    "type": "Ed25519Signature2018",
+    "created": "2019-08-13T15:09:00Z",
+    <span class="highlight">"challenge": "d1b23d3...3d23d32d2",
+    "domain": "https://example.com",</span>
+    "jws": "eyJhbGciOiJFZERTQSIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il19..uyW7Hv
+      VOZ8QCpLJ63wHode0OdgWjsHfJ0O8d8Kfs55dMVEg3C1Z0bYUGV49s8IlTbi3eXsNvM63n
+      vah79E-lAg",
+    "proofPurpose": "authentication"
+  }
 }
       </pre>
 
