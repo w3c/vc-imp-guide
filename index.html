@@ -88,7 +88,11 @@ pre .property {
 }
 pre .comment {
   font-weight: bold;
-  color: Gray;
+  color: SteelBlue;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .supported {
   background-color: #93c47d;
@@ -331,7 +335,7 @@ randomly generated string.
     "https://www.w3.org/2018/credentials/v1"
   ],
   "type": "VerifiablePresentation,
-  "verifiableCredential": { ... },
+  "verifiableCredential": { <span class="comment">...</span> },
   "proof": {
     "type": "Ed25519Signature2018",
     "created": "2019-08-13T15:09:00Z",
