@@ -348,6 +348,28 @@ randomly generated string.
     </section>
 
     <section>
+      <h4>Using the JWT aud claim</h3>
+
+      <p>
+The JWT <code>aud</code> <a>claim> name refers to (i.e., identifies) the
+intended audience of the <a>verifiable presentation</a> (i.e., the verifier).
+Consequently this is an alternative to the Linked Data Proof method specified
+above, for the holder to indicate to the recipient of the
+<a>verifiable presentation</a> who the verifier should be.
+      </p>
+      <p>
+The <a href="https://w3c.github.io/vc-data-model/">data model specification</a>
+provides no guidance of how to transform this JWT <a>claim</a> into a property
+of the <a> verifiable presentation</a> and vice versa. 
+<a href="https://tools.ietf.org/html/rfc7519">RFC 7519</a> defines 
+<code>aud</code> as "an array of case-sensitive strings, each containing a 
+StringOrURI value". We recommend that this is restricted to a single URI value,
+equal to the URI of the verifier. We further recommend that the JWT <code>aud</code>
+<a>claim> is mapped into the <a>verifiable presentation> <code>domain</code> property.
+   </p>
+    </section>
+
+    <section>
       <h2>Extensions</h2>
 
       <em>This section is non-normative.</em>
