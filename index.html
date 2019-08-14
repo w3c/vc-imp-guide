@@ -668,6 +668,50 @@ you must only adhere to the above referenced standards.
       </section>
 
       <section>
+        <h3>Extending JWTs</h3>
+
+        <p>
+The VC Data Model specifies a minimal set of JWT <a>claim</a> names that must be used
+to represent <a>verifiable credential</a> properties and <code>credentialSubject</code>
+properties. Implementors may wish to extend a <a>verifiable credential<a> with a
+property that is either new e.g. drivingLicenseNumber, or that is already defined 
+as a JWT claim with IANA e.g.<a>given_name</a>. It is recommended that these properties
+are placed directly in either the JWT <code>vc</code> <a>claim</a> or
+<code>credentialSubject</code> property of the <code>vc</code> <a>claim<a> as appropriate.
+        </p>
+        <p>
+However, if implementers wish to use JWT <a>claim<a> names for these extensions, 
+the following steps are recommended. Note that there are three types of JWT
+<a>claim<a> name: public (named with a URI), private (local name) and 
+registered with IANA.
+        <ol>
+          <li>
+First, check with IANA (https://www.iana.org/assignments/jwt/jwt.xhtml)
+if the JWT <a>claim<a> name already exists.
+          </li>
+          <li>
+If it does not exist, the implementor may wish to either give it a public name 
+(i.e. a URI), or a local name (i.e. any string), or register it with IANA.
+          </li>
+          <li>
+Once the JWT <a>claim<a> name exists, define encoding/decoding
+transformation rules to convert the <a>verifiable credential</a> property
+or <code>credentialSubject</code> property into the JWT <a>claim<a>. 
+           </li>
+           <li>
+Encoding: Remove the property from the <a>verifiable credential</a>, encode it
+according to the defined rule, and place it in the JWT <a>claim<a> 
+           </li>
+          <li>
+Decoding: Remove the value from the JWT <a>claim<a>, decode it according to the
+defined rule, and place it in the new <a>verifiable credential</a> JSON object,
+as either a property of the <a>verifiable credential</a>
+or the <code>credentialSubject</code>, as appropriate.
+        </li>
+
+      </section>
+
+      <section>
         <h3>Human Readability</h3>
         <p>
 The JSON-LD Context declaration mechanism is used by implementations to
