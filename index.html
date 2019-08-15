@@ -352,21 +352,27 @@ randomly generated string.
 
       <p>
 The JWT <code>aud</code> <a>claim</a> name refers to (i.e., identifies) the
-intended audience of the <a>verifiable presentation</a> (i.e., the verifier).
+intended audience of the <a>verifiable presentation</a> (i.e., the verifier(s)).
 Consequently this is an alternative to the Linked Data Proof method specified
-above, for the holder to indicate to the recipient of the
-<a>verifiable presentation</a> who the verifier should be.
+above. It lets the <a>holder</a> indicate which <a>verifier(s)</a> it allows
+to verify the <a>verifiable presentation</a>. Any JWT-compliant <a>verifier</a>
+that is not identified in the <code>aud</code> is required to
+reject the JWT (see <a href="https://tools.ietf.org/html/rfc7519">RFC 7519</a>).
+      </p>
+      <p>
+<a href="https://tools.ietf.org/html/rfc7519">RFC 7519</a> defines
+<code>aud</code> as "an array of case-sensitive strings, each containing a
+<code>StringOrURI</code> value". For use in a <a>verifiable presentation</a>,
+we recommend that this be restricted to a single URI value, equal to the URI
+of the intended verifier.
       </p>
       <p>
 The <a href="https://w3c.github.io/vc-data-model/">data model specification</a>
 provides no guidance of how to transform this JWT <a>claim</a> into a property
-of the <a> verifiable presentation</a> and vice versa. 
-<a href="https://tools.ietf.org/html/rfc7519">RFC 7519</a> defines 
-<code>aud</code> as "an array of case-sensitive strings, each containing a 
-StringOrURI value". We recommend that this is restricted to a single URI value,
-equal to the URI of the verifier. We further recommend that the JWT <code>aud</code>
-<a>claim> is mapped into the <a>verifiable presentation> <code>domain</code> property.
-   </p>
+of the <a>verifiable presentation</a>, nor vice versa. We recommend that the
+<code>aud</code> JWT <a>claim</a> be mapped to the <code>domain</code> property
+of the <a>verifiable presentation</a>.
+      </p>
     </section>
 
     <section>
