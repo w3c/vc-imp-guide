@@ -387,6 +387,53 @@ a website, <code>https://example.com</code>.
     </section>
 
     <section>
+      <h2>Multiple Times</h2>
+
+      <p>
+Many <a>verifiable credentials</a> will be issued from physical credentials that
+have a much longer validity time than the <a>verifiable credential</a> itself
+e.g. a passport VC, a driving licence VC, a vaccination record VC, a European
+Health Card VC etc. A common requirement might be to reveal this longer validity
+time in the <a>verifiable credential</a>, which leads to 4 times being issued, namely:
+    <p>
+    <ul>
+    <li>
+ the time the original credential was issued or is valid from
+     </li>
+      <li>
+    the time the <a>verifiable credential</a> becomes valid
+     </li>
+      <li>
+    the time the <a>verifiable credential</a> becomes invalid
+     </li>
+      <li>
+    the time the original credential expires
+     </li>
+      </ul>
+  <p>
+It is recommended to use the following properties for the above times:
+   <ul>
+    <li>
+<code>issuedAt</code> - the date/time the original credential was issued
+     </li>
+      <li>
+<code>validFrom</code> - the date/time the <a>verifiable credential</a> becomes valid
+     </li>
+      <li>
+<code>validUntil</code> - the date/time the <a>verifiable credential</a> becomes invalid
+     </li>
+      <li>
+<code>expiresAt</code> - the date/time the original credential expires
+     </li>
+      </ul>
+
+     </p>
+Note. We will need to add issuedAt and expiresAt to the new implementors guide context
+to be published at "https://www.w3.org/2018/credImpGuide/v1" then this note
+can be removed.
+    </section>
+    <section>
+
       <h2>Extensions</h2>
 
       <em>This section is non-normative.</em>
