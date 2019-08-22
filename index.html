@@ -1643,14 +1643,16 @@ all of the credential's claims to be revealed.
 
           </li>
           <li>
-<b> Hashed Values</b> - With this method, the <a>issuer</a> issue a single
-<a>verifiable credential</a> containing all the subject's <a>claims</a>.
+<b> Hashed Values</b> &mdash; With this method, the <a>issuer</a> issues a single
+<a>verifiable credential</a> containing all the <a>issuer</a>'s <a>claims</a>
+about the subject.
 However, each <a>claim</a> value is created by hashing the actual value with
 a different nonce. The value that is issued for the <a>claim</a> then
 comprises an object containing the nonce and the hashed value of the nonce
-concatenated with the <a>claim</a> value. In addition, the
-<code>credentialSubject</code> contains the identifier of the hashing
-algorithm used to create all the hashed values. The holder includes the actual
+concatenated with the actual <a>claim</a> value. In addition, the
+<code>credentialSubject</code> contains an additional property, i.e.
+the identifier of the hashing algorithm that was used to create all the
+hashed values. The holder includes the actual
 values of the <a>claims</a> that are to be revealed to the <a>verifier</a> in
 the <a>verifiable presentation</a>.
 
