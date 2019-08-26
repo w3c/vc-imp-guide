@@ -1524,50 +1524,186 @@ the cost of implementation complexity.
     <section>
       <h2>Zero-Knowledge Proofs</h2>
       <em>This section is non-normative</em>
-        <p>
+      <p>
 The Verifiable Credentials Data Model is designed to be compatible with a
-variety of existing and emerging digital proof formats. Each
-proof format has benefits and drawbacks. Many proof formats cannot reveal
-only selected attribute values from a verifiable credential; they can only
-reveal all (or none).
+variety of existing and emerging digital proof formats. Each proof format has
+benefits and drawbacks. Many proof formats cannot selectively reveal attribute
+values from a verifiable credential; they can only reveal all (or none).
+      </p>
+      <p>
+Zero-Knowledge Proofs (ZKPs) are a proof format that enables data-minimization
+features in <a>verifiable presentations</a>, such as selective disclosure and
+predicate proofs.
+      </p>
+      <h3>Full Disclosure</h3>
+      <p>
+Currently, disclosing data is an all or nothing process, whether online or off.
+Many digital identity systems reveal all the attributes in a digital credential.
+The simplest method for signing a <a>verifiable credential</a> signs the entire
+credential and when presented, fully discloses all the attributes.
+      </p>
+      <p>
+Along with a full disclosure of all the attributes in a
+<a>verifiable credential</a>, standard <a>verifiable presentations</a> reveal
+the actual signature. With both the data and signature in hand, a
+<a>verifier</a> has a complete copy of the credential. Without care, this could
+enable the <a>verifier</a> to impersonate the <a>holder</a>. Also, since the
+signature is the same every time this credential is presented, the signature
+itself is a unique identifier and becomes PII (personally identifiable
+information).
+      </p>
+      <p>
+It is also possible to fully disclose the attributes in a zero-knowledge
+<a>verifiable credential</a>. Unlike non-zkp methods, zero-knowledge methods do
+not reveal the actual signature; instead, they only reveal a cryptographic proof
+of a valid signature. Only the <a>holder</a> of the signature has the
+information needed to present the <a>credential</a> to a <a>verifier</a>. This
+means that zero-knowledge methods provide a <a>holder</a> additional protection
+from impersonation. Because the signature is not revealed, it also cannot be
+used as a unique identifier.
+      </p>
+      <h3>Selective Disclosure</h3>
+      <p>
+Selective disclosure means that a <a>holder</a> doesn't have to reveal all of
+the attributes contained in a <a>verifiable credential</a>. This reduces the
+liability of handling or holding data that it is not necessary to share or
+collect.
+      </p>
+      <p>
+Non-ZKP methods for selective disclosure often require the credential issuer to
+create a unique <a>credential</a> for each individual attribute, or possible
+combination of attributes. This could quickly become impractical as the number
+of <a>credentials</a> or combinations thereof exponentially explodes. Atomic
+<a>credentials</a> (which only contain a single attribute) may also not
+guarantee that the data is properly paired when used in a <a>verifiable
+presentation</a>. For example, a <a>holder</a> has two vehicle credentials, one
+for a 2018 Mazda with 15,000 miles and the other for a 1965 Lincoln with 350,000
+miles. With atomic credentials it may be possible to claim the user has a 1965
+Lincoln with 15,000 miles.
+      </p>
+      <p>
+Zero-knowledge methods allow a <a>holder</a> to choose which attributes to
+reveal and which attributes to withhold on a case-by-case basis without
+involving the <a>issuer</a>. The <a>credential</a> <a>issuer</a> only needs to
+provide a single <a>verifiable credential</a> that contains all of the
+attributes. Each attribute is individually incorporated into the signature.
+This enables two options: to reveal the attribute or to prove that you know the
+value of the attribute without revealing it. For example, a credential with
+attributes for name, birthdate, and address can be used in a presentation to
+reveal only your name.
+      </p>
+      <p>
+Non-ZKP methods implementing selective disclosure often requires the cooperation
+of the <a>issuer</a>. Selective disclosure using zero-knowledge methods gives
+the <a>holder</a> personal control over what to reveal. A <a>verifiable
+presentation</a> based on zero-knowledge proof mechanisms only contains those
+attributes and associated values that are required to satisfy the presentation
+requirements.
         </p>
-        <p>
-Zero-Knowledge Proofs (ZKPs) are a proof format that enables
-privacy-preserving data-minimization features in <a>verifiable presentations</a>,
-such as selective disclosure and predicate proofs.
-        </p>
-        <p>
-Selective disclosure is the ability of a holder to reveal a subset of
-the attributes of a verifiable credential in a verifiable presentation.
-A presentation based on zero-knowledge proof mechanisms only contains
-those attributes and associated values that are required to satisfy
-the presentation requirements.
-        </p>
-        <p>
-Zero-knowledge predicate proofs are a type of proof associated with
-an attribute. Predicate proofs include comparisons, such as
-"greater than", "less than", "not equal", "range",
-"set membership", and "set non-membership".
-Predicate proofs can be constructed without requiring the issuer
-to create special fields, such as
-"age-under-18", "age-over-21", or "age-over-60", in the verifiable credential
-at the time the credential is issued.
-For example, if a holder has a credential with a "birth-date" claim,
-the holder can create a predicate proof based on "birth-date" in the
-verifiable presentation. A predicate value derived from "birth-date" in
-the verifiable credential can cryptographically prove to the verifier that
-the holder's age is greater (or less) than a specified number, without
-revealing the holder's "birth-date".
-        </p>
-        <p>
-Verifiable credentials based on zero-knowledge proof mechanisms are
-also quantum-resistant after presentation.
-        </p>
-        <p>
-Drawbacks of zero-knowledge proof mechanisms include that they are more complex
-and may require larger proofs than some other proof mechanisms.
-        </p>
-
+        <h3> Predicate Proofs</h3>
+      <p>
+A predicate proof is a proof that answers a true-or-false question. For example,
+"Are you over the age of 18?" Using non-zkp methods, predicate proofs must be
+provided by the <a>issuer</a> as one of the attributes of a <a>verifiable
+credential</a>. This means that in order for a non-zkp <a>credential</a> to be
+used to prove age-over-18, it would need to contain the attribute age-over-18.
+This <a>credential</a> could not be used to reveal your birthdate, unless it
+also included a birthdate <a>claim</a>. It also couldn't be used to prove
+age-over-25. To prove age-over-25, the <a>holder</a> would need to have received
+a <a>credential</a> with an age-over-25 <a>claim</a>.
+      </p>
+      <p>
+Using zero-knowledge methods, predicate proofs can be generated by the
+<a>holder</a> at the time of <a>presentation</a> without <a>issuer</a>
+involvement. For example, a <a>verifiable credential</a> with the <a>claim</a>
+birthdate can be used in a <a>verifiable presentation</a> to prove age-over-18.
+The same <a>credential</a> could then be used in another <a>presentation</a> to
+prove age-over-25, all without revealing the <a>holder's</a> birthdate.
+      </p>
+      <h3>Revocation</h3>
+      <p>
+<a>Verifiable credentials</a> may need to be revocable. If an <a>issuer</a> can
+revoke a <a>credential</a>, <a>verifiers</a> must be able to determine a
+<a>credential's</a> revocation status.
+      </p>
+      <p>
+Non-zkp methods for checking revocation status may require the <a>verifier</a>
+to directly contact the <a>issuer</a>. Less restrictive checks could be made
+against a list of revoked credential identifiers posted in a public registry.
+The <a>holder</a> is required to disclose the <a>credential</a> identifier to
+the <a>verifier</a> so that it can be checked. The <a>verifier</a> is then
+responsible for doing the work to check revocation.
+      </p>
+      <p>
+Using zero-knowledge methods, the <a>credential</a> identifier can be checked
+against a list of revoked credential identifiers without revealing the
+identifier. This reduces the ability of network monitors to correlate a
+<a>holder's</a> credential presentations, and removes the ability of an
+<a>issuer</a> to be made aware of the presentation of <a>verifiable
+credentials</a> they have issued.
+      </p>
+      <h3>Correlation</h3>
+      <p>
+Correlation is the ability to link data from multiple interactions to a single
+user. Correlation can be performed by a <a>verifier</a>, by <a>issuers</a> and
+<a>verifiers</a> working together, or a 3rd party observing the interactions on
+the network. Correlation is a way to collect data about a <a>holder</a> without
+the <a>holder's</a> consent or knowledge. It is also a way to deanonymize
+private transactions. For example, a <a>holder</a> might use a <a>verifiable
+credential</a> to prove they are authorized to vote, then submit a secret
+ballot. If it is possible to correlate the <a>holder's</a> <a>credential</a>
+with the secret ballot, thereby linking a specific vote to a specific voter, it
+would be detrimental to the democratic process and could enable retaliation.
+      </p>
+      <p>
+One way to reduce correlation is through data minimization, by sharing only the
+information required to complete a transaction. Another way to reduce
+correlation is to make each interaction look unique. When interactions disclose
+unique identifiers, an observer can link multiple interactions to a single user.
+Non-zkp methods with only a single identifier per user create correlation
+opportunities by embedding that identifier in multiple credentials or
+interactions. Zero-knowledge proofs provide unlinkability between interactions.
+      </p>
+      <p>
+Non-zkp methods that reveal all attributes and use unique identifiers are
+completely correlatable. Zero-knowledge methods enable data minimization and
+allow <a>holders</a> to have trusted interactions with <a>verifiers</a> without
+dependence on unique identifiers.
+      </p>
+      <p>
+Although correlation can never be eliminated completely, the goal of
+zero-knowledge methods is to reduce the probability of correlation and to put
+control over the level of correlation into the hands of the <a>verifiable
+credential</a> <a>holder</a>.
+      </p>
+      <h3>Drawbacks</h3>
+      <p>
+Zero-knowledge methods are more complex than non-zkp methods. Cryptographic
+engineers must understand complicated protocols and write code to create
+libraries that support zero-knowledge methods. System implementers can then use
+these libraries without being exposed to the underlying complexity, but must
+trust that the implementation was done correctly. They can utilize the features
+of selective disclosure and bring the benefits of the method to their customers
+without a significant increase in effort over using non-zkp methods.
+      </p>
+      <p>
+Due to the underlying complexity, zero-knowledge methods require more CPU and
+memory to use. This also adds to the time required to create and verify proofs.
+This should be considered when using less capable devices such as IOT devices or
+older phones.
+      </p>
+      <p>
+Another drawback of zero-knowledge proofs is that they tend to be larger than
+simple signatures.
+      </p>
+      <p>
+There is a perception that zero-knowledge methods are new and untested.
+Zero-knowledge methods were first introduced in 1989 as a way to guard secrets.
+Although they may not be well understood by the general public, they have
+received considerable review and scrutiny in the cryptographic community. They
+are considered just as secure as many common cryptographic techniques in use
+today.
+      </p>
     </section>
 
     <section>
