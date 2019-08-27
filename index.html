@@ -270,15 +270,14 @@ PO Number, relevant only within the context of this specific enterprise).
         <p>
 This method of linking to an external credential without using an integrity
 protection mechanism may be acceptable in some use cases, such as when both
-credentials are issued by the same entity, the verifier has a high level
-of trust and confidence in the issuer's security and auditing mechanisms, and
-the value of the credentials is sufficiently low. However, this is not
-recommended, and goes against the philosophy of <a>verifiable credentials</a>.
-Although the credential that contains the reference may be integrity protected
-itself (by a cryptographic signature or a similar proof mechanism), the verifier
-has no way of knowing that the external credential being linked to has not been
-tampered with, unless the link itself has a content integrity protection
-mechanism built into it.
+credentials are issued by the same entity, the verifier has a high level of
+trust and confidence in the issuer's security and auditing mechanisms, and the
+value of the credentials is sufficiently low. However, implementers should keep
+in mind that although the credential that contains the reference may be
+integrity protected itself (by a cryptographic signature or a similar proof
+mechanism), the verifier has no way of knowing that the external credential
+being linked to has not been tampered with, unless the link itself has a content
+integrity protection mechanism built into it.
         </p>
       </section>
 
