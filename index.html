@@ -88,7 +88,11 @@ pre .property {
 }
 pre .comment {
   font-weight: bold;
-  color: Gray;
+  color: SteelBlue;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .supported {
   background-color: #93c47d;
@@ -107,6 +111,12 @@ This document provides implementation guidance for Verifiable Credentials.
 
     <section id='sotd'>
       <p>
+Future versions of this document will be updated and maintained by the
+<a href="https://www.w3.org/community/credentials/">
+Credentials Community Group</a>. Please consult that group for the most
+up to date version of this document.
+      </p>
+      <p>
 Comments regarding this document are welcome. Please file issues
 directly on <a href="https://github.com/w3c/vc-data-model/issues/">GitHub</a>,
 or send them to
@@ -121,22 +131,21 @@ or send them to
       <em>This section is non-normative.</em>
 
       <p>
-        Welcome dear implementer of Verifiable Credentials! We understand that reading
-        and nagivating technical specifications can be confusing at times. For this reason,
-        we would like to offer you a few resources to get you started.
+This guide provides some examples and resources for implementing
+protocols which make use of <a>verifiable credentials</a>, beyond those available in the core specification.
       </p>
       <p>
-        First, you should probably become familiarized with the official
-        <a href="https://www.w3.org/TR/verifiable-claims-use-cases/">Use Cases document</a>,
-        which offers a concise but limited collection of use cases readers should review before
-        undestanding how Verifiable Claims can best help them.
+It may be useful to first familiarize yourself with the official
+<a href="https://www.w3.org/TR/verifiable-claims-use-cases/">Use Cases document</a>,
+which offers a concise collection of examples of <a>Verifiable Credentials</a>
+as they may appear in everyday life, and how they may be used.
       </p>
       <p>
-        The <a href="https://w3c.github.io/vc-data-model/">data model specification</a> is the
-        most important result of two years of hard work done by the Verifiable Claims Working Group.
-        However, the data model itself is not sufficient if you plan to use Verifiable Claims today.
-        Additional works needs to be done on identifiers as well as on proofs, as you will be able to
-        find out in the sections below.
+The <a href="https://www.w3.org/TR/vc-data-model/">data model specification</a>
+contains the technical details about <a>verifiable credentials</a>. However, the
+data model specification does not specify any <em>protocols</em> for using
+<a>verifiable credentials</a>, nor any <em>proof formats</em> or additional
+<em>identifiers</em> upon which such protocols may depend.
       </p>
     </section>
 
@@ -188,7 +197,12 @@ machine-readable information associated with a <a>verifiable credential</a>.
       <em>This section is non-normative.</em>
 
       <p>
-TBD
+<a>Verification</a> is the process a <a>verifier</a> or <a>holder</a> performs
+when presented with a <a>verifiable presentation</a> or
+<a>verifiable credential</a>. <a>Verification</a> includes checking the
+presented item against the <a href="https://www.w3.org/TR/vc-data-model/">core
+data model</a>, and may also include validating the provided proof section and
+checking the item's status.
       </p>
 
       <section>
@@ -208,7 +222,104 @@ There are many data verification languages, the following approach is one
 that should work for most use cases.
         </p>
       </section>
+      <section>
+        <h3>Content Integrity</h3>
+        <p>
+Protecting the integrity of content is an important component of verification.
+<a>Verifiers</a> need to have confidence that the content they rely on to
+verify <a>credentials</a> doesn't change without their knowledge. This content
+may include data schemas, identifiers, public keys, etc.
+        </p>
+        <p>
+There are a number of ways to provide content integrity protection. A few of
+these are described in greater detail below.
+        </p>
+
+        <section>
+          <h4>Hashlinks</h4>
+
+          <p>
+<a href="https://tools.ietf.org/html/draft-sporny-hashlink">Hashlink URLs</a>
+can be used to provide content integrity for links to external resources.
+          </p>
+        </section>
+
+        <section>
+          <h4>Verifiable Data Registries</h4>
+          <p>
+A <a>verifiable data registry</a> can also provide content integrity protection.
+One example of a <a>verifiable data registry</a> which provides content
+integrity protection is a distributed ledger. This is a shared transaction
+record which provides mechanisms for verifying the content it stores. These
+mechanisms include consensus protocols, digital signatures, and verifiable data
+structures such as Merkle trees. These mechanisms provide cryptographic
+assurances that the content retrieved from the ledger has not been altered, and
+is complete.
+          </p>
+        </section>
+      </section>
     </section>
+
+    <section>
+      <h3>Referencing Other Credentials</h3>
+      <p>
+Usage of <a>verifiable credentials</a> will often require referencing other
+credentials, embedding or attaching multiple credentials, or otherwise binding
+them together.
+      </p>
+
+      <section>
+        <h4>Referencing Credentials Without Integrity Protection</h4>
+        <p>
+The simplest way for a <a>credential</a> to reference another external
+credential is to link to it, either directly by using its URI, or indirectly by
+providing a well-known ID (for example, a credential modeling an internal
+company Invoice may refer to its parent Purchase Order credential simply by the
+PO Number, relevant only within the context of this specific enterprise).
+        </p>
+
+        <p>
+This method of linking to an external credential without using an integrity
+protection mechanism may be acceptable in some use cases, such as when both
+credentials are issued by the same entity, the verifier has a high level of
+trust and confidence in the issuer's security and auditing mechanisms, and the
+risk to the verifier is sufficiently low. However, implementers should keep
+in mind that although the credential that contains the reference may be
+integrity protected itself (by a cryptographic signature or a similar proof
+mechanism), the verifier has no way of knowing that the external credential
+being linked to has not been tampered with, unless the link itself has a content
+integrity protection mechanism built into it.
+        </p>
+      </section>
+
+      <section>
+        <h4>Referencing Credentials With Integrity Protection</h4>
+        <p>
+The recommended way of referencing an external credential from within a
+<a>verifiable credential</a> is to use a linking mechanism that
+cryptographically binds the contents of the target document to the URI itself.
+One way to accomplish this would be to use <a>hashlinks</a> or an equivalent
+URI scheme. Another mechanism would be to encode the full contents of the
+target credential in the URI itself, although this is much less commonly used,
+and the discussion of the practical limits of URI length are outside the scope
+of this document.
+        </p>
+      </section>
+
+      <section>
+        <h4>Attaching Evidence</h4>
+        <p>
+<a>Issuers</a> wishing to attach additional supporting information to a
+<a>verifiable credential</a> are encouraged to use the
+<a href="https://www.w3.org/TR/vc-data-model/#evidence">evidence</a> property.
+Note that this can be done either by embedding the relevant evidence information
+in the credential itself, or by referencing it (with or without an integrity
+protection mechanism, as previously discussed).
+        </p>
+      </section>
+    </section>
+  </section>
+
     <section>
       <h2>Disputes</h2>
 
@@ -264,7 +375,7 @@ can issue one of the <a>credentials</a> shown below. In the first example, the
   }</span>,
   "issuer": "https://example.com/people#me",
   "issuanceDate": "2017-12-05T14:27:42Z",
-  "proof": { ... }
+  "proof": { <span class="comment">...</span> }
 }
       </pre>
 
@@ -287,7 +398,7 @@ can issue one of the <a>credentials</a> shown below. In the first example, the
   }</span>,
   "issuer": "https://example.com/people#me",
   "issuanceDate": "2017-12-05T14:27:42Z",
-  "proof": { ... }
+  "proof": { <span class="comment">...</span> }
 }
       </pre>
 
@@ -316,14 +427,14 @@ that includes a <code>domain</code> and <code>challenge</code>. This also
 helps prevent a <a>verifier</a> from reusing a <a>verifiable presentation</a>
 as their own.
       </p>
-
       <p>
-The following <a>verifiable presentation</a> is for authenticating to
-a website, <code>https://example.com</code>. Note that the <code>domain</code>
-value can be any string or URI, and the <code>challenge</code> should be a
-randomly generated string.
+The <code>domain</code> value can be any string or URI, and the
+<code>challenge</code> should be a randomly generated string.
       </p>
-
+      <p>
+The following sample <a>verifiable presentation</a> is for authenticating to
+a website, <code>https://example.com</code>.
+      </p>
 
       <pre class="example nohighlight" title="A targeted verifiable presentation">
 {
@@ -331,7 +442,7 @@ randomly generated string.
     "https://www.w3.org/2018/credentials/v1"
   ],
   "type": "VerifiablePresentation,
-  "verifiableCredential": { ... },
+  "verifiableCredential": { <span class="comment">...</span> },
   "proof": {
     "type": "Ed25519Signature2018",
     "created": "2019-08-13T15:09:00Z",
@@ -510,6 +621,24 @@ it using JSON-LD.
         </p>
 
         <p>
+Please note that schema.org is developed incrementally, meaning that the definition
+of a term today may differ from a future definition, or even be removed. Although
+schema.org developers encourage using the latest release, as in the simple
+non-versioned schema.org URLs such as <code>http://schema.org/Place</code> in
+structured data applications, there are times in which more precise versioning is
+important. Schema.org also provides dated snapshots of each release, including both
+human and machine readable definitions of the schema.org core vocabulary. These are
+linked from the <a href="https://schema.org/docs/releases.html">releases page</a>.
+For instance, instead of the unversioned URI <code>http://schema.org/Place</code>,
+you might use the versioned URI
+<code>https://schema.org/version/3.9/schema-all.html#term_Place</code>.
+
+In addition, the <code>schemaVersion</code> property has been defined to provide a
+way for documents to indicate the specific intended version of schema.org's
+definitions.
+        </p>
+
+        <p>
 Using the schema.org vocabulary and JSON-LD we can express a person's address
 like so:
         </p>
@@ -592,7 +721,7 @@ specification and then bring in the terms defined by schema.org:
               "https://www.w3.org/2018/credentials/v1",
               "http://schema.org"
             ]</span>,
-            ...
+            <span class="comment">...</span>
             "credentialSubject": {
               "type": "Person",
               "address": {
@@ -604,7 +733,7 @@ specification and then bring in the terms defined by schema.org:
                 "addressCountry": "US"
               }
             },
-            ...
+            <span class="comment">...</span>
           }
         </pre>
 
@@ -762,7 +891,7 @@ wishes to issue an <em>ExampleAddressCredential</em>!
                 "addressCountry": "US"
               }
             },
-            "proof": { ... }
+            "proof": { <span class="comment">...</span> }
           }
         </pre>
 
@@ -789,7 +918,7 @@ applications:
               "https://www.w3.org/2018/credentials/examples/v1"
             ]</span>,
             "id": "http://example.edu/credentials/1872",
-            ...
+            <span class="comment">...</span>
         </pre>
 
         <p>
@@ -1543,83 +1672,191 @@ the cost of implementation complexity.
 
       </section>
 
-      <section>
-        <h3>Cryptographic Suites</h3>
-
-        <ul>
-          <li>
-            Design the Cryptographic Suite.
-          </li>
-          <li>
-            Create the JSON-LD Context.
-          </li>
-          <li>
-            Select a publishing location.
-          </li>
-          <li>
-            Implement the Cryptographic Suite and use it.
-          </li>
-        </ul>
-      </section>
-
-      <section>
-        <h3>Hashlinks</h3>
-
-        <p>
-          Hashlink URLs can be used to provide content integrity for links to
-          external resources.
-        </p>
-      </section>
-
     </section>
 
     <section>
       <h2>Zero-Knowledge Proofs</h2>
       <em>This section is non-normative</em>
-        <p>
+      <p>
 The Verifiable Credentials Data Model is designed to be compatible with a
-variety of existing and emerging digital proof formats. Each
-proof format has benefits and drawbacks. Many proof formats cannot reveal
-only selected attribute values from a verifiable credential; they can only
-reveal all (or none).
+variety of existing and emerging digital proof formats. Each proof format has
+benefits and drawbacks. Many proof formats cannot selectively reveal attribute
+values from a verifiable credential; they can only reveal all (or none).
+      </p>
+      <p>
+Zero-Knowledge Proofs (ZKPs) are a proof format that enables data-minimization
+features in <a>verifiable presentations</a>, such as selective disclosure and
+predicate proofs.
+      </p>
+      <h3>Full Disclosure</h3>
+      <p>
+Currently, disclosing data is an all or nothing process, whether online or off.
+Many digital identity systems reveal all the attributes in a digital credential.
+The simplest method for signing a <a>verifiable credential</a> signs the entire
+credential and when presented, fully discloses all the attributes.
+      </p>
+      <p>
+Along with a full disclosure of all the attributes in a
+<a>verifiable credential</a>, standard <a>verifiable presentations</a> reveal
+the actual signature. With both the data and signature in hand, a
+<a>verifier</a> has a complete copy of the credential. Without care, this could
+enable the <a>verifier</a> to impersonate the <a>holder</a>. Also, since the
+signature is the same every time this credential is presented, the signature
+itself is a unique identifier and becomes PII (personally identifiable
+information).
+      </p>
+      <p>
+It is also possible to fully disclose the attributes in a zero-knowledge
+<a>verifiable credential</a>. Unlike non-zkp methods, zero-knowledge methods do
+not reveal the actual signature; instead, they only reveal a cryptographic proof
+of a valid signature. Only the <a>holder</a> of the signature has the
+information needed to present the <a>credential</a> to a <a>verifier</a>. This
+means that zero-knowledge methods provide a <a>holder</a> additional protection
+from impersonation. Because the signature is not revealed, it also cannot be
+used as a unique identifier.
+      </p>
+      <h3>Selective Disclosure</h3>
+      <p>
+Selective disclosure means that a <a>holder</a> doesn't have to reveal all of
+the attributes contained in a <a>verifiable credential</a>. This reduces the
+liability of handling or holding data that it is not necessary to share or
+collect.
+      </p>
+      <p>
+Non-ZKP methods for selective disclosure often require the credential issuer to
+create a unique <a>credential</a> for each individual attribute, or possible
+combination of attributes. This could quickly become impractical as the number
+of <a>credentials</a> or combinations thereof exponentially explodes. Atomic
+<a>credentials</a> (which only contain a single attribute) may also not
+guarantee that the data is properly paired when used in a <a>verifiable
+presentation</a>. For example, a <a>holder</a> has two vehicle credentials, one
+for a 2018 Mazda with 15,000 miles and the other for a 1965 Lincoln with 350,000
+miles. With atomic credentials it may be possible to claim the user has a 1965
+Lincoln with 15,000 miles.
+      </p>
+      <p>
+Zero-knowledge methods allow a <a>holder</a> to choose which attributes to
+reveal and which attributes to withhold on a case-by-case basis without
+involving the <a>issuer</a>. The <a>credential</a> <a>issuer</a> only needs to
+provide a single <a>verifiable credential</a> that contains all of the
+attributes. Each attribute is individually incorporated into the signature.
+This enables two options: to reveal the attribute or to prove that you know the
+value of the attribute without revealing it. For example, a credential with
+attributes for name, birthdate, and address can be used in a presentation to
+reveal only your name.
+      </p>
+      <p>
+Non-ZKP methods implementing selective disclosure often requires the cooperation
+of the <a>issuer</a>. Selective disclosure using zero-knowledge methods gives
+the <a>holder</a> personal control over what to reveal. A <a>verifiable
+presentation</a> based on zero-knowledge proof mechanisms only contains those
+attributes and associated values that are required to satisfy the presentation
+requirements.
         </p>
-        <p>
-Zero-Knowledge Proofs (ZKPs) are a proof format that enables
-privacy-preserving data-minimization features in <a>verifiable presentations</a>,
-such as selective disclosure and predicate proofs.
-        </p>
-        <p>
-Selective disclosure is the ability of a holder to reveal a subset of
-the attributes of a verifiable credential in a verifiable presentation.
-A presentation based on zero-knowledge proof mechanisms only contains
-those attributes and associated values that are required to satisfy
-the presentation requirements.
-        </p>
-        <p>
-Zero-knowledge predicate proofs are a type of proof associated with
-an attribute. Predicate proofs include comparisons, such as
-"greater than", "less than", "not equal", "range",
-"set membership", and "set non-membership".
-Predicate proofs can be constructed without requiring the issuer
-to create special fields, such as
-"age-under-18", "age-over-21", or "age-over-60", in the verifiable credential
-at the time the credential is issued.
-For example, if a holder has a credential with a "birth-date" claim,
-the holder can create a predicate proof based on "birth-date" in the
-verifiable presentation. A predicate value derived from "birth-date" in
-the verifiable credential can cryptographically prove to the verifier that
-the holder's age is greater (or less) than a specified number, without
-revealing the holder's "birth-date".
-        </p>
-        <p>
-Verifiable credentials based on zero-knowledge proof mechanisms are
-also quantum-resistant after presentation.
-        </p>
-        <p>
-Drawbacks of zero-knowledge proof mechanisms include that they are more complex
-and may require larger proofs than some other proof mechanisms.
-        </p>
-
+        <h3> Predicate Proofs</h3>
+      <p>
+A predicate proof is a proof that answers a true-or-false question. For example,
+"Are you over the age of 18?" Using non-zkp methods, predicate proofs must be
+provided by the <a>issuer</a> as one of the attributes of a <a>verifiable
+credential</a>. This means that in order for a non-zkp <a>credential</a> to be
+used to prove age-over-18, it would need to contain the attribute age-over-18.
+This <a>credential</a> could not be used to reveal your birthdate, unless it
+also included a birthdate <a>claim</a>. It also couldn't be used to prove
+age-over-25. To prove age-over-25, the <a>holder</a> would need to have received
+a <a>credential</a> with an age-over-25 <a>claim</a>.
+      </p>
+      <p>
+Using zero-knowledge methods, predicate proofs can be generated by the
+<a>holder</a> at the time of <a>presentation</a> without <a>issuer</a>
+involvement. For example, a <a>verifiable credential</a> with the <a>claim</a>
+birthdate can be used in a <a>verifiable presentation</a> to prove age-over-18.
+The same <a>credential</a> could then be used in another <a>presentation</a> to
+prove age-over-25, all without revealing the <a>holder's</a> birthdate.
+      </p>
+      <h3>Revocation</h3>
+      <p>
+<a>Verifiable credentials</a> may need to be revocable. If an <a>issuer</a> can
+revoke a <a>credential</a>, <a>verifiers</a> must be able to determine a
+<a>credential's</a> revocation status.
+      </p>
+      <p>
+Non-zkp methods for checking revocation status may require the <a>verifier</a>
+to directly contact the <a>issuer</a>. Less restrictive checks could be made
+against a list of revoked credential identifiers posted in a public registry.
+The <a>holder</a> is required to disclose the <a>credential</a> identifier to
+the <a>verifier</a> so that it can be checked. The <a>verifier</a> is then
+responsible for doing the work to check revocation.
+      </p>
+      <p>
+Using zero-knowledge methods, the <a>credential</a> identifier can be checked
+against a list of revoked credential identifiers without revealing the
+identifier. This reduces the ability of network monitors to correlate a
+<a>holder's</a> credential presentations, and removes the ability of an
+<a>issuer</a> to be made aware of the presentation of <a>verifiable
+credentials</a> they have issued.
+      </p>
+      <h3>Correlation</h3>
+      <p>
+Correlation is the ability to link data from multiple interactions to a single
+user. Correlation can be performed by a <a>verifier</a>, by <a>issuers</a> and
+<a>verifiers</a> working together, or a 3rd party observing the interactions on
+the network. Correlation is a way to collect data about a <a>holder</a> without
+the <a>holder's</a> consent or knowledge. It is also a way to deanonymize
+private transactions. For example, a <a>holder</a> might use a <a>verifiable
+credential</a> to prove they are authorized to vote, then submit a secret
+ballot. If it is possible to correlate the <a>holder's</a> <a>credential</a>
+with the secret ballot, thereby linking a specific vote to a specific voter, it
+would be detrimental to the democratic process and could enable retaliation.
+      </p>
+      <p>
+One way to reduce correlation is through data minimization, by sharing only the
+information required to complete a transaction. Another way to reduce
+correlation is to make each interaction look unique. When interactions disclose
+unique identifiers, an observer can link multiple interactions to a single user.
+Non-zkp methods with only a single identifier per user create correlation
+opportunities by embedding that identifier in multiple credentials or
+interactions. Zero-knowledge proofs provide unlinkability between interactions.
+      </p>
+      <p>
+Non-zkp methods that reveal all attributes and use unique identifiers are
+completely correlatable. Zero-knowledge methods enable data minimization and
+allow <a>holders</a> to have trusted interactions with <a>verifiers</a> without
+dependence on unique identifiers.
+      </p>
+      <p>
+Although correlation can never be eliminated completely, the goal of
+zero-knowledge methods is to reduce the probability of correlation and to put
+control over the level of correlation into the hands of the <a>verifiable
+credential</a> <a>holder</a>.
+      </p>
+      <h3>Drawbacks</h3>
+      <p>
+Zero-knowledge methods are more complex than non-zkp methods. Cryptographic
+engineers must understand complicated protocols and write code to create
+libraries that support zero-knowledge methods. System implementers can then use
+these libraries without being exposed to the underlying complexity, but must
+trust that the implementation was done correctly. They can utilize the features
+of selective disclosure and bring the benefits of the method to their customers
+without a significant increase in effort over using non-zkp methods.
+      </p>
+      <p>
+Due to the underlying complexity, zero-knowledge methods require more CPU and
+memory to use. This also adds to the time required to create and verify proofs.
+This should be considered when using less capable devices such as IOT devices or
+older phones.
+      </p>
+      <p>
+Another drawback of zero-knowledge proofs is that they tend to be larger than
+simple signatures.
+      </p>
+      <p>
+There is a perception that zero-knowledge methods are new and untested.
+Zero-knowledge methods were first introduced in 1989 as a way to guard secrets.
+Although they may not be well understood by the general public, they have
+received considerable review and scrutiny in the cryptographic community. They
+are considered just as secure as many common cryptographic techniques in use
+today.
+      </p>
     </section>
 
     <section>
@@ -1742,6 +1979,46 @@ Credentials Community Group</a> on
 <a href="https://w3c-ccg.github.io/data-minimization/">data minimization</a> may
 also be useful reading for implementers looking to enable progressive trust.
         </p>
+      </section>
+    </section>
+
+    <section>
+      <h2>Related Specifications</h2>
+
+      <section>
+        <h3>Web Authentication</h3>
+
+        <p>
+The W3C <a href="https://www.w3.org/TR/webauthn/">Web Authentication</a>
+specification extends the capabilities of in-browser web applications by
+enabling them to strongly authenticate users with the aid of scoped public
+key-based credentials. It defines the idea of
+<a href="https://www.w3.org/TR/webauthn/#authenticator">authenticators</a>,
+which are cryptographic entities that can generate and store public key
+credentials at the behest of a Relying Party, subject to user consent, mediated
+by the web browser to preserve user privacy.
+        </p>
+
+        <p>
+Since the key based credentials created by
+<a href="https://www.w3.org/TR/webauthn/">Web Authentication Level 1</a>
+authenticators are narrowly scoped to a particular Relying Party origin, they
+are unsuited (in their current form) to general purpose signature and
+verification operations. However, many web developers working with
+<a>Verifiable Credentials</a> have expressed interest in leveraging the Web
+Authentication API, since it provides a secure browser-mediated interface to
+crucial key management infrastructure.
+        </p>
+
+        <p>
+The Web Authentication Working Group has agreed to address this use case in
+the WebAuthn Level 2 specification, and is currently working to enable the kind
+of <a href="https://github.com/w3c/webauthn/issues/911">cross-origin usage</a>
+that would allow the WebAuthn API to be used for
+<a>verifiable presentations</a>. For example, verifiable credential wallets
+could allow authentication based on verifiable presentations, by using 
+WebAuthn authenticators to sign those presentations with challenges from
+verifier websites.
       </section>
     </section>
 
