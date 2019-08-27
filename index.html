@@ -1647,12 +1647,9 @@ all of the credential's claims to be revealed.
 <a>verifiable credential</a> containing all the <a>issuer</a>'s <a>claims</a>
 about the subject.
 However, each <a>claim</a> value is created by hashing the actual value with
-a different nonce. The value that is issued for the <a>claim</a> then
-comprises an object containing the nonce and the hashed value of the nonce
-concatenated with the actual <a>claim</a> value. In addition, the
-<code>credentialSubject</code> contains an additional property, i.e.
-the identifier of the hashing algorithm that was used to create all the
-hashed values. The holder includes the actual
+a different nonce so that the <a>verifier</a> cannot determine the actual value.
+There are several different ways of modelling this, and
+no standard way is currently defined. The holder includes the actual
 values of the <a>claims</a> that are to be revealed to the <a>verifier</a> in
 the <a>verifiable presentation</a>.
 
