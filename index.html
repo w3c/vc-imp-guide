@@ -261,7 +261,7 @@ them together.
         <h4>Referencing Credentials Without Integrity Protection</h4>
         <p>
 The simplest way for a <a>credential</a> to reference another external
-credential is to link to it, either explicitly by using a URI, or implicitly by
+credential is to link to it, either directly by using its URI, or indirectly by
 providing a well-known ID (for example, a credential modeling an internal
 company Invoice may refer to its parent Purchase Order credential simply by the
 PO Number, relevant only within the context of this specific enterprise).
@@ -269,7 +269,7 @@ PO Number, relevant only within the context of this specific enterprise).
 
         <p>
 This method of linking to an external credential without using an integrity
-protection mechanism may be acceptable in rare use cases, such as when both
+protection mechanism may be acceptable in some use cases, such as when both
 credentials are issued by the same entity, the verifier has a high level
 of trust and confidence in the issuer's security and auditing mechanisms, and
 the value of the credentials is sufficiently low. However, this is not
