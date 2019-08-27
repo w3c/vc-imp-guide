@@ -228,14 +228,16 @@ may include data schemas, identifiers, public keys, etc.
 There are a number of ways to provide content integrity protection. A few of
 these are described in greater detail below.
         </p>
+
         <section>
           <h4>Hashlinks</h4>
 
           <p>
-<a href="https://tools.ietf.org/html/draft-sporny-hashlink-00">Hashlink URLs</a>
+<a href="https://tools.ietf.org/html/draft-sporny-hashlink">Hashlink URLs</a>
 can be used to provide content integrity for links to external resources.
           </p>
         </section>
+
         <section>
           <h4>Verifiable Data Registries</h4>
           <p>
@@ -251,6 +253,67 @@ is complete.
         </section>
       </section>
     </section>
+
+    <section>
+      <h3>Referencing Other Credentials</h3>
+      <p>
+Usage of <a>verifiable credentials</a> will often require referencing other
+credentials, embedding or attaching multiple credentials, or otherwise binding
+them together.
+      </p>
+
+      <section>
+        <h4>Referencing Credentials Without Integrity Protection</h4>
+        <p>
+The simplest way for a <a>credential</a> to reference another external
+credential is to link to it, either directly by using its URI, or indirectly by
+providing a well-known ID (for example, a credential modeling an internal
+company Invoice may refer to its parent Purchase Order credential simply by the
+PO Number, relevant only within the context of this specific enterprise).
+        </p>
+
+        <p>
+This method of linking to an external credential without using an integrity
+protection mechanism may be acceptable in some use cases, such as when both
+credentials are issued by the same entity, the verifier has a high level of
+trust and confidence in the issuer's security and auditing mechanisms, and the
+risk to the verifier is sufficiently low. However, implementers should keep
+in mind that although the credential that contains the reference may be
+integrity protected itself (by a cryptographic signature or a similar proof
+mechanism), the verifier has no way of knowing that the external credential
+being linked to has not been tampered with, unless the link itself has a content
+integrity protection mechanism built into it.
+        </p>
+      </section>
+
+      <section>
+        <h4>Referencing Credentials With Integrity Protection</h4>
+        <p>
+The recommended way of referencing an external credential from within a
+<a>verifiable credential</a> is to use a linking mechanism that
+cryptographically binds the contents of the target document to the URI itself.
+One way to accomplish this would be to use <a>hashlinks</a> or an equivalent
+URI scheme. Another mechanism would be to encode the full contents of the
+target credential in the URI itself, although this is much less commonly used,
+and the discussion of the practical limits of URI length are outside the scope
+of this document.
+        </p>
+      </section>
+
+      <section>
+        <h4>Attaching Evidence</h4>
+        <p>
+<a>Issuers</a> wishing to attach additional supporting information to a
+<a>verifiable credential</a> are encouraged to use the
+<a href="https://www.w3.org/TR/vc-data-model/#evidence">evidence</a> property.
+Note that this can be done either by embedding the relevant evidence information
+in the credential itself, or by referencing it (with or without an integrity
+protection mechanism, as previously discussed).
+        </p>
+      </section>
+    </section>
+  </section>
+
     <section>
       <h2>Disputes</h2>
 
