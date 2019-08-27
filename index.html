@@ -352,7 +352,7 @@ randomly generated string.
 
       <p>
 The JWT <code>aud</code> <a>claim</a> name refers to (i.e., identifies) the
-intended audience of the <a>verifiable presentation</a> (i.e., the verifier(s)).
+intended audience of the <a>verifiable presentation</a> (i.e., the <a>verifier(s)</a>).
 Consequently this is an alternative to the Linked Data Proof method specified
 above. It lets the <a>holder</a> indicate which <a>verifier(s)</a> it allows
 to verify the <a>verifiable presentation</a>. Any JWT-compliant <a>verifier</a>
@@ -379,10 +379,10 @@ targeted verifiable presentation using the verifier property">
 {
   "@context": [
     "https://www.w3.org/2018/credentials/v1",
-    "https://www.w3.org/2018/credImpGuide/v1"
+    "https://www.w3.org/2019/credentials/v1.1"
   ],
   "type": "VerifiablePresentation",
-  "verifiableCredential": ["..."],
+  "verifiableCredential": [" <span class="comment">...</span> "],
   "holder": "did:example:ebfeb1f712ebc6f1c276e12ec21",
   "verifier": "https://some.verifier.com"
 }
