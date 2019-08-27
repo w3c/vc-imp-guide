@@ -486,6 +486,24 @@ it using JSON-LD.
         </p>
 
         <p>
+Please note that schema.org is developed incrementally, meaning that the definition
+of a term today may differ from a future definition, or even be removed. Although
+schema.org developers encourage using the latest release, as in the simple
+non-versioned schema.org URLs such as <code>http://schema.org/Place</code> in
+structured data applications, there are times in which more precise versioning is
+important. Schema.org also provides dated snapshots of each release, including both
+human and machine readable definitions of the schema.org core vocabulary. These are
+linked from the <a href="https://schema.org/docs/releases.html">releases page</a>.
+For instance, instead of the unversioned URI <code>http://schema.org/Place</code>,
+you might use the versioned URI
+<code>https://schema.org/version/3.9/schema-all.html#term_Place</code>.
+
+In addition, the <code>schemaVersion</code> property has been defined to provide a
+way for documents to indicate the specific intended version of schema.org's
+definitions.
+        </p>
+
+        <p>
 Using the schema.org vocabulary and JSON-LD we can express a person's address
 like so:
         </p>
