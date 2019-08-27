@@ -1712,6 +1712,46 @@ also be useful reading for implementers looking to enable progressive trust.
     </section>
 
     <section>
+      <h2>Related Specifications</h2>
+
+      <section>
+        <h3>Web Authentication</h3>
+
+        <p>
+The W3C <a href="https://www.w3.org/TR/webauthn/">Web Authentication</a>
+specification extends the capabilities of in-browser web applications by
+enabling them to strongly authenticate users with the aid of scoped public
+key-based credentials. It defines the idea of
+<a href="https://www.w3.org/TR/webauthn/#authenticator">authenticators</a>,
+which are cryptographic entities that can generate and store public key
+credentials at the behest of a Relying Party, subject to user consent, mediated
+by the web browser to preserve user privacy.
+        </p>
+
+        <p>
+Since the key based credentials created by
+<a href="https://www.w3.org/TR/webauthn/">Web Authentication Level 1</a>
+authenticators are narrowly scoped to a particular Relying Party origin, they
+are unsuited (in their current form) to general purpose signature and
+verification operations. However, many web developers working with
+<a>Verifiable Credentials</a> have expressed interest in leveraging the Web
+Authentication API, since it provides a secure browser-mediated interface to
+crucial key management infrastructure.
+        </p>
+
+        <p>
+The Web Authentication Working Group has agreed to address this use case in
+the WebAuthn Level 2 specification, and is currently working to enable the kind
+of <a href="https://github.com/w3c/webauthn/issues/911">cross-origin usage</a>
+that would allow the WebAuthn API to be used for
+<a>verifiable presentations</a>. For example, verifiable credential wallets
+could allow authentication based on verifiable presentations, by using 
+WebAuthn authenticators to sign those presentations with challenges from
+verifier websites.
+      </section>
+    </section>
+
+    <section>
       <h2>Test suite</h2>
 
       <em>This section is non-normative.</em>
