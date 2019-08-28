@@ -1707,7 +1707,7 @@ information).
       </p>
       <p>
 It is also possible to fully disclose the attributes in a zero-knowledge
-<a>verifiable credential</a>. Unlike non-zkp methods, zero-knowledge methods do
+<a>verifiable credential</a>. Unlike non-ZKP methods, zero-knowledge methods do
 not reveal the actual signature; instead, they only reveal a cryptographic proof
 of a valid signature. Only the <a>holder</a> of the signature has the
 information needed to present the <a>credential</a> to a <a>verifier</a>. This
@@ -1756,9 +1756,9 @@ requirements.
         <h3> Predicate Proofs</h3>
       <p>
 A predicate proof is a proof that answers a true-or-false question. For example,
-"Are you over the age of 18?" Using non-zkp methods, predicate proofs must be
+"Are you over the age of 18?" Using non-ZKP methods, predicate proofs must be
 provided by the <a>issuer</a> as one of the attributes of a <a>verifiable
-credential</a>. This means that in order for a non-zkp <a>credential</a> to be
+credential</a>. This means that in order for a non-ZKP <a>credential</a> to be
 used to prove age-over-18, it would need to contain the attribute age-over-18.
 This <a>credential</a> could not be used to reveal your birthdate, unless it
 also included a birthdate <a>claim</a>. It also couldn't be used to prove
@@ -1780,7 +1780,7 @@ revoke a <a>credential</a>, <a>verifiers</a> must be able to determine a
 <a>credential's</a> revocation status.
       </p>
       <p>
-Non-zkp methods for checking revocation status may require the <a>verifier</a>
+Non-ZKP methods for checking revocation status may require the <a>verifier</a>
 to directly contact the <a>issuer</a>. Less restrictive checks could be made
 against a list of revoked credential identifiers posted in a public registry.
 The <a>holder</a> is required to disclose the <a>credential</a> identifier to
@@ -1799,7 +1799,7 @@ credentials</a> they have issued.
       <p>
 Correlation is the ability to link data from multiple interactions to a single
 user. Correlation can be performed by a <a>verifier</a>, by <a>issuers</a> and
-<a>verifiers</a> working together, or a 3rd party observing the interactions on
+<a>verifiers</a> working together, or by a third party observing interactions on
 the network. Correlation is a way to collect data about a <a>holder</a> without
 the <a>holder's</a> consent or knowledge. It is also a way to deanonymize
 private transactions. For example, a <a>holder</a> might use a <a>verifiable
@@ -1813,12 +1813,12 @@ One way to reduce correlation is through data minimization, by sharing only the
 information required to complete a transaction. Another way to reduce
 correlation is to make each interaction look unique. When interactions disclose
 unique identifiers, an observer can link multiple interactions to a single user.
-Non-zkp methods with only a single identifier per user create correlation
+Non-ZKP methods with only a single identifier per user create correlation
 opportunities by embedding that identifier in multiple credentials or
-interactions. Zero-knowledge proofs provide unlinkability between interactions.
+interactions. Zero-knowledge proofs remove this linkability between interactions.
       </p>
       <p>
-Non-zkp methods that reveal all attributes and use unique identifiers are
+Non-ZKP methods that reveal all attributes and use unique identifiers are
 completely correlatable. Zero-knowledge methods enable data minimization and
 allow <a>holders</a> to have trusted interactions with <a>verifiers</a> without
 dependence on unique identifiers.
@@ -1831,13 +1831,13 @@ credential</a> <a>holder</a>.
       </p>
       <h3>Drawbacks</h3>
       <p>
-Zero-knowledge methods are more complex than non-zkp methods. Cryptographic
+Zero-knowledge methods are more complex than non-ZKP methods. Cryptographic
 engineers must understand complicated protocols and write code to create
 libraries that support zero-knowledge methods. System implementers can then use
 these libraries without being exposed to the underlying complexity, but must
 trust that the implementation was done correctly. They can utilize the features
 of selective disclosure and bring the benefits of the method to their customers
-without a significant increase in effort over using non-zkp methods.
+without a significant increase in effort over using non-ZKP methods.
       </p>
       <p>
 Due to the underlying complexity, zero-knowledge methods require more CPU and
