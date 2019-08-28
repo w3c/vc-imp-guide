@@ -1910,7 +1910,7 @@ needed, rather than as a complete set, up front.
 Selective disclosure is the ability of a <a>holder</a> to select some elements
 of a <a>verifiable credential</a> to share with a <a>verifier</a>, without
 revealing the rest. There are several different methods which support selective
-disclosure, we provide two examples:
+disclosure, we provide three examples:
         </p>
         <ul>
           <li>
@@ -1931,6 +1931,17 @@ claims which need to be revealed to a <a>verifier</a>, rather than requiring
 all of the credential's claims to be revealed.
 
           </li>
+          <li>
+<b>Hashed Values</b> - With this method, the <a>issuer</a> issues a single
+<a>verifiable credential</a> containing all the <a>issuer</a>'s <a>claims</a>
+about the subject.
+However, each <a>claim</a> value is created by hashing the actual value with
+a different nonce so that the <a>verifier</a> cannot determine the actual value.
+There are several different ways of modeling this, and
+no standard way is currently defined. The <a>holder</a> includes the actual
+values of the <a>claims</a> that are to be revealed to the <a>verifier</a> in
+the <a>verifiable presentation</a>.
+
         </ul>
         <p>
 
