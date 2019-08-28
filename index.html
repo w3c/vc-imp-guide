@@ -427,12 +427,10 @@ that includes a <code>domain</code> and <code>challenge</code>. This also
 helps prevent a <a>verifier</a> from reusing a <a>verifiable presentation</a>
 as their own.
       </p>
-
       <p>
 The <code>domain</code> value can be any string or URI, and the
 <code>challenge</code> should be a randomly generated string.
       </p>
-
       <p>
 The following sample <a>verifiable presentation</a> is for authenticating to
 a website, <code>https://example.com</code>.
@@ -458,6 +456,69 @@ a website, <code>https://example.com</code>.
 }
       </pre>
 
+    </section>
+
+    <section>
+      <h4>Using the JWT aud claim</h3>
+
+      <p>
+The JWT <code>aud</code> <a>claim</a> name refers to (i.e., identifies) the
+intended audience of the <a>verifiable presentation</a> (i.e., the <a>verifier(s)</a>).
+Consequently this is an alternative to the Linked Data Proof method specified
+above. It lets the <a>holder</a> indicate which <a>verifier(s)</a> it allows
+to verify the <a>verifiable presentation</a>. Any JWT-compliant <a>verifier</a>
+that is not identified in the <code>aud</code> is required to
+reject the JWT (see <a href="https://tools.ietf.org/html/rfc7519">RFC 7519</a>).
+      </p>
+      <p>
+<a href="https://tools.ietf.org/html/rfc7519">RFC 7519</a> defines
+<code>aud</code> as "an array of case-sensitive strings, each containing a
+<code>StringOrURI</code> value". For use in a <a>verifiable presentation</a>,
+we strongly suggest that this be restricted to a single URI value, equal to the URI
+of the intended verifier.
+      </p>
+      <p>
+The <a href="https://w3c.github.io/vc-data-model/">data model specification</a>
+provides no guidance of how to transform this JWT <a>claim</a> into a property
+of the <a>verifiable presentation</a>, nor vice versa. We strongly suggest that the
+<code>aud</code> JWT <a>claim</a> be mapped to the <code>verifier</code> 
+<a>property</a> of the <a>verifiable presentation</a>.
+      </p>
+
+      <pre class="example nohighlight" title="An example of a
+targeted verifiable presentation using the verifier property">
+{
+  "@context": [
+    "https://www.w3.org/2018/credentials/v1",
+    "https://www.w3.org/2019/credentials/v1.1"
+  ],
+  "type": "VerifiablePresentation",
+  "verifiableCredential": [" <span class="comment">...</span> "],
+  "holder": "did:example:ebfeb1f712ebc6f1c276e12ec21",
+  "verifier": "https://some.verifier.com"
+}
+      </pre>
+
+      <pre class="example nohighlight" title="An example JWT for a
+targeted verifiable presentation using the JWT aud claim">
+{
+  "iss": "did:example:ebfeb1f712ebc6f1c276e12ec21",
+  "jti": "urn:uuid:3978344f-8596-4c3a-a978-8fcaba3903c5",
+  "aud": "https://some.verifier.com",
+  "nbf": 1541493724,
+  "iat": 1541493724,
+  "exp": 1573029723,
+  "nonce": "343s$FSFDa-",
+  "vp": {
+    "@context": [
+      "https://www.w3.org/2018/credentials/v1",
+      "https://www.w3.org/2018/credImpGuide/v1"
+    ],
+    "type": "VerifiablePresentation",
+    "verifiableCredential": [" <span class="comment">...</span> "]
+  }
+}
+      </pre>
     </section>
 
     <section>
@@ -1973,7 +2034,7 @@ verifier websites.
       </p>
       <p>
         You can review the <a href="https://w3c.github.io/vc-test-suite/implementations/">current
-        draft implementation report</a>, which contains conformance testing results for submitted
+        implementation report</a>, which contains conformance testing results for submitted
         implementations supporting the Verifiable Credentials Data Model specification.
       </p>
     </section>
