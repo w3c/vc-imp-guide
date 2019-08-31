@@ -671,18 +671,21 @@ you must only adhere to the above referenced standards.
         <h3>Extending JWTs</h3>
 
         <p>
-The VC Data Model specifies a minimal set of JWT <a>claim</a> names that must be used
-to represent <a>verifiable credential</a> properties and <code>credentialSubject</code>
-properties. Implementers may wish to extend a <a>verifiable credential<a> with a
-property that is either new e.g. drivingLicenseNumber, or that is already defined 
-as a JWT claim with IANA e.g.<a>given_name</a>. It is recommended that these properties
+The VC Data Model specifies a minimal set of JWT <a>claim</a> names that
+are to be used to represent the <a>properties</a> of a <a>verifiable credential</a>
+and its <code>credentialSubject</code>. Implementers may wish to extend a
+<a>verifiable credential<a> with some
+<a>properties</a> that are new (e.g., <code>drivingLicenseNumber</code>,
+<code>mySpecialProperty</code> or that are already registered with IANA
+as JWT <a>claim/a> names (e.g., <code>given_name</code>.
+<code>phone_number_verified</code>. It is recommended that these properties
 are placed directly in either the JWT <code>vc</code> <a>claim</a> or
 <code>credentialSubject</code> property of the <code>vc</code> <a>claim<a> as appropriate.
         </p>
         <p>
-However, if implementers wish to use JWT <a>claim<a> names for these extensions, 
+However, if implementers wish to use JWT <a>claim<a> names for these extensions,
 the following steps are recommended. Note that there are three types of JWT
-<a>claim<a> name: public, named with a URI; private, named with a local name; and 
+<a>claim<a> name: public, named with a URI; private, named with a local name; and
 registered with IANA.
         <ol>
           <li>
@@ -690,17 +693,17 @@ First, check with IANA (https://www.iana.org/assignments/jwt/jwt.xhtml) to see
 if the JWT <a>claim<a> name already exists.
           </li>
           <li>
-If it does not exist, the implementer may wish to either give it a public name 
+If it does not exist, the implementer may wish to either give it a public name
 (i.e., a URI), or give it a local name (i.e., any string), or register it with IANA.
           </li>
           <li>
 Once the JWT <a>claim<a> name exists, define encoding/decoding
 transformation rules to convert the <a>verifiable credential</a> property
-or <code>credentialSubject</code> property into the JWT <a>claim<a>. 
+or <code>credentialSubject</code> property into the JWT <a>claim<a>.
            <ul>
            <li>
 <em>Encoding</em>: Remove the property from the <a>verifiable credential</a>, encode it
-according to the defined rule, and place it in the JWT <a>claim<a> 
+according to the defined rule, and place it in the JWT <a>claim<a>
            </li>
           <li>
 <em>Decoding</em>: Remove the value from the JWT <a>claim<a>, decode it according to the
