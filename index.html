@@ -675,13 +675,14 @@ The Verifiable Credentials Data Model specifies a minimal set of
 JWT <a>claim</a> names that are to be used to represent the
 <a>properties</a> of a <a>verifiable credential</a>
 and its <code>credentialSubject</code>. Implementers may wish to extend a
-<a>verifiable credential<a> with some
+<a>verifiable credential</a> with some
 <a>properties</a> that are new (e.g., <code>drivingLicenseNumber</code>,
 <code>mySpecialProperty</code> or that are already registered with IANA
 as JWT <a>claim/a> names (e.g., <code>given_name</code>.
 <code>phone_number_verified</code>. 
       </p>
       <p>
+<!-- Should link to the relevant section of the data model spec. -->
 As the Verifiable Credentials Data Model states, such extension properties are best
 placed directly in either the JWT <code>vc</code> <a>claim</a> or the
 <code>credentialSubject</code> property of the <code>vc</code> <a>claim</a>
@@ -696,7 +697,7 @@ registered with IANA.
         <ol>
           <li>
 First, check with IANA (https://www.iana.org/assignments/jwt/jwt.xhtml) to see
-if the JWT <a>claim<a> name already exists.
+if the JWT <a>claim</a> name already exists.
           </li>
           <li>
 If it does not exist, the implementer may wish to either give it a public name
