@@ -39,12 +39,18 @@
         // if there a publicly available Editor's Draft, this is the link
         edDraftURI: "https://w3c.github.io/vc-imp-guide/",
 
+        implementationReportURI: "https://w3c.github.io/vc-test-suite/implementations/",
+        testSuiteURI: "https://github.com/w3c/vc-test-suite/",
+
         // if this is a LCWD, uncomment and set the end of its review period
         // lcEnd: "2009-08-05",
 
         // editors, add as many as you like
         // only "name" is required
-        editors:  [{ name: "Andrei Sambra", url: "https://deiu.me/"}],
+        editors:  [{
+          name: "Andrei Sambra", url: "https://deiu.me/",
+          company: "AKASHA Foundation", companyURL: "https://akasha.org/"
+        }],
 
         // authors, add as many as you like.
         // This is optional, uncomment if you have authors as well as editors.
@@ -251,7 +257,7 @@ these are described in greater detail below.
           <h4>Hashlinks</h4>
 
           <p>
-[[[HASHLINK]]] can be used to provide content integrity for links to external
+[[HASHLINK]]s can be used to provide content integrity for links to external
 resources.
           </p>
         </section>
@@ -310,7 +316,7 @@ integrity protection mechanism built into it.
 The recommended way of referencing an external credential from within a
 <a>verifiable credential</a> is to use a linking mechanism that
 cryptographically binds the contents of the target document to the URI itself.
-One way to accomplish this would be to use [[[HASHLINK]]] or an equivalent URI
+One way to accomplish this would be to use [[HASHLINK]]s or an equivalent URI
 scheme. Another mechanism would be to encode the full contents of the target
 credential in the URI itself, although this is much less commonly used, and the
 discussion of the practical limits of URI length are outside the scope of this
