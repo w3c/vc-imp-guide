@@ -70,7 +70,19 @@
         // Team Contact.
         wgPatentURI:  "https://www.w3.org/2004/01/pp-impl/98922/status",
         maxTocLevel: 4,
-        inlineCSS: true
+        inlineCSS: true,
+        "localBiblio": {
+            "HASHLINK": {
+              "title": "Cryptographic Hyperlinks",
+              "href": "https://tools.ietf.org/html/draft-sporny-hashlink",
+              "authors": [
+                "Manu Sporny"
+              ],
+              "status": "Internet-Draft",
+              "publisher": "Internet Engineering Task Force (IETF)",
+              "id": "hashlink"
+            }
+        }
       };
     </script>
     <style>
@@ -239,8 +251,8 @@ these are described in greater detail below.
           <h4>Hashlinks</h4>
 
           <p>
-<a href="https://tools.ietf.org/html/draft-sporny-hashlink">Hashlink URLs</a>
-can be used to provide content integrity for links to external resources.
+[[[HASHLINK]]] can be used to provide content integrity for links to external
+resources.
           </p>
         </section>
 
@@ -298,11 +310,11 @@ integrity protection mechanism built into it.
 The recommended way of referencing an external credential from within a
 <a>verifiable credential</a> is to use a linking mechanism that
 cryptographically binds the contents of the target document to the URI itself.
-One way to accomplish this would be to use <a>hashlinks</a> or an equivalent
-URI scheme. Another mechanism would be to encode the full contents of the
-target credential in the URI itself, although this is much less commonly used,
-and the discussion of the practical limits of URI length are outside the scope
-of this document.
+One way to accomplish this would be to use [[[HASHLINK]]] or an equivalent URI
+scheme. Another mechanism would be to encode the full contents of the target
+credential in the URI itself, although this is much less commonly used, and the
+discussion of the practical limits of URI length are outside the scope of this
+document.
         </p>
       </section>
 
@@ -331,7 +343,7 @@ wants to dispute a <a>credential</a> issued by an <a>issuer</a>:
       <ul>
         <li>
 A <a>subject</a> disputes a claim made by the <a>issuer</a>. For example, the
-<code>address</code> <a>property</a> is incorrect or out of date.
+<code>address</code> property is incorrect or out of date.
         </li>
         <li>
 An <a>entity</a> disputes a potentially false claim made by the <a>issuer</a>
@@ -463,9 +475,9 @@ a website, <code>https://example.com</code>.
 
       <p>
 The JWT <code>aud</code> <a>claim</a> name refers to (i.e., identifies) the
-intended audience of the <a>verifiable presentation</a> (i.e., the <a>verifier(s)</a>).
+intended audience of the <a>verifiable presentation</a> (i.e., the <a>verifier</a>(s)).
 Consequently this is an alternative to the Linked Data Proof method specified
-above. It lets the <a>holder</a> indicate which <a>verifier(s)</a> it allows
+above. It lets the <a>holder</a> indicate which <a>verifier</a>(s) it allows
 to verify the <a>verifiable presentation</a>. Any JWT-compliant <a>verifier</a>
 that is not identified in the <code>aud</code> is required to
 reject the JWT (see <a href="https://tools.ietf.org/html/rfc7519">RFC 7519</a>).
@@ -482,7 +494,7 @@ The <a href="https://w3c.github.io/vc-data-model/">data model specification</a>
 provides no guidance of how to transform this JWT <a>claim</a> into a property
 of the <a>verifiable presentation</a>, nor vice versa. We strongly suggest that the
 <code>aud</code> JWT <a>claim</a> be mapped to the <code>verifier</code> 
-<a>property</a> of the <a>verifiable presentation</a>.
+property of the <a>verifiable presentation</a>.
       </p>
 
       <pre class="example nohighlight" title="An example of a
@@ -1832,7 +1844,7 @@ prove age-over-25, all without revealing the <a>holder's</a> birthdate.
       <p>
 <a>Verifiable credentials</a> may need to be revocable. If an <a>issuer</a> can
 revoke a <a>credential</a>, <a>verifiers</a> must be able to determine a
-<a>credential's</a> revocation status.
+<a>credential</a>'s revocation status.
       </p>
       <p>
 Non-ZKP methods for checking revocation status may require the <a>verifier</a>
@@ -2013,9 +2025,9 @@ values.
         </p>
         <p>
 Predicate proofs may be enabled by <a>verifiable credential</a> <a>issuers</a>
-as claims, e.g., the <a>credentialSubject</a> may include an
-<code>ageOver18</code> <a>property</a> rather than a <code>birthdate</code>
-<a>property</a>. This would allow <a>holders</a> to provide proof that they are
+as claims, e.g., the <code>credentialSubject</code> may include an
+<code>ageOver18</code> property rather than a <code>birthdate</code>
+property. This would allow <a>holders</a> to provide proof that they are
 over 18 without revealing their birthdates.
         </p>
         <p>
@@ -2023,9 +2035,9 @@ Certain signature types enable predicate proofs by allowing claims from a
 standard <a>verifiable credential</a> to be presented as predicates. For
 example, a <a href="https://groups.csail.mit.edu/cis/pubs/lysyanskaya/cl02b.pdf">
 Camenisch-Lysyanskaya signed</a> <a>verifiable credential</a> that contains a
-<code>credentialSubject</code> with a <code>birthdate</code> <a>property</a> may
+<code>credentialSubject</code> with a <code>birthdate</code> property may
 be included in a <a>verifiable presentation</a> as a derived credential that
-contains an <code>ageOver18</code> <a>property</a>.
+contains an <code>ageOver18</code> property.
         </p>
       </section>
       <section>
