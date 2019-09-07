@@ -186,7 +186,7 @@ machine-readable information associated with a <a>verifiable credential</a>.
     <section class="informative">
       <h2>Terminology</h2>
 
-      <div data-include="https://w3c.github.io/vc-data-model/terms.html"
+      <div data-include="./terms.html"
         data-oninclude="restrictReferences">
       </div>
     </section>
@@ -331,7 +331,7 @@ wants to dispute a <a>credential</a> issued by an <a>issuer</a>:
       <ul>
         <li>
 A <a>subject</a> disputes a claim made by the <a>issuer</a>. For example, the
-<code>address</code> <a>property</a> is incorrect or out of date.
+<code>address</code> property is incorrect or out of date.
         </li>
         <li>
 An <a>entity</a> disputes a potentially false claim made by the <a>issuer</a>
@@ -482,7 +482,7 @@ The <a href="https://w3c.github.io/vc-data-model/">data model specification</a>
 provides no guidance of how to transform this JWT <a>claim</a> into a property
 of the <a>verifiable presentation</a>, nor vice versa. We strongly suggest that the
 <code>aud</code> JWT <a>claim</a> be mapped to the <code>verifier</code> 
-<a>property</a> of the <a>verifiable presentation</a>.
+property of the <a>verifiable presentation</a>.
       </p>
 
       <pre class="example nohighlight" title="An example of a
@@ -2013,9 +2013,9 @@ values.
         </p>
         <p>
 Predicate proofs may be enabled by <a>verifiable credential</a> <a>issuers</a>
-as claims, e.g., the <a>credentialSubject</a> may include an
-<code>ageOver18</code> <a>property</a> rather than a <code>birthdate</code>
-<a>property</a>. This would allow <a>holders</a> to provide proof that they are
+as claims, e.g., the <code>credentialSubject</code> may include an
+<code>ageOver18</code> property rather than a <code>birthdate</code>
+property. This would allow <a>holders</a> to provide proof that they are
 over 18 without revealing their birthdates.
         </p>
         <p>
@@ -2023,9 +2023,9 @@ Certain signature types enable predicate proofs by allowing claims from a
 standard <a>verifiable credential</a> to be presented as predicates. For
 example, a <a href="https://groups.csail.mit.edu/cis/pubs/lysyanskaya/cl02b.pdf">
 Camenisch-Lysyanskaya signed</a> <a>verifiable credential</a> that contains a
-<code>credentialSubject</code> with a <code>birthdate</code> <a>property</a> may
+<code>credentialSubject</code> with a <code>birthdate</code> property may
 be included in a <a>verifiable presentation</a> as a derived credential that
-contains an <code>ageOver18</code> <a>property</a>.
+contains an <code>ageOver18</code> property.
         </p>
       </section>
       <section>
