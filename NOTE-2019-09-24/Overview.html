@@ -1,4 +1,4 @@
-<!DOCTYPE html><html dir="ltr" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8"><meta name="generator" content="ReSpec 24.32.1"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- EXAMPLES --- */
+<!DOCTYPE html><html dir="ltr" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8"><meta name="generator" content="ReSpec 24.32.2"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><style>/* --- EXAMPLES --- */
 span.example-title {
     text-transform: none;
 }
@@ -454,10 +454,9 @@ var[data-type]:hover::before {
   opacity: 1;
 }
 </style><script id="initialUserConfig" type="application/json">{
-  "specStatus": "NOTE",
+  "specStatus": "WG-NOTE",
   "shortName": "vc-imp-guide",
   "subtitle": "Implementation guidance for Verifiable Credentials",
-  "publishDate": "2019-09-24",
   "localBiblio": {
     "REST": {
       "title": "Architectural Styles and the Design of Network-based Software Architectures",
@@ -590,13 +589,13 @@ var[data-type]:hover::before {
     },
     {
       "name": "Oliver Terbu",
-      "url": "oliver.terbu@consensys.net",
+      "url": "mailto:oliver.terbu@consensys.net",
       "company": "Consensys",
       "companyURL": "https://consensys.net/"
     },
     {
       "name": "Dmitri Zagidulin",
-      "url": "dzagidulin@gmail.com",
+      "url": "mailto:dzagidulin@gmail.com",
       "company": "Digital Bazaar",
       "companyURL": "https://digitalbazaar.com"
     },
@@ -613,7 +612,7 @@ var[data-type]:hover::before {
   "wgPatentURI": "https://www.w3.org/2004/01/pp-impl/98922/status",
   "maxTocLevel": 4,
   "inlineCSS": true,
-  "publishISODate": "2019-09-24T00:00:00.000Z",
+  "publishISODate": "2019-09-10T00:00:00.000Z",
   "generatedSubtitle": "Working Group Note 10 September 2019"
 }</script><meta name="description" content="This document provides implementation guidance for Verifiable Credentials."><script type="application/ld+json">{
   "@context": [
@@ -639,13 +638,12 @@ var[data-type]:hover::before {
   ],
   "id": "https://www.w3.org/TR/vc-imp-guide/",
   "type": [
-    "TechArticle",
-    "w3p:NOTE"
+    "TechArticle"
   ],
   "name": "Verifiable Credentials Implementation Guidelines 1.0",
   "inLanguage": "en",
   "license": "https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document",
-  "datePublished": "2019-09-24",
+  "datePublished": "2019-09-10",
   "copyrightHolder": {
     "name": "World Wide Web Consortium",
     "url": "https://www.w3.org/"
@@ -692,7 +690,7 @@ var[data-type]:hover::before {
     {
       "type": "Person",
       "name": "Oliver Terbu",
-      "url": "oliver.terbu@consensys.net",
+      "url": "mailto:oliver.terbu@consensys.net",
       "worksFor": {
         "name": "Consensys",
         "url": "https://consensys.net/"
@@ -701,7 +699,7 @@ var[data-type]:hover::before {
     {
       "type": "Person",
       "name": "Dmitri Zagidulin",
-      "url": "dzagidulin@gmail.com",
+      "url": "mailto:dzagidulin@gmail.com",
       "worksFor": {
         "name": "Digital Bazaar",
         "url": "https://digitalbazaar.com"
@@ -731,13 +729,13 @@ var[data-type]:hover::before {
       "url": "https://www.w3.org/TR/vc-data-model/"
     }
   ]
-}</script><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-NOTE"></head>
+}</script><link rel="stylesheet" href="https://www.w3.org/StyleSheets/TR/2016/W3C-WG-NOTE.css"></head>
   <body class="h-entry informative"><div class="head">
       <a class="logo" href="https://www.w3.org/"><img alt="W3C" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72" height="48"></a> <h1 id="title" class="title p-name">Verifiable Credentials Implementation Guidelines 1.0</h1>
       <h2 id="subtitle" class="subtitle">Implementation guidance for Verifiable Credentials</h2>
       <h2>
         W3C Working Group Note
-        <time class="dt-published" datetime="2019-09-24">10 September 2019</time>
+        <time class="dt-published" datetime="2019-09-10">10 September 2019</time>
       </h2>
       <dl>
         <dt>This version:</dt><dd>
@@ -763,9 +761,9 @@ var[data-type]:hover::before {
             (<a class="p-org org h-org h-card" href="https://digitalbazaar.com/">Digital Bazaar</a>)
           </dd><dd class="p-author h-card vcard"><a class="u-url url p-name fn" href="http://manu.sporny.org/">Manu Sporny</a>
             (<a class="p-org org h-org h-card" href="https://digitalbazaar.com/">Digital Bazaar</a>)
-          </dd><dd class="p-author h-card vcard"><a class="u-url url p-name fn" href="oliver.terbu@consensys.net">Oliver Terbu</a>
+          </dd><dd class="p-author h-card vcard"><a class="u-url url p-name fn" href="mailto:oliver.terbu@consensys.net">Oliver Terbu</a>
             (<a class="p-org org h-org h-card" href="https://consensys.net/">Consensys</a>)
-          </dd><dd class="p-author h-card vcard"><a class="u-url url p-name fn" href="dzagidulin@gmail.com">Dmitri Zagidulin</a>
+          </dd><dd class="p-author h-card vcard"><a class="u-url url p-name fn" href="mailto:dzagidulin@gmail.com">Dmitri Zagidulin</a>
             (<a class="p-org org h-org h-card" href="https://digitalbazaar.com">Digital Bazaar</a>)
           </dd><dd class="p-author h-card vcard"><a class="u-url url p-name fn" href="https://www.linkedin.com/in/bzundel/">Brent Zundel</a>
             (<a class="p-org org h-org h-card" href="https://evernym.com/">Evernym</a>)
@@ -811,6 +809,14 @@ Credentials Community Group</a>. Please consult that group for the most
 up to date version of this document.
       </p>
       <p>
+The work on this document was carried out under tight time constraints due to
+limitations of the <abbr title="World Wide Web Consortium">W3C</abbr> process and publishing deadlines. Under such conditions,
+errors are unavoidable and some of the ideas presented here are incomplete.
+The Working Group hopes that in the future, <abbr title="World Wide Web Consortium">W3C</abbr> process can be revised to better
+support the dynamic nature of standards work in a more consistent way across
+different groups.
+      </p>
+      <p>
 Comments regarding this document are welcome. Please file issues
 directly on <a href="https://github.com/w3c/vc-data-model/issues/">GitHub</a>,
 or send them to
@@ -836,23 +842,13 @@ or send them to
       <abbr title="World Wide Web Consortium">W3C</abbr> Membership. This is a draft document and may be updated, replaced or
       obsoleted by other documents at any time. It is inappropriate to cite this
       document as other than work in progress.
-    </p><p>
+    </p><p data-deliverer="98922">
       
         This document was produced by a group
         operating under the
         <a href="https://www.w3.org/Consortium/Patent-Policy/"><abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
        
       
-                  <abbr title="World Wide Web Consortium">W3C</abbr> maintains a
-                  <a rel="disclosure" href="https://www.w3.org/2004/01/pp-impl/98922/status">public list of any patent disclosures</a>
-            made in connection with the deliverables of
-            the group; that page also includes
-            instructions for disclosing a patent. An individual who has actual
-            knowledge of a patent which the individual believes contains
-            <a href="https://www.w3.org/Consortium/Patent-Policy/#def-essential">Essential Claim(s)</a>
-            must disclose the information in accordance with
-            <a href="https://www.w3.org/Consortium/Patent-Policy/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>.
-          
       
     </p><p>
                   This document is governed by the
@@ -919,180 +915,180 @@ machine-readable information associated with a <a href="#dfn-verifiable-credenti
     <section class="informative" id="terminology">
       <h2 id="x3-terminology"><bdi class="secno">3. </bdi>Terminology<a class="self-link" aria-label="§" href="#terminology"></a></h2><p><em>This section is non-normative.</em></p>
 
-      <p>
-      The following terms are used to describe concepts in this specification.
-      </p>
+      <div data-oninclude="restrictReferences"><p>
+The following terms are used to describe concepts in this specification.
+</p>
 
-      <dl class="termlist">
-        <dt><dfn data-lt="claims|claim" data-dfn-type="dfn" id="dfn-claims">claim</dfn></dt>
-        <dd>
-      An assertion made about a <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subject</a>.
-        </dd>
-        <dt><dfn data-lt="credential|credentials|credential's" data-dfn-type="dfn" id="dfn-credential">credential</dfn></dt>
-        <dd>
-      A set of one or more <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a> made by an <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn">issuer</a>. A
-      <dfn data-lt="verifiable credentials|verifiable credential" data-dfn-type="dfn" id="dfn-verifiable-credentials">verifiable credential</dfn> is a
-      tamper-evident credential that has authorship that can be cryptographically
-      verified. Verifiable credentials can be used to build
-      <a href="#dfn-verifiable-presentations" class="internalDFN" data-link-type="dfn">verifiable presentations</a>, which can also be cryptographically verified.
-      The <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a> in a credential can be about different <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subjects</a>.
-        </dd>
-        <dt><dfn data-dfn-type="dfn" id="dfn-data-minimization">data minimization</dfn></dt>
-        <dd>
-      The act of limiting the amount of shared data strictly to the minimum
-      necessary to successfully accomplish a task or goal.
-        </dd>
-        <dt><dfn data-lt="decentralized identifiers|DID|DIDs|decentralized identifier" data-dfn-type="dfn" data-plurals="dids|did" id="dfn-decentralized-identifiers">decentralized identifier</dfn></dt>
-        <dd>
-      A portable URL-based identifier, also known as a <strong><em>DID</em></strong>,
-      associated with an <a href="#dfn-entities" class="internalDFN" data-link-type="dfn">entity</a>. These identifiers are most often used in a
-      <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a> and are associated with <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subjects</a> such that a
-      <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a> itself can be easily ported from one
-      <a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn">repository</a> to another without the need to reissue the <a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credential</a>.
-      An example of a DID is <code>did:example:123456abcdef</code>.
-        </dd>
-        <dt><dfn data-lt="decentralized identifier documents|DID document|DID documents|decentralized identifier document" data-dfn-type="dfn" id="dfn-decentralized-identifier-documents">decentralized identifier document</dfn></dt>
-        <dd>
-      Also referred to as a <strong><em>DID document</em></strong>, this is a document 
-      that is accessible using a <a href="#dfn-verifiable-data-registries" class="internalDFN" data-link-type="dfn">verifiable data registry</a> and contains
-      information related to a specific <a href="#dfn-decentralized-identifiers" class="internalDFN" data-link-type="dfn">decentralized identifier</a>, such as the
-      associated <a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn">repository</a> and public key information.
-        </dd>
-        <dt><dfn data-lt="predicates|derived predicates|derived predicate" data-dfn-type="dfn" id="dfn-predicates">derived predicate</dfn></dt>
-        <dd>
-      A verifiable, boolean assertion about the value of another attribute in a
-      <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a>. These are useful in zero-knowledge-proof-style
-      <a href="#dfn-verifiable-presentations" class="internalDFN" data-link-type="dfn">verifiable presentations</a> because they can limit information disclosure.
-      For example, if a <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a> contains an attribute
-      for expressing a specific height in centimeters, a derived predicate
-      might reference the height attribute in the <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a>
-      demonstrating that the <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn">issuer</a> attests to a height value meeting the
-      minimum height requirement, without actually disclosing the specific height
-      value. For example, the <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subject</a> is taller than 150 centimeters.
-        </dd>
-        <dt><dfn data-dfn-type="dfn" id="dfn-digital-signature">digital signature</dfn></dt>
-        <dd>
-      A mathematical scheme for demonstrating the authenticity of a digital message.
-        </dd>
-        <dt><dfn data-lt="entities|entity's|entity" data-dfn-type="dfn" id="dfn-entities">entity</dfn></dt>
-        <dd>
-      A thing with distinct and independent existence, such as a person,
-      organization, or device that performs one or more roles in the ecosystem.
-        </dd>
-        <dt><dfn data-lt="graphs|graph" data-dfn-type="dfn" id="dfn-graphs">graph</dfn></dt>
-        <dd>
-      A network of information composed of <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subjects</a> and their relationship
-      to other <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subjects</a> or data.
-        </dd>
-        <dt><dfn data-lt="hashlinks|hashlink" data-dfn-type="dfn" id="dfn-hashlinks">hashlink</dfn></dt>
-        <dd>
-      Hashlink URLs can be used to provide content integrity for links to external resources. 
-        </dd>
-        <dt><dfn data-lt="holders|holder's|holders'|holder" data-dfn-type="dfn" id="dfn-holders">holder</dfn></dt>
-        <dd>
-      A role an <a href="#dfn-entities" class="internalDFN" data-link-type="dfn">entity</a> might perform by possessing one or more
-      <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a> and generating <a href="#dfn-presentations" class="internalDFN" data-link-type="dfn">presentations</a> from them.
-      A holder is usually, but not always, a <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subject</a> of the <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable
-      credentials</a> they are holding. Holders store their <a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credentials</a> in
-      <a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn">credential repositories</a>.
-        </dd>
-        <dt><dfn data-lt="identities|identity's|identity" data-dfn-type="dfn" id="dfn-identities">identity</dfn></dt>
-        <dd>
-      The means for keeping track of <a href="#dfn-entities" class="internalDFN" data-link-type="dfn">entities</a> across contexts. Digital
-      identities enable tracking and customization of <a href="#dfn-entities" class="internalDFN" data-link-type="dfn">entity</a> interactions
-      across digital contexts, typically using identifiers and attributes. Unintended
-      distribution or use of identity information can compromise privacy. Collection
-      and use of such information should follow the principle of
-      <a href="#dfn-data-minimization" class="internalDFN" data-link-type="dfn">data minimization</a>.
-        </dd>
-        <dt><dfn data-lt="identity providers|idp|identity provider" data-dfn-type="dfn" id="dfn-identity-providers">identity provider</dfn></dt>
-        <dd>
-      An identity provider, sometimes abbreviated as <em>IdP</em>, is a system
-      for creating, maintaining, and managing identity information for
-      <a href="#dfn-holders" class="internalDFN" data-link-type="dfn">holders</a>, while providing authentication services to
-      <a href="#dfn-relying-parties" class="internalDFN" data-link-type="dfn">relying party</a> applications within a federation or distributed network.
-      In this case the <a href="#dfn-holders" class="internalDFN" data-link-type="dfn">holder</a> is always the <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subject</a>. Even if the
-      <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a> are bearer <a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credentials</a>, it is assumed the
-      <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a> remain with the <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subject</a>, and if they are
-      not, they were stolen by an attacker. This specification does not use this term
-      unless comparing or mapping the concepts in this document to other
-      specifications. This specification decouples the <a href="#dfn-identity-providers" class="internalDFN" data-link-type="dfn">identity provider</a>
-      concept into two distinct concepts: the <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn">issuer</a> and the <a href="#dfn-holders" class="internalDFN" data-link-type="dfn">holder</a>.
-        </dd>
-        <dt><dfn data-lt="issuers|issuer's|issuer" data-dfn-type="dfn" id="dfn-issuers">issuer</dfn></dt>
-        <dd>
-      A role an <a href="#dfn-entities" class="internalDFN" data-link-type="dfn">entity</a> can perform by asserting <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a> about one or
-      more <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subjects</a>, creating a <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a> from these
-      <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a>, and transmitting the <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a> to a
-      <a href="#dfn-holders" class="internalDFN" data-link-type="dfn">holder</a>.
-        </dd>
-        <dt><dfn data-lt="presentations|presentation" data-dfn-type="dfn" id="dfn-presentations">presentation</dfn></dt>
-        <dd>
-      Data derived from one or more <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a>, issued by one or
-      more <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn">issuers</a>, that is shared with a specific <a href="#dfn-verifier" class="internalDFN" data-link-type="dfn">verifier</a>. A
-      <dfn data-lt="verifiable presentations|verifiable presentation" data-dfn-type="dfn" id="dfn-verifiable-presentations">verifiable presentation</dfn>
-      is a tamper-evident presentation encoded in such a way that authorship of the
-      data can be trusted after a process of cryptographic verification. Certain
-      types of verifiable presentations might contain data that is synthesized from,
-      but do not contain, the original <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a> (for example,
-      zero-knowledge proofs).
-        </dd>
-        <dt><dfn data-lt="credential repository|credential repositories|repositories|repository" data-dfn-type="dfn" id="dfn-credential-repository">repository</dfn></dt>
-        <dd>
-      A program, such as a storage vault or personal <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a>
-      wallet, that stores and protects access to <a href="#dfn-holders" class="internalDFN" data-link-type="dfn">holders'</a>
-      <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a>.
-        </dd>
-        <dt><dfn data-dfn-type="dfn" id="dfn-selective-disclosure">selective disclosure</dfn></dt>
-        <dd>
-      The ability of a <a href="#dfn-holders" class="internalDFN" data-link-type="dfn">holder</a> to make fine-grained decisions about what 
-      information to share.
-        </dd>
-        <dt><dfn data-lt="subjects|subject's|subject" data-dfn-type="dfn" id="dfn-subjects">subject</dfn></dt>
-        <dd>
-      A thing about which <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a> are made.
-        </dd>
-        <dt><dfn data-dfn-type="dfn" id="dfn-user-agent">user agent</dfn></dt>
-        <dd>
-      A program, such as a browser or other Web client, that mediates the
-      communication between <a href="#dfn-holders" class="internalDFN" data-link-type="dfn">holders</a>, <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn">issuers</a>, and <a href="#dfn-verifier" class="internalDFN" data-link-type="dfn">verifiers</a>.
-        </dd>
-        <dt><dfn data-lt="credential validation|validation" data-dfn-type="dfn" id="dfn-credential-validation">validation</dfn></dt>
-        <dd>
-      The assurance that a <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a> or a
-      <a href="#dfn-verifiable-presentations" class="internalDFN" data-link-type="dfn">verifiable presentation</a> meets the needs of a <a href="#dfn-verifier" class="internalDFN" data-link-type="dfn">verifier</a> and other
-      dependent stakeholders. This specification is constrained to <a href="#dfn-verify" class="internalDFN" data-link-type="dfn">verifying</a>
-      <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a> and <a href="#dfn-verifiable-presentations" class="internalDFN" data-link-type="dfn">verifiable presentations</a> regardless of
-      their usage. Validating <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a> or
-      <a href="#dfn-verifiable-presentations" class="internalDFN" data-link-type="dfn">verifiable presentations</a> is outside the scope of this specification.
-        </dd>
-        <dt><dfn data-lt="verifiable data registries|verifiable data registry" data-dfn-type="dfn" id="dfn-verifiable-data-registries">verifiable data registry</dfn></dt>
-        <dd>
-      A role a system might perform by mediating the creation and <a href="#dfn-verify" class="internalDFN" data-link-type="dfn">verification</a>
-      of identifiers, keys, and other relevant data, such as
-      <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a> schemas, revocation registries, issuer public keys,
-      and so on, which might be required to use <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a>. Some
-      configurations might require correlatable identifiers for <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subjects</a>. Some
-      registries, such as ones for UUIDs and public keys, might just act as namespaces
-      for identifiers.
-        </dd>
-        <dt><dfn data-lt="verify|verified|verifying|verifiable|verifiability|verification" data-dfn-type="dfn" id="dfn-verify">verification</dfn></dt>
-        <dd>
-      The evaluation of whether a <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a> or <a href="#dfn-verifiable-presentations" class="internalDFN" data-link-type="dfn">verifiable presentation</a> 
-      is an authentic and timely statement of the issuer or presenter, respectively.  
-          This includes checking that: the credential (or presentation) conforms to the specification; the proof method is
-      satisfied; and, if present, the status check succeeds.
+<dl class="termlist" id="terms">
+  <dt><dfn data-lt="claims|claim" id="dfn-claims" data-dfn-type="dfn">claim</dfn></dt>
+  <dd>
+An assertion made about a <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subject</a>.
+  </dd>
+  <dt><dfn data-lt="credential|credentials|credential's" id="dfn-credential" data-dfn-type="dfn">credential</dfn></dt>
+  <dd>
+A set of one or more <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a> made by an <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn">issuer</a>. A
+<dfn data-lt="verifiable credentials|verifiable credential" id="dfn-verifiable-credentials" data-dfn-type="dfn">verifiable credential</dfn> is a
+tamper-evident credential that has authorship that can be cryptographically
+verified. Verifiable credentials can be used to build
+<a href="#dfn-verifiable-presentations" class="internalDFN" data-link-type="dfn">verifiable presentations</a>, which can also be cryptographically verified.
+The <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a> in a credential can be about different <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subjects</a>.
+  </dd>
+  <dt><dfn id="dfn-data-minimization" data-dfn-type="dfn">data minimization</dfn></dt>
+  <dd>
+The act of limiting the amount of shared data strictly to the minimum
+necessary to successfully accomplish a task or goal.
+  </dd>
+  <dt><dfn data-lt="decentralized identifiers|DID|DIDs|decentralized identifier" id="dfn-decentralized-identifiers" data-dfn-type="dfn" data-plurals="dids|did">decentralized identifier</dfn></dt>
+  <dd>
+A portable URL-based identifier, also known as a <strong><em>DID</em></strong>,
+associated with an <a href="#dfn-entities" class="internalDFN" data-link-type="dfn">entity</a>. These identifiers are most often used in a
+<a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a> and are associated with <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subjects</a> such that a
+<a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a> itself can be easily ported from one
+<a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn">repository</a> to another without the need to reissue the <a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credential</a>.
+An example of a DID is <code>did:example:123456abcdef</code>.
+  </dd>
+  <dt><dfn data-lt="decentralized identifier documents|DID document|DID documents|decentralized identifier document" id="dfn-decentralized-identifier-documents" data-dfn-type="dfn">decentralized identifier document</dfn></dt>
+  <dd>
+Also referred to as a <strong><em>DID document</em></strong>, this is a document 
+that is accessible using a <a href="#dfn-verifiable-data-registries" class="internalDFN" data-link-type="dfn">verifiable data registry</a> and contains
+information related to a specific <a href="#dfn-decentralized-identifiers" class="internalDFN" data-link-type="dfn">decentralized identifier</a>, such as the
+associated <a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn">repository</a> and public key information.
+  </dd>
+  <dt><dfn data-lt="predicates|derived predicates|derived predicate" id="dfn-predicates" data-dfn-type="dfn">derived predicate</dfn></dt>
+  <dd>
+A verifiable, boolean assertion about the value of another attribute in a
+<a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a>. These are useful in zero-knowledge-proof-style
+<a href="#dfn-verifiable-presentations" class="internalDFN" data-link-type="dfn">verifiable presentations</a> because they can limit information disclosure.
+For example, if a <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a> contains an attribute
+for expressing a specific height in centimeters, a derived predicate
+might reference the height attribute in the <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a>
+demonstrating that the <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn">issuer</a> attests to a height value meeting the
+minimum height requirement, without actually disclosing the specific height
+value. For example, the <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subject</a> is taller than 150 centimeters.
+  </dd>
+  <dt><dfn id="dfn-digital-signature" data-dfn-type="dfn">digital signature</dfn></dt>
+  <dd>
+A mathematical scheme for demonstrating the authenticity of a digital message.
+  </dd>
+  <dt><dfn data-lt="entities|entity's|entity" id="dfn-entities" data-dfn-type="dfn">entity</dfn></dt>
+  <dd>
+A thing with distinct and independent existence, such as a person,
+organization, or device that performs one or more roles in the ecosystem.
+  </dd>
+  <dt><dfn data-lt="graphs|graph" id="dfn-graphs" data-dfn-type="dfn">graph</dfn></dt>
+  <dd>
+A network of information composed of <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subjects</a> and their relationship
+to other <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subjects</a> or data.
+  </dd>
+  <dt><dfn data-lt="hashlinks|hashlink" data-dfn-type="dfn" id="dfn-hashlinks">hashlink</dfn></dt>
+  <dd>
+Hashlink URLs can be used to provide content integrity for links to external resources. 
+  </dd>
+  <dt><dfn data-lt="holders|holder's|holders'|holder" id="dfn-holders" data-dfn-type="dfn">holder</dfn></dt>
+  <dd>
+A role an <a href="#dfn-entities" class="internalDFN" data-link-type="dfn">entity</a> might perform by possessing one or more
+<a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a> and generating <a href="#dfn-presentations" class="internalDFN" data-link-type="dfn">presentations</a> from them.
+A holder is usually, but not always, a <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subject</a> of the <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable
+credentials</a> they are holding. Holders store their <a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credentials</a> in
+<a href="#dfn-credential-repository" class="internalDFN" data-link-type="dfn">credential repositories</a>.
+  </dd>
+  <dt><dfn data-lt="identities|identity's|identity" id="dfn-identities" data-dfn-type="dfn">identity</dfn></dt>
+  <dd>
+The means for keeping track of <a href="#dfn-entities" class="internalDFN" data-link-type="dfn">entities</a> across contexts. Digital
+identities enable tracking and customization of <a href="#dfn-entities" class="internalDFN" data-link-type="dfn">entity</a> interactions
+across digital contexts, typically using identifiers and attributes. Unintended
+distribution or use of identity information can compromise privacy. Collection
+and use of such information should follow the principle of
+<a href="#dfn-data-minimization" class="internalDFN" data-link-type="dfn">data minimization</a>.
+  </dd>
+  <dt><dfn data-lt="identity providers|idp|identity provider" id="dfn-identity-providers" data-dfn-type="dfn">identity provider</dfn></dt>
+  <dd>
+An identity provider, sometimes abbreviated as <em>IdP</em>, is a system
+for creating, maintaining, and managing identity information for
+<a href="#dfn-holders" class="internalDFN" data-link-type="dfn">holders</a>, while providing authentication services to
+relying party applications within a federation or distributed network.
+In this case the <a href="#dfn-holders" class="internalDFN" data-link-type="dfn">holder</a> is always the <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subject</a>. Even if the
+<a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a> are bearer <a href="#dfn-credential" class="internalDFN" data-link-type="dfn">credentials</a>, it is assumed the
+<a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a> remain with the <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subject</a>, and if they are
+not, they were stolen by an attacker. This specification does not use this term
+unless comparing or mapping the concepts in this document to other
+specifications. This specification decouples the <a href="#dfn-identity-providers" class="internalDFN" data-link-type="dfn">identity provider</a>
+concept into two distinct concepts: the <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn">issuer</a> and the <a href="#dfn-holders" class="internalDFN" data-link-type="dfn">holder</a>.
+  </dd>
+  <dt><dfn data-lt="issuers|issuer's|issuer" id="dfn-issuers" data-dfn-type="dfn">issuer</dfn></dt>
+  <dd>
+A role an <a href="#dfn-entities" class="internalDFN" data-link-type="dfn">entity</a> can perform by asserting <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a> about one or
+more <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subjects</a>, creating a <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a> from these
+<a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a>, and transmitting the <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a> to a
+<a href="#dfn-holders" class="internalDFN" data-link-type="dfn">holder</a>.
+  </dd>
+  <dt><dfn data-lt="presentations|presentation" id="dfn-presentations" data-dfn-type="dfn">presentation</dfn></dt>
+  <dd>
+Data derived from one or more <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a>, issued by one or
+more <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn">issuers</a>, that is shared with a specific <a href="#dfn-verifier" class="internalDFN" data-link-type="dfn">verifier</a>. A
+<dfn data-lt="verifiable presentations|verifiable presentation" id="dfn-verifiable-presentations" data-dfn-type="dfn">verifiable presentation</dfn>
+is a tamper-evident presentation encoded in such a way that authorship of the
+data can be trusted after a process of cryptographic verification. Certain
+types of verifiable presentations might contain data that is synthesized from,
+but do not contain, the original <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a> (for example,
+zero-knowledge proofs).
+  </dd>
+  <dt><dfn data-lt="credential repository|credential repositories|repositories|repository" id="dfn-credential-repository" data-dfn-type="dfn">repository</dfn></dt>
+  <dd>
+A program, such as a storage vault or personal <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a>
+wallet, that stores and protects access to <a href="#dfn-holders" class="internalDFN" data-link-type="dfn">holders'</a>
+<a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a>.
+  </dd>
+  <dt><dfn id="dfn-selective-disclosure" data-dfn-type="dfn">selective disclosure</dfn></dt>
+  <dd>
+The ability of a <a href="#dfn-holders" class="internalDFN" data-link-type="dfn">holder</a> to make fine-grained decisions about what 
+information to share.
+  </dd>
+  <dt><dfn data-lt="subjects|subject's|subject" id="dfn-subjects" data-dfn-type="dfn">subject</dfn></dt>
+  <dd>
+A thing about which <a href="#dfn-claims" class="internalDFN" data-link-type="dfn">claims</a> are made.
+  </dd>
+  <dt><dfn id="dfn-user-agent" data-dfn-type="dfn">user agent</dfn></dt>
+  <dd>
+A program, such as a browser or other Web client, that mediates the
+communication between <a href="#dfn-holders" class="internalDFN" data-link-type="dfn">holders</a>, <a href="#dfn-issuers" class="internalDFN" data-link-type="dfn">issuers</a>, and <a href="#dfn-verifier" class="internalDFN" data-link-type="dfn">verifiers</a>.
+  </dd>
+  <dt><dfn data-lt="credential validation|validation" id="dfn-credential-validation" data-dfn-type="dfn">validation</dfn></dt>
+  <dd>
+The assurance that a <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a> or a
+<a href="#dfn-verifiable-presentations" class="internalDFN" data-link-type="dfn">verifiable presentation</a> meets the needs of a <a href="#dfn-verifier" class="internalDFN" data-link-type="dfn">verifier</a> and other
+dependent stakeholders. This specification is constrained to <a href="#dfn-verify" class="internalDFN" data-link-type="dfn">verifying</a>
+<a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a> and <a href="#dfn-verifiable-presentations" class="internalDFN" data-link-type="dfn">verifiable presentations</a> regardless of
+their usage. Validating <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a> or
+<a href="#dfn-verifiable-presentations" class="internalDFN" data-link-type="dfn">verifiable presentations</a> is outside the scope of this specification.
+  </dd>
+  <dt><dfn data-lt="verifiable data registries|verifiable data registry" id="dfn-verifiable-data-registries" data-dfn-type="dfn">verifiable data registry</dfn></dt>
+  <dd>
+A role a system might perform by mediating the creation and <a href="#dfn-verify" class="internalDFN" data-link-type="dfn">verification</a>
+of identifiers, keys, and other relevant data, such as
+<a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a> schemas, revocation registries, issuer public keys,
+and so on, which might be required to use <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credentials</a>. Some
+configurations might require correlatable identifiers for <a href="#dfn-subjects" class="internalDFN" data-link-type="dfn">subjects</a>. Some
+registries, such as ones for UUIDs and public keys, might just act as namespaces
+for identifiers.
+  </dd>
+  <dt><dfn data-lt="verify|verified|verifying|verifiable|verifiability|verification" id="dfn-verify" data-dfn-type="dfn">verification</dfn></dt>
+  <dd>
+The evaluation of whether a <a href="#dfn-verifiable-credentials" class="internalDFN" data-link-type="dfn">verifiable credential</a> or <a href="#dfn-verifiable-presentations" class="internalDFN" data-link-type="dfn">verifiable presentation</a> 
+is an authentic and timely statement of the issuer or presenter, respectively.  
+    This includes checking that: the credential (or presentation) conforms to the specification; the proof method is
+satisfied; and, if present, the status is successfully checked.
 
-        </dd>
-        <dt><dfn data-lt="verifier|verifiers|verifier's|verifier(s)|credential verifiers|credential verifier's" data-dfn-type="dfn" id="dfn-verifier">verifier</dfn></dt>
-        <dd>
-      The <a>entity</a> verifying a claim about a given subject.
-        </dd>
-        <dt><dfn data-lt="URI|URIs" data-dfn-type="dfn" id="dfn-uri">URI</dfn></dt>
-        <dd>
-      A Uniform Resource Identifier, as defined by [<cite><a class="bibref" href="#bib-rfc3986" title="Uniform Resource Identifier (URI): Generic Syntax" data-link-type="biblio">RFC3986</a></cite>].
-        </dd>
-      </dl>
+  </dd>
+  <dt><dfn data-lt="verifier|verifiers|verifier's|verifier(s)|credential verifiers|credential verifier's" id="dfn-verifier" data-dfn-type="dfn">verifier</dfn></dt>
+  <dd>
+The <a href="#dfn-entities" class="internalDFN" data-link-type="dfn">entity</a> verifying a claim about a given subject.
+  </dd>
+  <dt><dfn data-lt="URI|URIs" id="dfn-uri" data-dfn-type="dfn">URI</dfn></dt>
+  <dd>
+A Uniform Resource Identifier, as defined by [<cite><a class="bibref" href="#bib-rfc3986" title="Uniform Resource Identifier (URI): Generic Syntax" data-link-type="biblio">RFC3986</a></cite>].
+  </dd>
+</dl></div>
     </section>
 
     <section id="verification">
