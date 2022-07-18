@@ -1,8 +1,12 @@
 # W3C Verifiable Credentials Working Group - Verifiable Credentials Implementation Guideline 1.0
 
-[HTML rendered version](https://w3c.github.io/vc-imp-guide/)
+## Implementation guide (this document) editor's draft:
+* [Implementation guide](https://w3c.github.io/vc-imp-guide/)
 
-### Other Verifiable Claims github repos
-* [Data Model](https://github.com/w3c/vc-data-model)
-* [Test Suite](https://github.com/w3c/vc-test-suite)
-* [Use Cases](https://github.com/w3c/vc-use-cases)
+## Verifiable Credentials Working Group
+* Group page: [https://www.w3.org/2017/vc/WG/](https://www.w3.org/2017/vc/WG/)
+* Charter: [https://www.w3.org/2022/06/verifiable-credentials-wg-charter.html](https://www.w3.org/2017/vc/WG/charter.html)
+
+## Other useful links
+* [Public group email archive](https://lists.w3.org/Archives/Public/public-vc-wg/)
+
