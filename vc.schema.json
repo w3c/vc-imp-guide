@@ -1,0 +1,137 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#", 
+    "title": "Verifiable Credential",
+    "type": "object",
+    "definitions": {
+        "issuer_string" : {
+            "type" :  "string", 
+            "format" : "uri" 
+        }, 
+        "issuer_object" : {
+            "type" :  "object" , 
+            "properties": {
+                "id" :  {
+                    "type" : "string", 
+                    "format" : "uri"
+                }
+            }, 
+            "required": ["id"]    
+        }, 
+        "subject_object" : {
+            "type" :  "object" , 
+            "properties": {
+                "id" :  {
+                    "type" : "string", 
+                    "format" : "uri"
+                }
+            }, 
+            "required": ["id"]    
+        }, 
+        "credentialSubject_object" : {
+            "type" : "object", 
+            "properties": {
+                "id" :  {
+                    "type" : "string", 
+                    "format" : "uri"
+                }  
+            }
+        }, 
+        "credentialSubject_array" : {
+            "type" : "array", 
+            "properties": {
+                "items": { "$ref": "#/definitions/credentialSubject_object" }
+            } 
+
+      }
+    },  
+    "properties": {
+        "@context": { 
+            "description": "The value of the @context property MUST be an ordered set where the first item is a URI with the value https://www.w3.org/2018/credentials/v1. For reference, a copy of the base context is provided in Appendix § B. Base Context. Subsequent items in the array MUST express context information and be composed of any combination of URIs or objects. It is RECOMMENDED that each URI in the @context be one which, if dereferenced, results in a document containing machine-readable information about the @context.",
+            "type": "array", 
+            "items" : [
+                { "type" : "string" , "enum": ["https://www.w3.org/2018/credentials/v1"] },
+                { "type" : "string" ,  "format": "uri" } 
+            ]
+        }, 
+        "id" : {
+            "$comment": "The id property is intended to unambiguously refer to an object such as a person, product, or organization. Using the id property allows for the expression of statements about specific things in the verifiable credential. If the id property is present: The id property MUST express an identifier that others are expected to use when expressing statements about a specific thing identified by that identifier. The id property MUST NOT have more than one value. The value of the id property MUST be a URI.",
+            "description": "The value of the id property MUST be a single URI. It is RECOMMENDED that the URI in the id be one which, if dereferenced, results in a document containing machine-readable information about the id.",
+            "format" : "uri-reference" , 
+            "type": "string"
+        }, 
+        "type": {
+            "description": "The value of the type property MUST be, or map to (through interpretation of the @context property), one or more URIs. If more than one URI is provided, the URIs MUST be interpreted as an unordered set. Syntactic conveniences SHOULD be used to ease developer usage. Such conveniences might include JSON-LD terms. It is RECOMMENDED that each URI in the type be one which, if dereferenced, results in a document containing machine-readable information about the type.",
+            "$comment": "items in array may be a URI or string that maps to a URI as interpreted in the @context property",
+            "type": "array", 
+            "items" : [
+                { "type" : "string" , "enum": ["VerifiableCredential"] },
+                { "type" : "string"  } 
+            ]
+        },
+        "credentialSubject": {
+            "description": "The value of the credentialSubject property is defined as a set of objects that contain one or more properties that are each related to a subject of the verifiable credential.",
+            "anyOf": [
+                { "$ref": "#/definitions/issuer_string" }, 
+                { "$ref": "#/definitions/issuer_object" }
+                ]
+        }, 
+        "issuanceDate" : {
+            "description": "This specification defines the following property for expressing the date and time when the credential becomes valid.",
+            "$comment" : "Should be ISO8601 formatted, for example, 2018-11-13T20:20:39+00:00", 
+            "type" : "string", 
+            "format" : "date-time"
+        },
+        "issuer": {
+            "description": "This specification defines a property for expressing the issuer of a verifiable credential.\n Must be a uri as String or an Object with an id field.",
+            "anyOf": [
+            { "$ref": "#/definitions/issuer_string" }, 
+            { "$ref": "#/definitions/issuer_object" }
+            ]
+        }, 
+        "proof" : { 
+            "description": "One or more cryptographic proofs that can be used to detect tampering and verify the authorship of a credential or presentation. The specific method used for an embedded proof MUST be included using the type property.",
+            "type" : "object", 
+            "properties": {
+                "type": {
+                    "description": "A valid proof type is required, ie. 'RsaSignature2018'",
+                    "$comment": "items in array may be a URI or string that maps to a URI as interpreted in the @context property",
+                    "type": "string"
+                }
+            }
+        }, 
+        "expirationDate" : {
+            "type" : "string", 
+            "format" : "date-time"
+        }, 
+        "evidence" : { 
+            "type" : "object"
+        }, 
+        "credentialStatus" : {
+            "type" : "object", 
+            "items" : [
+                { "type" : "string" , "format": "uri" } 
+            ]
+        }, 
+        "credentialSchema" : {
+            "description" : "The value of the credentialSchema property MUST be one or more data schemas that provide verifiers with enough information to determine if the provided data conforms to the provided schema. Each credentialSchema MUST specify its type (for example, JsonSchemaValidator2018), and an id property that MUST be a URI identifying the schema file. The precise contents of each data schema is determined by the specific type definition.", 
+            "$comment" : "The credentialSchema property provides an opportunity to annotate type definitions or lock them to specific versions of the vocabulary. Authors of verifiable credentials can include a static version of their vocabulary using credentialSchema that is locked to some content integrity protection mechanism. The credentialSchema property also makes it possible to perform syntactic checking on the credential and to use verification mechanisms such as JSON Schema [JSON-SCHEMA-2018] validation." , 
+            "type" : "object", 
+            "properties" : {
+                "type": {
+                    "desciption" : "", 
+                    "type" : "string"
+                }, 
+                "id" : {
+                    "description" : "", 
+                    "type" : "string", 
+                    "format" : "uri"
+                }
+            }
+        }, 
+        "termsOfUse" : {
+            "type" : "array"
+        }
+    },
+    "additionalProperties": true,
+    "required": [ "@context", "id", "type" , "issuer",  "credentialSubject", "issuanceDate", "proof"]
+}
